@@ -277,6 +277,18 @@ public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double MaxHightOffset;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double MinTurningRadius;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 FrontTireWidthMax;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 RearTireWidthMax;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool ShouldSoundSpeedLimitAlarm;
+    
     FSInternalMethodCarData();
 };
 

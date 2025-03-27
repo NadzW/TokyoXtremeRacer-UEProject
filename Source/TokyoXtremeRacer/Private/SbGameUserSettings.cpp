@@ -1,6 +1,7 @@
 #include "SbGameUserSettings.h"
 
 USbGameUserSettings::USbGameUserSettings() {
+    this->bUseVSync = true;
     this->bIsVisibleDebugMessage = false;
 }
 

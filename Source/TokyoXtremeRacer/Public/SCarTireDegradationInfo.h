@@ -40,6 +40,15 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UMetaSoundSource> RoadNoise;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double SideGripCoef2;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double ResistCoef;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double ResistSideCoef;
+    
     FSCarTireDegradationInfo();
 };
 

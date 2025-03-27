@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/GameUserSettings.h"
 #include "SSbGraphicSettingInfo.h"
 #include "SSbSoundSettingInfo.h"
+#include "GameFramework/GameUserSettings.h"
 #include "SbGameUserSettings.generated.h"
 
 class USbGameUserSettings;
@@ -16,6 +16,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSSbSoundSettingInfo SoundSetting;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSSbGraphicSettingInfo BenchmarkSetting;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsVisibleDebugMessage;

@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Engine/TimerHandle.h"
+#include "SSBVersion.h"
 #include "BPFL_Utility.generated.h"
 
 class AActor;
@@ -23,6 +24,9 @@ class TOKYOXTREMERACER_API UBPFL_Utility : public UBlueprintFunctionLibrary {
 public:
     UBPFL_Utility();
 
+    UFUNCTION(BlueprintCallable)
+    static TArray<FText> TextFormatNumberingListName(TArray<FText> format_list);
+    
     UFUNCTION(BlueprintCallable)
     static FText TextFormatCarName(FText Format, UCompositeDataTable* car_data);
     
@@ -56,6 +60,9 @@ private:
 public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsShippingBuildConfiguration();
+    
+    UFUNCTION(BlueprintCallable)
+    static bool IsSaveDataLowVersion(const FSSBVersion in_save_data_version, const FSSBVersion in_current_version);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsPlayPIE(const UObject* WorldContextObject);

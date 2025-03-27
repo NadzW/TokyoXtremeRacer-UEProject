@@ -29,6 +29,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName OverrideOnCrusingEvaluationOrderName;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName RubberBandType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName CornerBrakeType;
+    
     FSRivalAIParameterInfo();
 };
 

@@ -27,13 +27,28 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSControllerSetting ControllerSetting;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool UseLogoLicensePlate;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bForcedVibrationStop;
+    
     UGameInfoGameInstanceSubsystem();
 
+    UFUNCTION(BlueprintCallable)
+    void SetForcedVibrationStop(const bool in_is_forced_stop);
+    
     UFUNCTION(BlueprintCallable)
     EVersion GetVersion(FName& out_number);
     
     UFUNCTION(BlueprintCallable)
     FSSBVersion GetSBVersion();
+    
+    UFUNCTION(BlueprintCallable)
+    int32 GetSBRevision();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetForcedVibrationStop() const;
     
 };
 

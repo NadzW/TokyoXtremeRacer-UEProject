@@ -11,6 +11,6 @@ enum class ECarEffectType : uint8 {
     SMOKE_R,
     SMOKE_L,
     NITRO,
-    AFTERFIRE_BLUE,
+    STREAMLINE,
 };
 

@@ -69,6 +69,10 @@ bool UUserInfoGameInstanceSubsystem::SetSelectedCarTunePartsEquipLevel(const EVe
     return false;
 }
 
+bool UUserInfoGameInstanceSubsystem::SetSelectedCarTuneEngineReplacement(const FName engine_name_id) {
+    return false;
+}
+
 void UUserInfoGameInstanceSubsystem::SetSelectedCarTireType(const bool in_is_front, const ECarTireType in_type) {
 }
 
@@ -156,6 +160,10 @@ void UUserInfoGameInstanceSubsystem::SetOptionGameSettingInfo(const FSUserOption
 void UUserInfoGameInstanceSubsystem::SetNextGameModeForMovieTeather(const EGameMode next_mode) {
 }
 
+bool UUserInfoGameInstanceSubsystem::SetMyCarTunePartsEquipLevel(const int32 in_key, const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings) {
+    return false;
+}
+
 bool UUserInfoGameInstanceSubsystem::SetMaxGarageMyCarNum(const int32 car_num) {
     return false;
 }
@@ -195,6 +203,10 @@ void UUserInfoGameInstanceSubsystem::SetBattleResult(const FSRaceBattleResultInf
 void UUserInfoGameInstanceSubsystem::SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info) {
 }
 
+bool UUserInfoGameInstanceSubsystem::ReturnNormalSelectedCarTuneEngineReplacement() {
+    return false;
+}
+
 void UUserInfoGameInstanceSubsystem::ResetSaveDataChangedFlag() {
 }
 
@@ -205,6 +217,9 @@ void UUserInfoGameInstanceSubsystem::RemoveSelectedCarTunerTune() {
 }
 
 void UUserInfoGameInstanceSubsystem::RemoveNewLiveryVinyls(const FName in_vinyl) {
+}
+
+void UUserInfoGameInstanceSubsystem::RemoveNewLiverySticker(const FName in_sticker) {
 }
 
 bool UUserInfoGameInstanceSubsystem::RemoveMyCar(const int32 my_car_id) {
@@ -234,6 +249,9 @@ bool UUserInfoGameInstanceSubsystem::OpenCourseExit(const ECourseExit course_ent
 
 bool UUserInfoGameInstanceSubsystem::OpenCourseEnter(const ECourseEnter course_enter) {
     return false;
+}
+
+void UUserInfoGameInstanceSubsystem::NewGameInit() {
 }
 
 void UUserInfoGameInstanceSubsystem::MeetsTuner() {
@@ -277,6 +295,9 @@ bool UUserInfoGameInstanceSubsystem::IsExistNewLiverySticker() {
 
 bool UUserInfoGameInstanceSubsystem::IsEnableFastTravelCourseExitShop(const ECourseExit course_exit, const ECourseExitShopTypeFlag Type) {
     return false;
+}
+
+void UUserInfoGameInstanceSubsystem::Init() {
 }
 
 bool UUserInfoGameInstanceSubsystem::HaveSelectedCarNeon(const ENeonLightPositionType in_check_position) {
@@ -654,6 +675,15 @@ FSSkillTree UUserInfoGameInstanceSubsystem::GetAcquiredPerkSkill(const UDataTabl
     return FSSkillTree{};
 }
 
+void UUserInfoGameInstanceSubsystem::FixRemoveNormalParts() {
+}
+
+void UUserInfoGameInstanceSubsystem::FixAddVinylFromRivalInfo(const UDataTable* in_rival_dt) {
+}
+
+void UUserInfoGameInstanceSubsystem::FixAddStickerFromRivalInfo(const UDataTable* in_rival_dt) {
+}
+
 bool UUserInfoGameInstanceSubsystem::EquipSelectedCarCustomParts(const ECustomCarPartsKind Kind, const ECustomCarPartsType Type) {
     return false;
 }
@@ -663,6 +693,10 @@ bool UUserInfoGameInstanceSubsystem::EnableFastTravelCourseExitShop(const ECours
 }
 
 void UUserInfoGameInstanceSubsystem::DepriveAllMyCar() {
+}
+
+bool UUserInfoGameInstanceSubsystem::DeleteSelectedCarTunePartsHaveLevels(const EVehicleTuneKind tune_kind) {
+    return false;
 }
 
 void UUserInfoGameInstanceSubsystem::DeleteNewMarkCanBoughtEngine(const FName engine_name_id) {
@@ -774,6 +808,10 @@ void UUserInfoGameInstanceSubsystem::AddNewLiveryVinyl(const FName in_vinyl) {
 }
 
 void UUserInfoGameInstanceSubsystem::AddNewLiverySticker(const FName in_sticker) {
+}
+
+bool UUserInfoGameInstanceSubsystem::AddMyCarSettingInfo(const int32 in_key, const ECarSetting in_setting_type, const int32 in_setting_value, const bool in_add_forced) {
+    return false;
 }
 
 int32 UUserInfoGameInstanceSubsystem::AddMyCar(const FName car_id, const int32 Category, const FSCarSettingInfo setting_info, const FSCarTireInfo front_tire, const FSCarTireInfo rear_tire, const bool is_select, const int32 color_id) {

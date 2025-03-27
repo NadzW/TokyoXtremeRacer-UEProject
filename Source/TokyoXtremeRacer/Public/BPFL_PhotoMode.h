@@ -14,5 +14,8 @@ public:
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetCameraMovableWhenPaused(const UObject* WorldContextObject, bool bIsMovable);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FString GetPhotomodeSaveDir();
+    
 };
 

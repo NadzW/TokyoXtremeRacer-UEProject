@@ -3,6 +3,10 @@
 UBPFL_Utility::UBPFL_Utility() {
 }
 
+TArray<FText> UBPFL_Utility::TextFormatNumberingListName(TArray<FText> format_list) {
+    return TArray<FText>();
+}
+
 FText UBPFL_Utility::TextFormatCarName(FText Format, UCompositeDataTable* car_data) {
     return FText::GetEmpty();
 }
@@ -37,6 +41,10 @@ bool UBPFL_Utility::IsValid_Name(const FName& Source) {
 }
 
 bool UBPFL_Utility::IsShippingBuildConfiguration() {
+    return false;
+}
+
+bool UBPFL_Utility::IsSaveDataLowVersion(const FSSBVersion in_save_data_version, const FSSBVersion in_current_version) {
     return false;
 }
 

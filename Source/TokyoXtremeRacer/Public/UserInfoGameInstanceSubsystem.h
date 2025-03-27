@@ -195,6 +195,9 @@ public:
     bool SetSelectedCarTunePartsEquipLevel(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings);
     
     UFUNCTION(BlueprintCallable)
+    bool SetSelectedCarTuneEngineReplacement(const FName engine_name_id);
+    
+    UFUNCTION(BlueprintCallable)
     void SetSelectedCarTireType(const bool in_is_front, const ECarTireType in_type);
     
     UFUNCTION(BlueprintCallable)
@@ -270,6 +273,9 @@ public:
     void SetNextGameModeForMovieTeather(const EGameMode next_mode);
     
     UFUNCTION(BlueprintCallable)
+    bool SetMyCarTunePartsEquipLevel(const int32 in_key, const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings);
+    
+    UFUNCTION(BlueprintCallable)
     bool SetMaxGarageMyCarNum(const int32 car_num);
     
     UFUNCTION(BlueprintCallable)
@@ -306,6 +312,9 @@ public:
     void SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info);
     
     UFUNCTION(BlueprintCallable)
+    bool ReturnNormalSelectedCarTuneEngineReplacement();
+    
+    UFUNCTION(BlueprintCallable)
     void ResetSaveDataChangedFlag();
     
     UFUNCTION(BlueprintCallable)
@@ -316,6 +325,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void RemoveNewLiveryVinyls(const FName in_vinyl);
+    
+    UFUNCTION(BlueprintCallable)
+    void RemoveNewLiverySticker(const FName in_sticker);
     
     UFUNCTION(BlueprintCallable)
     bool RemoveMyCar(const int32 my_car_id);
@@ -340,6 +352,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool OpenCourseEnter(const ECourseEnter course_enter);
+    
+    UFUNCTION(BlueprintCallable)
+    void NewGameInit();
     
     UFUNCTION(BlueprintCallable)
     void MeetsTuner();
@@ -373,6 +388,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool IsEnableFastTravelCourseExitShop(const ECourseExit course_exit, const ECourseExitShopTypeFlag Type);
+    
+    UFUNCTION(BlueprintCallable)
+    void Init();
     
     UFUNCTION(BlueprintCallable)
     bool HaveSelectedCarNeon(const ENeonLightPositionType in_check_position);
@@ -657,6 +675,15 @@ public:
     FSSkillTree GetAcquiredPerkSkill(const UDataTable* in_root_datatable, const ESkillTreeType in_type, bool& out_is_find);
     
     UFUNCTION(BlueprintCallable)
+    void FixRemoveNormalParts();
+    
+    UFUNCTION(BlueprintCallable)
+    void FixAddVinylFromRivalInfo(const UDataTable* in_rival_dt);
+    
+    UFUNCTION(BlueprintCallable)
+    void FixAddStickerFromRivalInfo(const UDataTable* in_rival_dt);
+    
+    UFUNCTION(BlueprintCallable)
     bool EquipSelectedCarCustomParts(const ECustomCarPartsKind Kind, const ECustomCarPartsType Type);
     
     UFUNCTION(BlueprintCallable)
@@ -664,6 +691,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void DepriveAllMyCar();
+    
+    UFUNCTION(BlueprintCallable)
+    bool DeleteSelectedCarTunePartsHaveLevels(const EVehicleTuneKind tune_kind);
     
     UFUNCTION(BlueprintCallable)
     void DeleteNewMarkCanBoughtEngine(const FName engine_name_id);
@@ -763,6 +793,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void AddNewLiverySticker(const FName in_sticker);
+    
+    UFUNCTION(BlueprintCallable)
+    bool AddMyCarSettingInfo(const int32 in_key, const ECarSetting in_setting_type, const int32 in_setting_value, const bool in_add_forced);
     
     UFUNCTION(BlueprintCallable)
     int32 AddMyCar(const FName car_id, const int32 Category, const FSCarSettingInfo setting_info, const FSCarTireInfo front_tire, const FSCarTireInfo rear_tire, const bool is_select, const int32 color_id);

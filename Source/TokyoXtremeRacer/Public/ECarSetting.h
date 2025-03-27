@@ -35,6 +35,9 @@ enum class ECarSetting : uint8 {
     LSDTypeFront,
     LSDTypeRear,
     GearRatio,
+    TireWidthFront,
+    TireWidthRear,
+    TCS,
     Num,
 };
 

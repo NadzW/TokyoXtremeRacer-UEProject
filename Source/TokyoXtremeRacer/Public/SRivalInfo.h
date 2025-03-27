@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
-#include "Engine/DataTable.h"
+#include "ECarCutInBunnerType.h"
 #include "ECarCutInProductionType.h"
 #include "ECarType.h"
 #include "ECourseEnter.h"
@@ -70,6 +70,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECarCutInProductionType CutInProductionType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ECarCutInBunnerType CutInBunnerType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 TeamID;
@@ -196,6 +199,18 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UTexture2D> CutInEmblem;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool ExeReferenceNotification;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double ShiftUpMinusRpm;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> UnlockVinylIds;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> UnlockStickerIds;
     
     FSRivalInfo();
 };

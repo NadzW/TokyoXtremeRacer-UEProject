@@ -5,6 +5,7 @@
 #include "ESkillTreeStatus.h"
 #include "ESkillTreeType.h"
 #include "EStoryStage.h"
+#include "EVehicleTuneEngine.h"
 #include "EVehicleTuneKind.h"
 #include "SSkillTree.generated.h"
 
@@ -58,6 +59,9 @@ public:
     EVehicleTuneKind TuneParts;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EVehicleTuneEngine TuneEngine;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EStoryStage AppearanceStage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -65,6 +69,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 TreeNo;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> NecessaryRivalsToAppear;
     
     FSSkillTree();
 };

@@ -82,5 +82,9 @@ FSInternalMethodCarData::FSInternalMethodCarData() {
     this->RearDiffType = ECarFrontRearDiff::None;
     this->RHLOpenAngle = 0.00f;
     this->MaxHightOffset = 0.00f;
+    this->MinTurningRadius = 0.00f;
+    this->FrontTireWidthMax = 0;
+    this->RearTireWidthMax = 0;
+    this->ShouldSoundSpeedLimitAlarm = false;
 }
 

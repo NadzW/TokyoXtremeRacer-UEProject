@@ -10,5 +10,8 @@ FSCarTireDegradationInfo::FSCarTireDegradationInfo() {
     this->MaxSideGripRate = 0.00f;
     this->CliffSideGripRate = 0.00f;
     this->MinSideGripRate = 0.00f;
+    this->SideGripCoef2 = 0.00f;
+    this->ResistCoef = 0.00f;
+    this->ResistSideCoef = 0.00f;
 }
 

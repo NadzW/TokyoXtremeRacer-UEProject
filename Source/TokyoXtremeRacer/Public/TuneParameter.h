@@ -22,6 +22,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float add_rear_axis_weight_from_driver;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float WeightForTorqueCoef3;
+    
     UTuneParameter();
 
 };

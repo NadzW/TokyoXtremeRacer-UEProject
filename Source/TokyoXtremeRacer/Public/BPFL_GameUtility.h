@@ -45,7 +45,7 @@ private:
     UFUNCTION(BlueprintCallable)
     static bool IsSameCarPaintData(const FSCarPaint& in_Paint_A, const FSCarPaint& in_Paint_B);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintPure)
     static double GetYvalueFromXYarray(const double X, const TArray<double> xy_list);
     
     UFUNCTION(BlueprintCallable)
@@ -123,7 +123,7 @@ private:
     static void ComputeBrakeRoterParam(const double in_default_temp, const double in_thickness, const double in_heat_dissipation_area, const double in_density, const double in_specific_heat, const double in_emissivity, double& out_heat_capacity, double& out_heat_dissipation_temp);
     
     UFUNCTION(BlueprintPure)
-    static double ComputeBrakeRoterAddTemp(const double in_dt, const double in_Ek, const FSBrakeRotorParameter in_rotor_param, const double in_speed, const double in_del_temp_coef);
+    static double ComputeBrakeRoterAddTemp(const double in_dt, const double in_current_temp, const double in_default_temp, const double in_Ek, const FSBrakeRotorParameter in_rotor_param, const double in_speed, const double in_del_temp_coef);
     
     UFUNCTION(BlueprintCallable)
     static double ComputeAirDragForce(const double in_speed, const double in_c, const double in_area);

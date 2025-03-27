@@ -51,6 +51,8 @@ enum class ERacePrizeCpType : uint8 {
     PerkPointGarageResultBonusStage10Clear,
     PaidToTuner,
     OverflowedPerkPoint,
+    TireReplacementFee,
+    NitroRefillFee,
     Num,
 };
 

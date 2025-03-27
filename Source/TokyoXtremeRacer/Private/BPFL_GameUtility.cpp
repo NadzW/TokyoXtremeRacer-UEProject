@@ -105,7 +105,7 @@ double UBPFL_GameUtility::ComputeBrakeRotorContactArea(const double in_rotor_inc
 void UBPFL_GameUtility::ComputeBrakeRoterParam(const double in_default_temp, const double in_thickness, const double in_heat_dissipation_area, const double in_density, const double in_specific_heat, const double in_emissivity, double& out_heat_capacity, double& out_heat_dissipation_temp) {
 }
 
-double UBPFL_GameUtility::ComputeBrakeRoterAddTemp(const double in_dt, const double in_Ek, const FSBrakeRotorParameter in_rotor_param, const double in_speed, const double in_del_temp_coef) {
+double UBPFL_GameUtility::ComputeBrakeRoterAddTemp(const double in_dt, const double in_current_temp, const double in_default_temp, const double in_Ek, const FSBrakeRotorParameter in_rotor_param, const double in_speed, const double in_del_temp_coef) {
     return 0.0;
 }
 

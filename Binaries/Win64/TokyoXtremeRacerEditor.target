@@ -34,34 +34,6 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor-Detex.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor-Detex.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor-JsonAsAsset.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor-JsonAsAsset.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor-NVTT.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor-NVTT.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/AgentInterface.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -3791,10 +3763,6 @@
 		}
 	],
 	"RuntimeDependencies": [
-		{
-			"Path": "$(ProjectDir)/Plugins/JsonAsAsset/JsonAsAsset.uplugin",
-			"Type": "UFS"
-		},
 		{
 			"Path": "$(ProjectDir)/TokyoXtremeRacer.uproject",
 			"Type": "UFS"
@@ -26949,7 +26917,6 @@
 		"Interchange",
 		"InterchangeEditor",
 		"InterchangeTests",
-		"JsonAsAsset",
 		"JsonBlueprintUtilities",
 		"KDevelopSourceCodeAccess",
 		"LauncherChunkInstaller",

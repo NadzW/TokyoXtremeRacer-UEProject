@@ -12,6 +12,7 @@ FSSkillTree::FSSkillTree() {
     this->Level = 0;
     this->Cost = 0;
     this->TuneParts = EVehicleTuneKind::PowerUnit;
+    this->TuneEngine = EVehicleTuneEngine::None;
     this->AppearanceStage = EStoryStage::None;
     this->IsVisible = false;
     this->TreeNo = 0;

@@ -3,6 +3,7 @@
 FSUserInfo::FSUserInfo() {
     this->OpenArea = ECourseOpenArea::None;
     this->TutorialMode = EGameTutorialMode::None;
+    this->Open_New_Skill_Popup = false;
     this->MyCarIdSrc = 0;
     this->MaxGarageMyCarNum = 0;
     this->SelectedMyCarId = 0;
