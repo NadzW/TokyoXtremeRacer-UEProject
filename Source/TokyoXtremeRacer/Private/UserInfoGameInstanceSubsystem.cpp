@@ -3,10 +3,21 @@
 UUserInfoGameInstanceSubsystem::UUserInfoGameInstanceSubsystem() {
     this->EnterParkingArea = EParkingArea::PA_6_9_Hakozaki;
     this->NextGameModeForMovieTeater = EGameMode::InGame;
+    this->NextGameModeForNowhereConversation = EGameMode::InGame;
+    this->NextOutGameSceneForNowhereConversation = EJumpScene::None;
+    this->NextOutGameSceneForMovieTheater = EJumpScene::None;
+    this->NextOutGameParkingAreaForNowhereConversation = EParkingArea::PA_6_9_Hakozaki;
+    this->NextOutGameParkingAreaForMovieTheater = EParkingArea::PA_6_9_Hakozaki;
     this->TutorialModeInfoDataTable = NULL;
     this->IsValidCurrentTutorialModeInfo = false;
     this->IsDispCurrentTutorialModePopup = false;
     this->SaveDataChangedFlag = false;
+    this->SaveDataChangedFlagCp = false;
+    this->SaveDataChangedFlagBuyCar = false;
+    this->SaveDataChangedFlagTuneCar = false;
+    this->SaveDataChangedFlagReadReference = false;
+    this->SaveDataChangedFlagSeenConv = false;
+    this->SaveDataChangedFlagReplacementEngine = false;
     this->OptionSaveDataChangedFlag = false;
     this->Is_First_Time_Startup = true;
     this->Is_Option_Initialized = false;
@@ -20,6 +31,9 @@ TMap<FName, FSObjectiveInfo> UUserInfoGameInstanceSubsystem::UpdateObjective(con
 }
 
 void UUserInfoGameInstanceSubsystem::UpdateCurrentGrangeInfo(const FSGarageInfo new_info) {
+}
+
+void UUserInfoGameInstanceSubsystem::UpdateCleardAndNewObjective(const UDataTable* objective_data_table) {
 }
 
 void UUserInfoGameInstanceSubsystem::SetUpperLimitCP(const int64 new_cp) {
@@ -133,7 +147,7 @@ bool UUserInfoGameInstanceSubsystem::SetRivalSituationAnimationFlag(const FName 
     return false;
 }
 
-bool UUserInfoGameInstanceSubsystem::SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, int32& num_of_rival_defated, int32& num_of_team_defated) {
+bool UUserInfoGameInstanceSubsystem::SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, const bool rival_is_wanderer, int32& num_of_rival_defated, int32& num_of_team_defated) {
     return false;
 }
 
@@ -157,6 +171,21 @@ void UUserInfoGameInstanceSubsystem::SetOptionInputMappingInfo(const FSOptionInp
 void UUserInfoGameInstanceSubsystem::SetOptionGameSettingInfo(const FSUserOptionGameSetting game_info) {
 }
 
+void UUserInfoGameInstanceSubsystem::SetNextOutGameSceneForNowhereConversation(const EJumpScene in_scene) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetNextOutGameSceneForMovieTheater(const EJumpScene in_scene) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetNextOutGameParkingAreaForNowhereConversation(const EParkingArea in_pa) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetNextOutGameParkingAreaForMovieTheater(const EParkingArea in_pa) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetNextGameModeForNowhereConversation(const EGameMode next_mode) {
+}
+
 void UUserInfoGameInstanceSubsystem::SetNextGameModeForMovieTeather(const EGameMode next_mode) {
 }
 
@@ -168,6 +197,12 @@ bool UUserInfoGameInstanceSubsystem::SetMaxGarageMyCarNum(const int32 car_num) {
     return false;
 }
 
+void UUserInfoGameInstanceSubsystem::SetMaxDistanceCarPushed(const double in_distance) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetMaxCleanCornaring(const int32 in_num) {
+}
+
 void UUserInfoGameInstanceSubsystem::SetMapInfo(const FSMapInfo& map_info) {
 }
 
@@ -175,6 +210,9 @@ void UUserInfoGameInstanceSubsystem::SetLicensePlate(const int32& car_id, const 
 }
 
 void UUserInfoGameInstanceSubsystem::SetIsDispCurrentTutorialModePopup(const bool is_disp) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetHitBridgePier() {
 }
 
 void UUserInfoGameInstanceSubsystem::SetGraveInfo(const FVector Location, const int64 Cp) {
@@ -187,6 +225,9 @@ int64 UUserInfoGameInstanceSubsystem::SetGarageResult(const FSRaceProcessAndResu
     return 0;
 }
 
+void UUserInfoGameInstanceSubsystem::SetEquipBreakingLimitsTune() {
+}
+
 int32 UUserInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea parking_area) {
     return 0;
 }
@@ -194,13 +235,17 @@ int32 UUserInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea par
 void UUserInfoGameInstanceSubsystem::SetEnableSystemMenu(const bool is_enable) {
 }
 
+void UUserInfoGameInstanceSubsystem::SetDailyRandomSeed(const int32 in_seed) {
+}
+
 void UUserInfoGameInstanceSubsystem::SetCourseOpenArea(const ECourseOpenArea open_area) {
 }
 
-void UUserInfoGameInstanceSubsystem::SetBattleResult(const FSRaceBattleResultInfo battle_result) {
+void UUserInfoGameInstanceSubsystem::SetBattleResult(const FSRaceBattleResultInfo battle_result, const bool in_is_player_kei) {
 }
 
-void UUserInfoGameInstanceSubsystem::SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info) {
+int32 UUserInfoGameInstanceSubsystem::SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info) {
+    return 0;
 }
 
 bool UUserInfoGameInstanceSubsystem::ReturnNormalSelectedCarTuneEngineReplacement() {
@@ -211,6 +256,9 @@ void UUserInfoGameInstanceSubsystem::ResetSaveDataChangedFlag() {
 }
 
 void UUserInfoGameInstanceSubsystem::ResetOptionSaveDataChangedFlag() {
+}
+
+void UUserInfoGameInstanceSubsystem::RepayPerkPoint(const UDataTable* repayment_datatable) {
 }
 
 void UUserInfoGameInstanceSubsystem::RemoveSelectedCarTunerTune() {
@@ -285,11 +333,19 @@ bool UUserInfoGameInstanceSubsystem::IsIncludedCurrentStoryStage(const EStorySta
     return false;
 }
 
+bool UUserInfoGameInstanceSubsystem::IsExistNowhereConversation() {
+    return false;
+}
+
 bool UUserInfoGameInstanceSubsystem::IsExistNewLiveryVinyl() {
     return false;
 }
 
 bool UUserInfoGameInstanceSubsystem::IsExistNewLiverySticker() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::IsExistMovieThatherPlayMovie() {
     return false;
 }
 
@@ -301,6 +357,30 @@ void UUserInfoGameInstanceSubsystem::Init() {
 }
 
 bool UUserInfoGameInstanceSubsystem::HaveSelectedCarNeon(const ENeonLightPositionType in_check_position) {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedTuneCar() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedSeenConv() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedReplacementEngine() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedReadReference() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedCp() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedBuyCar() {
     return false;
 }
 
@@ -416,8 +496,24 @@ ECarSettingAutoType UUserInfoGameInstanceSubsystem::GetSelectedCarSettingAuto(co
     return ECarSettingAutoType::None;
 }
 
-FSMyCarNeon UUserInfoGameInstanceSubsystem::GetSelectedCarNeon(const ENeonLightPositionType Position) {
+FName UUserInfoGameInstanceSubsystem::GetSelectedCarNormalEngineId() {
+    return NAME_None;
+}
+
+FSMyCarNeon UUserInfoGameInstanceSubsystem::GetSelectedCarNeon(const ENeonLightPositionType position) {
     return FSMyCarNeon{};
+}
+
+TArray<EVehicleTuneLevel> UUserInfoGameInstanceSubsystem::GetSelectedCarHaveReplacementEngineLevels(const FName in_engine_id, const EVehicleTuneKind in_tune_kind) {
+    return TArray<EVehicleTuneLevel>();
+}
+
+TArray<FName> UUserInfoGameInstanceSubsystem::GetSelectedCarHaveReplacementEngineIds() {
+    return TArray<FName>();
+}
+
+EVehicleTuneLevel UUserInfoGameInstanceSubsystem::GetSelectedCarEquipReplacementEngineLevels(const FName in_engine_id, const EVehicleTuneKind in_tune_kind) {
+    return EVehicleTuneLevel::None;
 }
 
 TMap<ECustomCarPartsKind, FSCustomCarParts> UUserInfoGameInstanceSubsystem::GetSelectedCarDressupInfos() {
@@ -492,6 +588,10 @@ TMap<FName, FSPerkTreeMachineInfo> UUserInfoGameInstanceSubsystem::GetNumberOfPe
     return TMap<FName, FSPerkTreeMachineInfo>();
 }
 
+int32 UUserInfoGameInstanceSubsystem::GetNumberOfCarsOwned(const TMap<EVehicleTuneKind, EVehicleTuneLevel> in_max_tune_levels, int32& out_full_tuned_car_num) {
+    return 0;
+}
+
 TSoftObjectPtr<UDataTable> UUserInfoGameInstanceSubsystem::GetNowhereConversation(const bool in_get_conv_delete) {
     return NULL;
 }
@@ -500,8 +600,32 @@ TArray<FName> UUserInfoGameInstanceSubsystem::GetNotClearObjectives() {
     return TArray<FName>();
 }
 
+EJumpScene UUserInfoGameInstanceSubsystem::GetNextOutGameSceneForNowhereConversation() {
+    return EJumpScene::None;
+}
+
+EJumpScene UUserInfoGameInstanceSubsystem::GetNextOutGameSceneForMovieTheater() {
+    return EJumpScene::None;
+}
+
+EParkingArea UUserInfoGameInstanceSubsystem::GetNextOutGameParkingAreaForNowhereConversation() {
+    return EParkingArea::PA_6_9_Hakozaki;
+}
+
+EParkingArea UUserInfoGameInstanceSubsystem::GetNextOutGameParkingAreaForMovieTheater() {
+    return EParkingArea::PA_6_9_Hakozaki;
+}
+
+EGameMode UUserInfoGameInstanceSubsystem::GetNextGameModeForNowhereConversation() {
+    return EGameMode::InGame;
+}
+
 EGameMode UUserInfoGameInstanceSubsystem::GetNextGameModeForMovieTeater() {
     return EGameMode::InGame;
+}
+
+int32 UUserInfoGameInstanceSubsystem::GetNextDaysForDisplayed() {
+    return 0;
 }
 
 TArray<ECourseEnter> UUserInfoGameInstanceSubsystem::GetNewOpenCourseEnter(const bool is_clear) {
@@ -556,6 +680,14 @@ int32 UUserInfoGameInstanceSubsystem::GetMaxGarageMyCarNum() {
     return 0;
 }
 
+double UUserInfoGameInstanceSubsystem::GetMaxDistanceCarPushed() const {
+    return 0.0;
+}
+
+int32 UUserInfoGameInstanceSubsystem::GetMaxCleanCornaring() const {
+    return 0;
+}
+
 double UUserInfoGameInstanceSubsystem::GetMaxBattleTime() {
     return 0.0;
 }
@@ -576,6 +708,10 @@ TArray<FSInputActionKeyMapping> UUserInfoGameInstanceSubsystem::GetInputActionKe
     return TArray<FSInputActionKeyMapping>();
 }
 
+bool UUserInfoGameInstanceSubsystem::GetHitBridgePier() const {
+    return false;
+}
+
 EJumpScene UUserInfoGameInstanceSubsystem::GetHeadOutGameStackScene(const bool is_head_remove) {
     return EJumpScene::None;
 }
@@ -590,6 +726,10 @@ TArray<FSGarageInfo> UUserInfoGameInstanceSubsystem::GetGarages() {
 
 TArray<ESkillTreeType> UUserInfoGameInstanceSubsystem::GetEquipPerkSkill() {
     return TArray<ESkillTreeType>();
+}
+
+bool UUserInfoGameInstanceSubsystem::GetEquipBreakingLimitsTune() const {
+    return false;
 }
 
 EParkingArea UUserInfoGameInstanceSubsystem::GetEnterParkingArea() {
@@ -624,6 +764,10 @@ int32 UUserInfoGameInstanceSubsystem::GetDaysForDisplayed() {
 }
 
 int32 UUserInfoGameInstanceSubsystem::GetDays() {
+    return 0;
+}
+
+int32 UUserInfoGameInstanceSubsystem::GetDailyRandomSeed() {
     return 0;
 }
 
@@ -675,6 +819,9 @@ FSSkillTree UUserInfoGameInstanceSubsystem::GetAcquiredPerkSkill(const UDataTabl
     return FSSkillTree{};
 }
 
+void UUserInfoGameInstanceSubsystem::FixTotal() {
+}
+
 void UUserInfoGameInstanceSubsystem::FixRemoveNormalParts() {
 }
 
@@ -682,6 +829,9 @@ void UUserInfoGameInstanceSubsystem::FixAddVinylFromRivalInfo(const UDataTable* 
 }
 
 void UUserInfoGameInstanceSubsystem::FixAddStickerFromRivalInfo(const UDataTable* in_rival_dt) {
+}
+
+void UUserInfoGameInstanceSubsystem::FixAchievement(const UDataTable* in_rival_dt) {
 }
 
 bool UUserInfoGameInstanceSubsystem::EquipSelectedCarCustomParts(const ECustomCarPartsKind Kind, const ECustomCarPartsType Type) {
@@ -705,6 +855,9 @@ void UUserInfoGameInstanceSubsystem::DeleteNewMarkCanBoughtEngine(const FName en
 void UUserInfoGameInstanceSubsystem::DeleteNewMarkCanBoughtCar(const FName car_name_id) {
 }
 
+void UUserInfoGameInstanceSubsystem::DataFixAfterDataLoad() {
+}
+
 bool UUserInfoGameInstanceSubsystem::ConsumePP(const int32 in_consume_pp, int32& out_current_pp) {
     return false;
 }
@@ -719,6 +872,12 @@ void UUserInfoGameInstanceSubsystem::ClearSelectedCarSettingGearRatios() {
 }
 
 void UUserInfoGameInstanceSubsystem::ClearOutGameStackScenes() {
+}
+
+void UUserInfoGameInstanceSubsystem::ClearNextOutGameForNowhereConversation() {
+}
+
+void UUserInfoGameInstanceSubsystem::ClearNextOutGameForMovieTheather() {
 }
 
 void UUserInfoGameInstanceSubsystem::ClearNewOpenCourseEnter() {
@@ -779,7 +938,7 @@ bool UUserInfoGameInstanceSubsystem::AddSelectedCarTunePartsHaveFlag(const EVehi
     return false;
 }
 
-bool UUserInfoGameInstanceSubsystem::AddSelectedCarNeon(const ENeonLightPositionType Position, const FSMyCarNeon my_neon_info) {
+bool UUserInfoGameInstanceSubsystem::AddSelectedCarNeon(const ENeonLightPositionType position, const FSMyCarNeon my_neon_info) {
     return false;
 }
 
@@ -794,7 +953,7 @@ int32 UUserInfoGameInstanceSubsystem::AddPP(const int32 in_add_pp, const bool in
 void UUserInfoGameInstanceSubsystem::AddPerk(const FName in_category, const FName in_row_name, const FSSkillTree in_perk) {
 }
 
-void UUserInfoGameInstanceSubsystem::AddOutGameStackScenes(const EJumpScene add_scene) {
+void UUserInfoGameInstanceSubsystem::AddOutGameStackScenes(const EJumpScene add_scene, const EParkingArea in_pa) {
 }
 
 TMap<FName, FSObjectiveInfo> UUserInfoGameInstanceSubsystem::AddObjective(const UDataTable* objective_data_table) {

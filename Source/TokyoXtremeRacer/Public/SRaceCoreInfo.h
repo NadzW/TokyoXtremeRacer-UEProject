@@ -70,6 +70,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> NotMeetTheBattleConditionRivals;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double TimeNotDriving;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double MaxTimeNotDriving;
+    
     FSRaceCoreInfo();
 };
 

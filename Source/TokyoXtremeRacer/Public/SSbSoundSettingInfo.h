@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
+#include "EOP_BattleBgmTiming.h"
 #include "EOP_Scalability.h"
 #include "SSbSoundSettingInfo.generated.h"
 
@@ -22,6 +23,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EOP_Scalability Option_SoundQuality;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EOP_BattleBgmTiming Option_BattleBgmTiming;
     
     FSSbSoundSettingInfo();
 };

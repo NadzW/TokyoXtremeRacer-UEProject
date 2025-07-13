@@ -15,7 +15,7 @@ public:
     FName NameId;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 displacement;
+    int32 Displacement;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECarDriveType DriveType;

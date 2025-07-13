@@ -42,6 +42,9 @@ private:
     UDataTable* GripSpecEffectTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UDataTable* PlayEffectSpecEffectTable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UDataTable* DriftPreferenceTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -66,6 +69,9 @@ private:
     TMap<ERivalSpecEffect, float> GripSpecEffectValues;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<ERivalSpecEffect, float> PlayEffectSpecEffectValues;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ERivalDriftPreference, float> DriftPreferenceValues;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -85,6 +91,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     float ReturnRandomLaneChangeRate(ERivalRandomLaneChange RivalRandomLaneChange);
+    
+    UFUNCTION(BlueprintCallable)
+    float ReturnPlayEffectSpecEffect(ERivalSpecEffect SpecRivalEffect);
     
     UFUNCTION(BlueprintCallable)
     float ReturnOvertakePredictSecond(ERivalOvertakeAbility RivalOvertakeAbility);

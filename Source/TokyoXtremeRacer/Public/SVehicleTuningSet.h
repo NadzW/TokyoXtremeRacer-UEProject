@@ -50,6 +50,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName ReplacementPuId;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double FinalGearRatioCoef;
+    
     FSVehicleTuningSet();
 };
 

@@ -26,6 +26,15 @@ enum class ERivalAppearanceCondition : uint8 {
     NoRivalOnCourse,
     NoRivalOnPA,
     RivalAppCondNotMet,
+    BattleNum,
+    RivalDefeatNum,
+    CurrentCp,
+    SegmentTime,
+    DefeatWandererNum,
+    MaxCleanCornaringNum,
+    LimitBreakTuning,
+    HitBridgePier,
+    MaxDistanceCarPushed,
     Num,
 };
 

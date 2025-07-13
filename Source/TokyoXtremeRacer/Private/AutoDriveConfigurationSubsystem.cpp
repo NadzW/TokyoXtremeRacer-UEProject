@@ -6,6 +6,7 @@ UAutoDriveConfigurationSubsystem::UAutoDriveConfigurationSubsystem() {
     this->RandomLaneChangeLateTable = NULL;
     this->TorqueSpecEffectTable = NULL;
     this->GripSpecEffectTable = NULL;
+    this->PlayEffectSpecEffectTable = NULL;
     this->DriftPreferenceTable = NULL;
     this->CrusingParameterTable = NULL;
     this->RivalDrivingParameterTable = NULL;
@@ -20,6 +21,10 @@ float UAutoDriveConfigurationSubsystem::ReturnTorqueSpecEffect(ERivalSpecEffect 
 }
 
 float UAutoDriveConfigurationSubsystem::ReturnRandomLaneChangeRate(ERivalRandomLaneChange RivalRandomLaneChange) {
+    return 0.0f;
+}
+
+float UAutoDriveConfigurationSubsystem::ReturnPlayEffectSpecEffect(ERivalSpecEffect SpecRivalEffect) {
     return 0.0f;
 }
 

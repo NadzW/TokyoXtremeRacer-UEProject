@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "UObject/Interface.h"
 #include "ECarCutInBunnerType.h"
 #include "BPI_CarCutInWidget.generated.h"
 

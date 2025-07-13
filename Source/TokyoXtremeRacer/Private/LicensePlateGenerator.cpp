@@ -3,7 +3,7 @@
 ULicensePlateGenerator::ULicensePlateGenerator() {
 }
 
-FSCarLicensePlate ULicensePlateGenerator::GetNumberByLottery(const int32 in_category, const ECourseSimpleArea in_area, const FName in_number_type, const int32 in_business_use_percent) {
+FSCarLicensePlate ULicensePlateGenerator::GetNumberByLottery(const int32 in_category, const ECourseSimpleArea in_area, const FName in_number_type, const int32 in_business_use_percent, const int32 in_forced_classification_number) {
     return FSCarLicensePlate{};
 }
 

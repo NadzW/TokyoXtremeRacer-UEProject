@@ -17,11 +17,11 @@ void UBPFL_Math::SeparateFloatToDecimalAndFraction(const float InValue, int32& D
 void UBPFL_Math::SeparateDoubleToDecimalAndFraction(const double InValue, int32& Decimal, double& Fraction) {
 }
 
-float UBPFL_Math::RateFloat(const float Value, const float Min, const float Max) {
+float UBPFL_Math::RateFloat(const float Value, const float min, const float max) {
     return 0.0f;
 }
 
-double UBPFL_Math::RateDouble(const double Value, const double Min, const double Max) {
+double UBPFL_Math::RateDouble(const double Value, const double min, const double max) {
     return 0.0;
 }
 
@@ -41,7 +41,11 @@ FVector UBPFL_Math::LerpVector(const FVector& A, const FVector& B, const float T
     return FVector{};
 }
 
-bool UBPFL_Math::InInclusiveRange_Vector2D(const FVector2D& Value, const FVector2D& Min, const FVector2D& Max) {
+bool UBPFL_Math::IsPlus(const double A) {
+    return false;
+}
+
+bool UBPFL_Math::InInclusiveRange_Vector2D(const FVector2D& Value, const FVector2D& min, const FVector2D& max) {
     return false;
 }
 
@@ -49,7 +53,7 @@ double UBPFL_Math::DevideTest(const double A, const double B) {
     return 0.0;
 }
 
-double UBPFL_Math::ComputeCornerRFromArcLengthAndStringLength(const FVector& StartPoint, const FVector& EndPoint, const double CornerLength) {
+double UBPFL_Math::ComputeCornerRFromArcLengthAndStringLength(const FVector& StartPoint, const FVector& Endpoint, const double CornerLength) {
     return 0.0;
 }
 
@@ -57,7 +61,7 @@ double UBPFL_Math::CmToM(const double Cm) {
     return 0.0;
 }
 
-uint8 UBPFL_Math::Clamp(const uint8 Value, const uint8 Min, const uint8 Max) {
+uint8 UBPFL_Math::clamp(const uint8 Value, const uint8 min, const uint8 max) {
     return 0;
 }
 

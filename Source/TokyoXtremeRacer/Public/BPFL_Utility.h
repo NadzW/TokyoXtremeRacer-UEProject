@@ -25,6 +25,12 @@ public:
     UBPFL_Utility();
 
     UFUNCTION(BlueprintCallable)
+    static FText VectorToTextDataTableRowFormat(const FVector& Value);
+    
+    UFUNCTION(BlueprintCallable)
+    static void ToggleBoolean(UPARAM(Ref) bool& RefValue);
+    
+    UFUNCTION(BlueprintCallable)
     static TArray<FText> TextFormatNumberingListName(TArray<FText> format_list);
     
     UFUNCTION(BlueprintCallable)
@@ -105,6 +111,9 @@ private:
     static TArray<FString> GetAllFilesInDirectory(const FString& Directory, const bool fullPath, const bool withoutExtention, const FString& onlyFilesStartingWith, const FString& onlyFilesWithExtension);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    static FText DoubleToTextWithoutGrouping(const double Value);
+    
     UFUNCTION(BlueprintCallable)
     static void CompositeDataTableRemoveTables(UCompositeDataTable* in_root, UDataTable* in_remove_dt);
     

@@ -9,7 +9,11 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_MiniMap = false;
     this->Option_CourseAssist = false;
     this->Option_MeterUnit = EOP_MeterUnit::OP_METERS;
+    this->Option_MeterLayout = EOP_MeterLayout::OP_METER_LAYOUT_AROUND;
     this->Option_Meter = false;
+    this->Option_TireMeter = false;
+    this->Option_NitroMeter = false;
+    this->Option_InputMeter = false;
     this->Option_BackMirror = false;
     this->Option_BackMirror_BonnetView = false;
     this->Option_DriversInformation = false;
@@ -25,6 +29,7 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_RumbleToWheelspin = 0;
     this->Option_RumbleToAero = 0;
     this->Option_RumbleToAbs = 0;
+    this->Option_IsCopyPhotoToSteamDir = false;
     this->Option_ViewingAngle = 0;
     this->Option_Brightness = 0;
     this->Option_UpscalingMode = EOP_Upscaling_Mode::OP_OFF;
@@ -36,5 +41,6 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_BgmVolumn = 0;
     this->Option_SeVolumn = 0;
     this->Option_CarVolumn = 0;
+    this->Option_BattleBgmTiming = EOP_BattleBgmTiming::OP_AfterBattleStart;
 }
 

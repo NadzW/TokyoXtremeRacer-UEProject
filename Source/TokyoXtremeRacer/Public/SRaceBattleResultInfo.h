@@ -3,6 +3,7 @@
 #include "ERaceBattleResult.h"
 #include "ERaceDayOfWeek.h"
 #include "ERacePrizeCpType.h"
+#include "ERivalCategory.h"
 #include "SRaceBattleResultRivalInfo.h"
 #include "SRaceBattleResultInfo.generated.h"
 
@@ -57,6 +58,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseEvaluation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ERivalCategory TopCategory;
     
     FSRaceBattleResultInfo();
 };

@@ -19,6 +19,11 @@ URaceInfoGameInstanceSubsystem::URaceInfoGameInstanceSubsystem() {
     this->IsBattle = false;
     this->ControllIsPlayer = false;
     this->ParkingAreaInfoNeedUpdate = false;
+    this->IsTA = 0;
+    this->ContinuousJustAccele = 0;
+    this->ContinuousFirstAttack = 0;
+    this->ContinuousReversalAttack = 0;
+    this->EnableAddTimeNotDriving = false;
 }
 
 bool URaceInfoGameInstanceSubsystem::UpdateRivalPosition(const ERunArea _area, const FName _rival_id, const FVector _location, const FRotator _rotation, const float _spline_rate) {
@@ -68,6 +73,9 @@ bool URaceInfoGameInstanceSubsystem::SetParkingAreaBattleRival(const EParkingAre
     return false;
 }
 
+void URaceInfoGameInstanceSubsystem::SetIsTA(const bool in_is_battle) {
+}
+
 void URaceInfoGameInstanceSubsystem::SetIsReplay(const bool is_replay) {
 }
 
@@ -82,6 +90,9 @@ void URaceInfoGameInstanceSubsystem::SetExitParkingArea(const EParkingArea Area)
 }
 
 void URaceInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea Area) {
+}
+
+void URaceInfoGameInstanceSubsystem::SetEnableAddTimeNotDriving(const bool in_is_enable) {
 }
 
 void URaceInfoGameInstanceSubsystem::SetCurrentSpeedForProcessAndResult(const float Speed, const float dt, bool& is_update_max_speed, float& current_distance, int32& long_run_distance, int64& long_run_bonus, float& distance_at_dt) {
@@ -99,6 +110,9 @@ int32 URaceInfoGameInstanceSubsystem::ReturnkInitialRivalCarNum() const {
 
 int32 URaceInfoGameInstanceSubsystem::ReturnkInitialOtherCarNum() const {
     return 0;
+}
+
+void URaceInfoGameInstanceSubsystem::ResetTimeNotDriving() {
 }
 
 void URaceInfoGameInstanceSubsystem::ReplayedCutin(const FName rival_id) {
@@ -151,6 +165,18 @@ bool URaceInfoGameInstanceSubsystem::IsAppearsTuner(const EParkingArea current_p
 void URaceInfoGameInstanceSubsystem::Init() {
 }
 
+int32 URaceInfoGameInstanceSubsystem::IncContinuousReversalAttack() {
+    return 0;
+}
+
+int32 URaceInfoGameInstanceSubsystem::IncContinuousJustAccele() {
+    return 0;
+}
+
+int32 URaceInfoGameInstanceSubsystem::IncContinuousFirstAttack() {
+    return 0;
+}
+
 bool URaceInfoGameInstanceSubsystem::GetValidProcessAndResult() {
     return false;
 }
@@ -179,6 +205,14 @@ FName URaceInfoGameInstanceSubsystem::GetParkingAreaBattleTriggerRival() {
 
 TArray<FName> URaceInfoGameInstanceSubsystem::GetNotClearObjective() {
     return TArray<FName>();
+}
+
+double URaceInfoGameInstanceSubsystem::GetMaxTimeNotDriving() {
+    return 0.0;
+}
+
+bool URaceInfoGameInstanceSubsystem::GetIsTA() {
+    return false;
 }
 
 bool URaceInfoGameInstanceSubsystem::GetIsReplay() {
@@ -235,6 +269,9 @@ void URaceInfoGameInstanceSubsystem::ForceAddedRival(const FName rival_id) {
 void URaceInfoGameInstanceSubsystem::ClearTrafficJamInfo() {
 }
 
+void URaceInfoGameInstanceSubsystem::ClearTimeNotDriving() {
+}
+
 void URaceInfoGameInstanceSubsystem::ClearSetRival() {
 }
 
@@ -253,17 +290,39 @@ void URaceInfoGameInstanceSubsystem::ClearNotMeetTheBattleConditionRival() {
 void URaceInfoGameInstanceSubsystem::ClearLongRunBonus(const bool is_load_game) {
 }
 
+void URaceInfoGameInstanceSubsystem::ClearIsTA() {
+}
+
+void URaceInfoGameInstanceSubsystem::ClearForcedAppearanceRivals() {
+}
+
 void URaceInfoGameInstanceSubsystem::ClearCourseSegmentSpeedTrapInfos() {
 }
 
 void URaceInfoGameInstanceSubsystem::ClearCourseDrawLineInfos() {
 }
 
+void URaceInfoGameInstanceSubsystem::ClearContinuousReversalAttack() {
+}
+
+void URaceInfoGameInstanceSubsystem::ClearContinuousJustAccele() {
+}
+
+void URaceInfoGameInstanceSubsystem::ClearContinuousFirstAttack() {
+}
+
 bool URaceInfoGameInstanceSubsystem::CheckRivalAppearance(const FSRivalAppearanceConditionInfo& appear_cond_info, const FSUserInfo& user_info) {
     return false;
 }
 
+void URaceInfoGameInstanceSubsystem::CheckActionDailyInit() {
+}
+
 void URaceInfoGameInstanceSubsystem::AddTrafficJamInfo(const FSCourseTrafficJamInfo Info) {
+}
+
+double URaceInfoGameInstanceSubsystem::AddTimeNotDriving(const double in_dt) {
+    return 0.0;
 }
 
 void URaceInfoGameInstanceSubsystem::AddRoadConstructionInfo(const ECourseArea Area, const FSObstacleConstructionSiteInfo Info) {
@@ -282,6 +341,9 @@ void URaceInfoGameInstanceSubsystem::AddNotClearObjective(const FName in_objecti
 }
 
 void URaceInfoGameInstanceSubsystem::AddLongRunBonus(const FSRaceLongRunBonusInfo Info, const bool add_check_id) {
+}
+
+void URaceInfoGameInstanceSubsystem::AddForcedAppearanceRival(const FName in_rival_id) {
 }
 
 void URaceInfoGameInstanceSubsystem::AddEventForcedAddRivalInfo(const FSEventForcedAddRivalInfo event_forced_rival_info) {

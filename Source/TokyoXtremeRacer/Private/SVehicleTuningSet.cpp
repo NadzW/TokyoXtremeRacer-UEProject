@@ -14,5 +14,6 @@ FSVehicleTuningSet::FSVehicleTuningSet() {
     this->LSD = EVehicleTuneLevel::None;
     this->Nitro = EVehicleTuneLevel::None;
     this->AddWeight = 0;
+    this->FinalGearRatioCoef = 0.00f;
 }
 

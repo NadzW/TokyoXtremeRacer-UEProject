@@ -18,5 +18,7 @@ enum class ERivalBasicConditionPatterns : uint8 {
     RBCP_CollidePlayer,
     RBCP_PassPlayer,
     RBCP_PassedByPlayer,
+    RBCP_BlockPlayer,
+    RBCP_BlockedPlayer,
 };
 

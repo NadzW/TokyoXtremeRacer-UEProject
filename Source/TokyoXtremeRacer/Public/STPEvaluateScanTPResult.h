@@ -41,6 +41,18 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool OutOtherCarIsObstacle;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName OutTargetRPDName;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double OutTargetRPDKey;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float OutTargetLaneRate;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float OutHitedRelativeDistance;
+    
     FSTPEvaluateScanTPResult();
 };
 

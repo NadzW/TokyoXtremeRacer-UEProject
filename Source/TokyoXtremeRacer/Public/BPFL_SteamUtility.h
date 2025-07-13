@@ -32,5 +32,8 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetCurrentGameLanguage();
     
+    UFUNCTION(BlueprintCallable)
+    static void AddScreenshotToLibrary(const FString& FilePath, const int32 ImageWidth, const int32 ImageHeight);
+    
 };
 

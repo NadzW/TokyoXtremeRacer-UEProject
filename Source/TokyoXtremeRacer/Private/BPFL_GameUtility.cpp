@@ -3,6 +3,10 @@
 UBPFL_GameUtility::UBPFL_GameUtility() {
 }
 
+TArray<float> UBPFL_GameUtility::UpdateTRUEFORCEArray(const TArray<float> in_a, const float in_dt, const float in_seg_dt) {
+    return TArray<float>();
+}
+
 void UBPFL_GameUtility::RefrectTuneInfoToParameter(const TMap<EVehicleTuneKind, FSTuneInfo>& src_info, UTuneParameter* dst_param) {
 }
 
@@ -82,7 +86,19 @@ double UBPFL_GameUtility::ComputeRearDriveRateFromSettingTorqueBalance(const dou
     return 0.0;
 }
 
+TArray<float> UBPFL_GameUtility::ComputePeriodicParameterForTRUEFORCE(const float in_duration_ms, const float in_seg_dt, const EFFBWaveform in_waveform, const float in_magnitude, const float in_offset, const float in_phase, const float in_period_ms) {
+    return TArray<float>();
+}
+
 void UBPFL_GameUtility::ComputeLsdParamByACD(const double in_speed, const double in_ang_vel, const double in_accele, const double in_brake, const double in_steer_angle, const bool in_side_brake, const double in_steer_limit_angle, double& out_lock_rate) {
+}
+
+TArray<float> UBPFL_GameUtility::ComputeLinearInterpolation2(const float in_from, const float in_to, const float in_seg_dt, const float in_dt) {
+    return TArray<float>();
+}
+
+TArray<float> UBPFL_GameUtility::ComputeLinearInterpolation(const float in_from, const float in_to, const int32 in_num_of_div, const float in_dt, float& out_seg_dt) {
+    return TArray<float>();
 }
 
 void UBPFL_GameUtility::ComputeGearChangeRpmAndOtheresCore(const double in_max_rpm, const double in_check_max_rpm, const double in_max_torque, const TArray<double> in_torque_map, const int32 in_gear_num, const TArray<double> in_gears, const double in_final_gear, const double in_mass, const double in_tire_radius, const double in_Cd, const double in_front_area, const double in_torque_coef, const double in_stop_acc_threshould, const double in_disp_scale, const double in_dt, const TArray<double> in_time_check_speed, const TArray<double> in_shift_up_rpm, const double in_gear_change_time, const double in_rrc, TArray<double>& out_shift_up_rpms, TArray<double>& out_shift_down_rpms, TArray<double>& out_top_speed_at_gear, TMap<double, double>& out_result_time_check_speed) {
@@ -98,6 +114,18 @@ double UBPFL_GameUtility::ComputeDopplerEffect(const double in_listener_v, const
     return 0.0;
 }
 
+float UBPFL_GameUtility::ComputeDampintFromStrength(const float in_strength, const float in_length, const float in_g_rate) {
+    return 0.0f;
+}
+
+float UBPFL_GameUtility::ComputeDampingForTRUEFORCE2(const float in_SAT, const float in_curren_steer_angle, const float in_current_steer_speed, const float in_max_damping, const float in_steer_angle_0_threshold, const float in_steer_angle_max_threshold) {
+    return 0.0f;
+}
+
+float UBPFL_GameUtility::ComputeDampingForTRUEFORCE(const float in_curren_steer_angle, const float in_current_steer_speed, const float in_inertia) {
+    return 0.0f;
+}
+
 double UBPFL_GameUtility::ComputeBrakeRotorContactArea(const double in_rotor_inchi, const double in_pad_length_on_radius) {
     return 0.0;
 }
@@ -111,6 +139,10 @@ double UBPFL_GameUtility::ComputeBrakeRoterAddTemp(const double in_dt, const dou
 
 double UBPFL_GameUtility::ComputeAirDragForce(const double in_speed, const double in_c, const double in_area) {
     return 0.0;
+}
+
+TArray<float> UBPFL_GameUtility::CombiningTRUEFORCEArray(const TArray<float> in_a, const TArray<float> in_b, const float in_max, const float in_min) {
+    return TArray<float>();
 }
 
 ERivalDispSituation UBPFL_GameUtility::CheckRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival, int32& out_win_num) {

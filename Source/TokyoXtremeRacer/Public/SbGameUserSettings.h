@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameFramework/GameUserSettings.h"
 #include "SSbGraphicSettingInfo.h"
 #include "SSbSoundSettingInfo.h"
-#include "GameFramework/GameUserSettings.h"
 #include "SbGameUserSettings.generated.h"
 
 class USbGameUserSettings;

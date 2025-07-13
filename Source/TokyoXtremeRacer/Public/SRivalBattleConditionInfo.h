@@ -5,6 +5,8 @@
 #include "EDriveType.h"
 #include "EEngineKind.h"
 #include "ERivalBattleCondition.h"
+#include "EVehicleTuneKind.h"
+#include "EVehicleTuneLevel.h"
 #include "SRivalBattleConditionInfo.generated.h"
 
 USTRUCT(BlueprintType)
@@ -28,6 +30,18 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECarLicensePlateArea PlaceNameIndex;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EVehicleTuneKind TuneKind;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EVehicleTuneLevel TuneLevel;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName NameValue;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 IntValue;
     
     FSRivalBattleConditionInfo();
 };

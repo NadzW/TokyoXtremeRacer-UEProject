@@ -71,7 +71,7 @@ TMap<FControllerModel, FInputActionMappingValues> UBPFL_InputMapping::QueryInput
 void UBPFL_InputMapping::QueryControllerLayoutValue(UControllerLayoutDatabase* ControllerLayoutDatabase, FControllerModel ControllerModel, FControllerLayoutKey ControllerLayoutKey, int32 Flags, FControllerLayoutValue& ControllerLayoutValue, TEnumAsByte<EFindResultPins>& FindResult) {
 }
 
-void UBPFL_InputMapping::QueryControllerInputFullSlateBrushOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, TEnumAsByte<EQueryControllerLayoutValueFlag> Flags, const FInputActionMappingValue& InputActionMappingValue, FSlateBrush& SlateBrush, TEnumAsByte<EFindResultPins>& FindResult) {
+void UBPFL_InputMapping::QueryControllerInputFullSlateBrushOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, EQueryControllerLayoutValueFlag Flags, const FInputActionMappingValue& InputActionMappingValue, FSlateBrush& SlateBrush, TEnumAsByte<EFindResultPins>& FindResult) {
 }
 
 void UBPFL_InputMapping::QueryControllerInputFullSlateBrush(const FControllerLayoutValue& ControllerLayoutValue, EInputActionSemantic InputActionSemantic, EInputHatDirection HatDirection, EAnalogInputSignalPolarity Polarity, FSlateBrush& SlateBrush, TEnumAsByte<EFindResultPins>& FindResult) {
@@ -125,7 +125,7 @@ FString UBPFL_InputMapping::MakeControllerInputFullDescriptionOrFallbackEx(UCont
     return TEXT("");
 }
 
-FString UBPFL_InputMapping::MakeControllerInputFullDescriptionOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, TEnumAsByte<EQueryControllerLayoutValueFlag> Flags, const FInputActionMappingValue& InputActionMappingValue) {
+FString UBPFL_InputMapping::MakeControllerInputFullDescriptionOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, EQueryControllerLayoutValueFlag Flags, const FInputActionMappingValue& InputActionMappingValue) {
     return TEXT("");
 }
 
@@ -193,6 +193,10 @@ void UBPFL_InputMapping::ClearInputMappingTables() {
 }
 
 void UBPFL_InputMapping::ClearInputActionSemanticAssociation() {
+}
+
+bool UBPFL_InputMapping::CheckModelHasInputActionSemanticBound(FControllerModel ControllerModel, EInputActionSemantic Semantic) {
+    return false;
 }
 
 bool UBPFL_InputMapping::BindPresetForControllerModel(UControllerModelInputMappingTableAssociation* CMIMT, const FControllerModel& ControllerModel, bool bClearExisting, bool bAllowNotConnected, float DeadzoneThreshold) {

@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
 #include "FrameBufferCaptureActor.generated.h"
 
 class UTextureRenderTarget2D;

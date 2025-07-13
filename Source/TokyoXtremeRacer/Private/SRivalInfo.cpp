@@ -30,5 +30,7 @@ FSRivalInfo::FSRivalInfo() {
     this->PP = 0;
     this->ExeReferenceNotification = false;
     this->ShiftUpMinusRpm = 0.00f;
+    this->UseJustAccele = false;
+    this->FirstAppearance = EFistAppearance::EarlyAccess;
 }
 

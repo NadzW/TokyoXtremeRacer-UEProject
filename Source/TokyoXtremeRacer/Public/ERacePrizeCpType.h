@@ -53,6 +53,8 @@ enum class ERacePrizeCpType : uint8 {
     OverflowedPerkPoint,
     TireReplacementFee,
     NitroRefillFee,
+    CleanDrive,
+    NiceBlock,
     Num,
 };
 

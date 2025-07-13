@@ -86,7 +86,7 @@ public:
     ECarIceAspirationType EngineInspiration;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 displacement;
+    int32 Displacement;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MaxPower;
@@ -288,6 +288,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ShouldSoundSpeedLimitAlarm;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double MinGroundClearanceOffset;
     
     FSInternalMethodCarData();
 };

@@ -14,7 +14,7 @@ public:
     float NeutralTime;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 Max;
+    int32 max;
     
     FSOptionActionMappingParameter();
 };

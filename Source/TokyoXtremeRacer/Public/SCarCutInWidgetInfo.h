@@ -1,5 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/DataTable.h"
 #include "ECarCutInProductionType.h"
 #include "SCarCutInWidgetInfo.generated.h"
 

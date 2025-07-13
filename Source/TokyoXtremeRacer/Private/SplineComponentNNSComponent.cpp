@@ -26,7 +26,7 @@ bool USplineComponentNNSComponent::CompareDistance(const FVector& Origin, const 
     return false;
 }
 
-void USplineComponentNNSComponent::AddPosition(const FSplineComponentPoint& Position) {
+void USplineComponentNNSComponent::AddPosition(const FSplineComponentPoint& position) {
 }
 
 

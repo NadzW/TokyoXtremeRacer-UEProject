@@ -9,5 +9,8 @@ FSTPEvaluateScanTPResult::FSTPEvaluateScanTPResult() {
     this->OutbIsMultipleRPD = false;
     this->OutResultRPDIndex = 0;
     this->OutOtherCarIsObstacle = false;
+    this->OutTargetRPDKey = 0.00f;
+    this->OutTargetLaneRate = 0.00f;
+    this->OutHitedRelativeDistance = 0.00f;
 }
 

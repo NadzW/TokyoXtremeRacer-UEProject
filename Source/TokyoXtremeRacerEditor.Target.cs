@@ -6,6 +6,7 @@ public class TokyoXtremeRacerEditorTarget : TargetRules {
 		ExtraModuleNames.AddRange(new string[] {
 			"TokyoXtremeRacer",
 		});
-		bOverrideBuildEnvironment = true;
+        bOverrideBuildEnvironment = true;
+        CppStandard = CppStandardVersion.Cpp20;
 	}
 }

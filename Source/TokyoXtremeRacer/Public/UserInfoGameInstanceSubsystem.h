@@ -100,6 +100,21 @@ public:
     EGameMode NextGameModeForMovieTeater;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EGameMode NextGameModeForNowhereConversation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EJumpScene NextOutGameSceneForNowhereConversation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EJumpScene NextOutGameSceneForMovieTheater;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EParkingArea NextOutGameParkingAreaForNowhereConversation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EParkingArea NextOutGameParkingAreaForMovieTheater;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> PlayMovieIds;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -122,6 +137,24 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SaveDataChangedFlag;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedFlagCp;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedFlagBuyCar;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedFlagTuneCar;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedFlagReadReference;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedFlagSeenConv;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedFlagReplacementEngine;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool OptionSaveDataChangedFlag;
@@ -151,6 +184,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void UpdateCurrentGrangeInfo(const FSGarageInfo new_info);
+    
+    UFUNCTION(BlueprintCallable)
+    void UpdateCleardAndNewObjective(const UDataTable* objective_data_table);
     
     UFUNCTION(BlueprintCallable)
     void SetUpperLimitCP(const int64 new_cp);
@@ -249,7 +285,7 @@ public:
     bool SetRivalSituationAnimationFlag(const FName rival_id, const bool is_unlock);
     
     UFUNCTION(BlueprintCallable)
-    bool SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, int32& num_of_rival_defated, int32& num_of_team_defated);
+    bool SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, const bool rival_is_wanderer, int32& num_of_rival_defated, int32& num_of_team_defated);
     
     UFUNCTION(BlueprintCallable)
     bool SetPerkTreeStatus(const UDataTable* in_root_datatable, const FName in_category, const FName in_row_name, const ESkillTreeStatus in_status);
@@ -270,6 +306,21 @@ public:
     void SetOptionGameSettingInfo(const FSUserOptionGameSetting game_info);
     
     UFUNCTION(BlueprintCallable)
+    void SetNextOutGameSceneForNowhereConversation(const EJumpScene in_scene);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetNextOutGameSceneForMovieTheater(const EJumpScene in_scene);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetNextOutGameParkingAreaForNowhereConversation(const EParkingArea in_pa);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetNextOutGameParkingAreaForMovieTheater(const EParkingArea in_pa);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetNextGameModeForNowhereConversation(const EGameMode next_mode);
+    
+    UFUNCTION(BlueprintCallable)
     void SetNextGameModeForMovieTeather(const EGameMode next_mode);
     
     UFUNCTION(BlueprintCallable)
@@ -277,6 +328,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool SetMaxGarageMyCarNum(const int32 car_num);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetMaxDistanceCarPushed(const double in_distance);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetMaxCleanCornaring(const int32 in_num);
     
     UFUNCTION(BlueprintCallable)
     void SetMapInfo(const FSMapInfo& map_info);
@@ -288,6 +345,9 @@ public:
     void SetIsDispCurrentTutorialModePopup(const bool is_disp);
     
     UFUNCTION(BlueprintCallable)
+    void SetHitBridgePier();
+    
+    UFUNCTION(BlueprintCallable)
     void SetGraveInfo(const FVector Location, const int64 Cp);
     
     UFUNCTION(BlueprintCallable)
@@ -297,19 +357,25 @@ public:
     int64 SetGarageResult(const FSRaceProcessAndResultInfo garage_result, int32& out_overflow_pp);
     
     UFUNCTION(BlueprintCallable)
+    void SetEquipBreakingLimitsTune();
+    
+    UFUNCTION(BlueprintCallable)
     int32 SetEnterParkingArea(const EParkingArea parking_area);
     
     UFUNCTION(BlueprintCallable)
     void SetEnableSystemMenu(const bool is_enable);
     
     UFUNCTION(BlueprintCallable)
+    void SetDailyRandomSeed(const int32 in_seed);
+    
+    UFUNCTION(BlueprintCallable)
     void SetCourseOpenArea(const ECourseOpenArea open_area);
     
     UFUNCTION(BlueprintCallable)
-    void SetBattleResult(const FSRaceBattleResultInfo battle_result);
+    void SetBattleResult(const FSRaceBattleResultInfo battle_result, const bool in_is_player_kei);
     
     UFUNCTION(BlueprintCallable)
-    void SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info);
+    int32 SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info);
     
     UFUNCTION(BlueprintCallable)
     bool ReturnNormalSelectedCarTuneEngineReplacement();
@@ -319,6 +385,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ResetOptionSaveDataChangedFlag();
+    
+    UFUNCTION(BlueprintCallable)
+    void RepayPerkPoint(const UDataTable* repayment_datatable);
     
     UFUNCTION(BlueprintCallable)
     void RemoveSelectedCarTunerTune();
@@ -381,10 +450,16 @@ public:
     bool IsIncludedCurrentStoryStage(const EStoryStage in_check_stage);
     
     UFUNCTION(BlueprintCallable)
+    bool IsExistNowhereConversation();
+    
+    UFUNCTION(BlueprintCallable)
     bool IsExistNewLiveryVinyl();
     
     UFUNCTION(BlueprintCallable)
     bool IsExistNewLiverySticker();
+    
+    UFUNCTION(BlueprintCallable)
+    bool IsExistMovieThatherPlayMovie();
     
     UFUNCTION(BlueprintCallable)
     bool IsEnableFastTravelCourseExitShop(const ECourseExit course_exit, const ECourseExitShopTypeFlag Type);
@@ -394,6 +469,24 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool HaveSelectedCarNeon(const ENeonLightPositionType in_check_position);
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedTuneCar();
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedSeenConv();
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedReplacementEngine();
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedReadReference();
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedCp();
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedBuyCar();
     
     UFUNCTION(BlueprintCallable)
     bool HasSaveDataChanged();
@@ -480,7 +573,19 @@ public:
     ECarSettingAutoType GetSelectedCarSettingAuto(const ECarSettingAutoKind auto_kind);
     
     UFUNCTION(BlueprintCallable)
-    FSMyCarNeon GetSelectedCarNeon(const ENeonLightPositionType Position);
+    FName GetSelectedCarNormalEngineId();
+    
+    UFUNCTION(BlueprintCallable)
+    FSMyCarNeon GetSelectedCarNeon(const ENeonLightPositionType position);
+    
+    UFUNCTION(BlueprintCallable)
+    TArray<EVehicleTuneLevel> GetSelectedCarHaveReplacementEngineLevels(const FName in_engine_id, const EVehicleTuneKind in_tune_kind);
+    
+    UFUNCTION(BlueprintCallable)
+    TArray<FName> GetSelectedCarHaveReplacementEngineIds();
+    
+    UFUNCTION(BlueprintCallable)
+    EVehicleTuneLevel GetSelectedCarEquipReplacementEngineLevels(const FName in_engine_id, const EVehicleTuneKind in_tune_kind);
     
     UFUNCTION(BlueprintCallable)
     TMap<ECustomCarPartsKind, FSCustomCarParts> GetSelectedCarDressupInfos();
@@ -537,13 +642,34 @@ public:
     TMap<FName, FSPerkTreeMachineInfo> GetNumberOfPerkTreeMachineAcquired(const UDataTable* in_root_datatable);
     
     UFUNCTION(BlueprintCallable)
+    int32 GetNumberOfCarsOwned(const TMap<EVehicleTuneKind, EVehicleTuneLevel> in_max_tune_levels, int32& out_full_tuned_car_num);
+    
+    UFUNCTION(BlueprintCallable)
     TSoftObjectPtr<UDataTable> GetNowhereConversation(const bool in_get_conv_delete);
     
     UFUNCTION(BlueprintCallable)
     TArray<FName> GetNotClearObjectives();
     
     UFUNCTION(BlueprintCallable)
+    EJumpScene GetNextOutGameSceneForNowhereConversation();
+    
+    UFUNCTION(BlueprintCallable)
+    EJumpScene GetNextOutGameSceneForMovieTheater();
+    
+    UFUNCTION(BlueprintCallable)
+    EParkingArea GetNextOutGameParkingAreaForNowhereConversation();
+    
+    UFUNCTION(BlueprintCallable)
+    EParkingArea GetNextOutGameParkingAreaForMovieTheater();
+    
+    UFUNCTION(BlueprintCallable)
+    EGameMode GetNextGameModeForNowhereConversation();
+    
+    UFUNCTION(BlueprintCallable)
     EGameMode GetNextGameModeForMovieTeater();
+    
+    UFUNCTION(BlueprintCallable)
+    int32 GetNextDaysForDisplayed();
     
     UFUNCTION(BlueprintCallable)
     TArray<ECourseEnter> GetNewOpenCourseEnter(const bool is_clear);
@@ -584,6 +710,12 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 GetMaxGarageMyCarNum();
     
+    UFUNCTION(BlueprintPure)
+    double GetMaxDistanceCarPushed() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetMaxCleanCornaring() const;
+    
     UFUNCTION(BlueprintCallable)
     double GetMaxBattleTime();
     
@@ -599,6 +731,9 @@ public:
     UFUNCTION(BlueprintCallable)
     TArray<FSInputActionKeyMapping> GetInputActionKeyMapping();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetHitBridgePier() const;
+    
     UFUNCTION(BlueprintCallable)
     EJumpScene GetHeadOutGameStackScene(const bool is_head_remove);
     
@@ -610,6 +745,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     TArray<ESkillTreeType> GetEquipPerkSkill();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetEquipBreakingLimitsTune() const;
     
     UFUNCTION(BlueprintCallable)
     EParkingArea GetEnterParkingArea();
@@ -637,6 +775,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     int32 GetDays();
+    
+    UFUNCTION(BlueprintCallable)
+    int32 GetDailyRandomSeed();
     
     UFUNCTION(BlueprintCallable)
     FSTutorialModeInfo GetCurrentTutorialModeInfo(bool& is_valid);
@@ -675,6 +816,9 @@ public:
     FSSkillTree GetAcquiredPerkSkill(const UDataTable* in_root_datatable, const ESkillTreeType in_type, bool& out_is_find);
     
     UFUNCTION(BlueprintCallable)
+    void FixTotal();
+    
+    UFUNCTION(BlueprintCallable)
     void FixRemoveNormalParts();
     
     UFUNCTION(BlueprintCallable)
@@ -682,6 +826,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void FixAddStickerFromRivalInfo(const UDataTable* in_rival_dt);
+    
+    UFUNCTION(BlueprintCallable)
+    void FixAchievement(const UDataTable* in_rival_dt);
     
     UFUNCTION(BlueprintCallable)
     bool EquipSelectedCarCustomParts(const ECustomCarPartsKind Kind, const ECustomCarPartsType Type);
@@ -702,6 +849,9 @@ public:
     void DeleteNewMarkCanBoughtCar(const FName car_name_id);
     
     UFUNCTION(BlueprintCallable)
+    void DataFixAfterDataLoad();
+    
+    UFUNCTION(BlueprintCallable)
     bool ConsumePP(const int32 in_consume_pp, int32& out_current_pp);
     
     UFUNCTION(BlueprintCallable)
@@ -715,6 +865,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ClearOutGameStackScenes();
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearNextOutGameForNowhereConversation();
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearNextOutGameForMovieTheather();
     
     UFUNCTION(BlueprintCallable)
     void ClearNewOpenCourseEnter();
@@ -768,7 +924,7 @@ public:
     bool AddSelectedCarTunePartsHaveFlag(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level);
     
     UFUNCTION(BlueprintCallable)
-    bool AddSelectedCarNeon(const ENeonLightPositionType Position, const FSMyCarNeon my_neon_info);
+    bool AddSelectedCarNeon(const ENeonLightPositionType position, const FSMyCarNeon my_neon_info);
     
     UFUNCTION(BlueprintCallable)
     bool AddSelectedCarCustomParts(const ECustomCarPartsKind Kind, const ECustomCarPartsType Type, const bool is_equip);
@@ -780,7 +936,7 @@ public:
     void AddPerk(const FName in_category, const FName in_row_name, const FSSkillTree in_perk);
     
     UFUNCTION(BlueprintCallable)
-    void AddOutGameStackScenes(const EJumpScene add_scene);
+    void AddOutGameStackScenes(const EJumpScene add_scene, const EParkingArea in_pa);
     
     UFUNCTION(BlueprintCallable)
     TMap<FName, FSObjectiveInfo> AddObjective(const UDataTable* objective_data_table);

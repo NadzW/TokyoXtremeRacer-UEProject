@@ -6,11 +6,11 @@ UBadNameGarageResultChecker::UBadNameGarageResultChecker() {
     this->DataTable_04 = NULL;
 }
 
-FText UBadNameGarageResultChecker::SelectBadnameConditionAllText(const FSUserInfo& user_info, FBadNameAcquired& acquired, bool& is_reset_used_evaluation, const EOP_Language& Option_Language) {
+FText UBadNameGarageResultChecker::SelectBadnameConditionAllText(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, FBadNameAcquisitionHistory& History, bool& is_reset_used_evaluation, const EOP_Language& Option_Language) {
     return FText::GetEmpty();
 }
 
-FBadNameState UBadNameGarageResultChecker::SelectBadnameConditionAll(const FSUserInfo& user_info, FBadNameAcquired& acquired, bool& is_reset_used_evaluation) {
+FBadNameState UBadNameGarageResultChecker::SelectBadnameConditionAll(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, FBadNameAcquisitionHistory& History, bool& is_reset_used_evaluation, bool& is_valid_bad_name) {
     return FBadNameState{};
 }
 
@@ -22,7 +22,7 @@ FBadNameState UBadNameGarageResultChecker::GetBadnameCondition04(const FSUserInf
     return FBadNameState{};
 }
 
-FBadNameState UBadNameGarageResultChecker::GetBadnameCondition03(const FSUserInfo& user_info, FBadNameAcquired& acquired, EBadNameDisplayType need_type) const {
+FBadNameState UBadNameGarageResultChecker::GetBadnameCondition03(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, EBadNameDisplayType need_type, bool& is_get_frst_time_only) const {
     return FBadNameState{};
 }
 
@@ -34,7 +34,7 @@ FBadNameState UBadNameGarageResultChecker::GetBadnameCondition02Simple(const FCo
     return FBadNameState{};
 }
 
-FBadNameState UBadNameGarageResultChecker::GetBadnameCondition02(const FSUserInfo& user_info, EBadNameDisplayType need_type) const {
+FBadNameState UBadNameGarageResultChecker::GetBadnameCondition02(const FSUserInfo& user_info, EBadNameDisplayType need_type, bool is_direct) const {
     return FBadNameState{};
 }
 

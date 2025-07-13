@@ -7,5 +7,6 @@ FSMyCarInfo::FSMyCarInfo() {
     this->FrontTireType = ECarTireType::Soft;
     this->RearTireType = ECarTireType::Soft;
     this->NumberOfCourseEntries = 0;
+    this->OrgGenuineColor = 0;
 }
 

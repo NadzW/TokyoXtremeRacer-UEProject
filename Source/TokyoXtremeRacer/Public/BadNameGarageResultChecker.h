@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "BadNameAcquired.h"
+#include "BadNameAcquisitionHistory.h"
 #include "BadNameCheckerBase.h"
 #include "BadNameState.h"
 #include "ComparisonBadNameCondition02Alpha.h"
@@ -8,6 +9,7 @@
 #include "ComparisonBadNameCondition04.h"
 #include "EBadNameDisplayType.h"
 #include "EOP_Language.h"
+#include "SRaceCoreInfo.h"
 #include "SUserInfo.h"
 #include "BadNameGarageResultChecker.generated.h"
 
@@ -29,10 +31,10 @@ public:
     UBadNameGarageResultChecker();
 
     UFUNCTION(BlueprintCallable)
-    FText SelectBadnameConditionAllText(const FSUserInfo& user_info, FBadNameAcquired& acquired, bool& is_reset_used_evaluation, const EOP_Language& Option_Language);
+    FText SelectBadnameConditionAllText(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, FBadNameAcquisitionHistory& History, bool& is_reset_used_evaluation, const EOP_Language& Option_Language);
     
     UFUNCTION(BlueprintCallable)
-    FBadNameState SelectBadnameConditionAll(const FSUserInfo& user_info, FBadNameAcquired& acquired, bool& is_reset_used_evaluation);
+    FBadNameState SelectBadnameConditionAll(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, FBadNameAcquisitionHistory& History, bool& is_reset_used_evaluation, bool& is_valid_bad_name);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FBadNameState GetBadnameCondition04Simple(const FComparisonBadNameCondition04& comparison) const;
@@ -41,7 +43,7 @@ public:
     FBadNameState GetBadnameCondition04(const FSUserInfo& user_info) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FBadNameState GetBadnameCondition03(const FSUserInfo& user_info, FBadNameAcquired& acquired, EBadNameDisplayType need_type) const;
+    FBadNameState GetBadnameCondition03(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, EBadNameDisplayType need_type, bool& is_get_frst_time_only) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetBadnameCondition02Text(const FComparisonBadNameCondition02Alpha& comparison_a, const FComparisonBadNameCondition02Beta& comparison_b, const EOP_Language& Option_Language) const;
@@ -50,7 +52,7 @@ public:
     FBadNameState GetBadnameCondition02Simple(const FComparisonBadNameCondition02Alpha& comparison_a, const FComparisonBadNameCondition02Beta& comparison_b) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FBadNameState GetBadnameCondition02(const FSUserInfo& user_info, EBadNameDisplayType need_type) const;
+    FBadNameState GetBadnameCondition02(const FSUserInfo& user_info, EBadNameDisplayType need_type, bool is_direct) const;
     
 };
 

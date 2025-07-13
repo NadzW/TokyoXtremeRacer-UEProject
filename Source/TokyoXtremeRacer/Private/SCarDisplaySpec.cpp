@@ -1,7 +1,7 @@
 #include "SCarDisplaySpec.h"
 
 FSCarDisplaySpec::FSCarDisplaySpec() {
-    this->displacement = 0;
+    this->Displacement = 0;
     this->DriveType = ECarDriveType::FF;
     this->PowerUnitType = ECarPowerUnitType::ICE_Inline;
     this->IceAspirationType = ECarIceAspirationType::NA;

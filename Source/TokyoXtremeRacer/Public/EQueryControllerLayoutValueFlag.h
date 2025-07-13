@@ -3,7 +3,7 @@
 #include "EQueryControllerLayoutValueFlag.generated.h"
 
 UENUM(BlueprintType)
-enum EQueryControllerLayoutValueFlag {
+enum class EQueryControllerLayoutValueFlag : uint8 {
     None,
     CoalesceKnownXInputDevices,
 };

@@ -140,6 +140,11 @@ enum class ECarLicensePlateArea : uint8 {
     Kagoshima_Kagoshima,
     Kagoshima_Amami,
     Okinawa_Okinawa,
+    PlateArea_136,
+    PlateArea_137,
+    PlateArea_138,
+    PlateArea_139,
+    PlateArea_140,
     Num,
     None,
 };

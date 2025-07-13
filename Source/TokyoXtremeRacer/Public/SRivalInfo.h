@@ -1,12 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
+#include "Engine/DataTable.h"
 #include "ECarCutInBunnerType.h"
 #include "ECarCutInProductionType.h"
 #include "ECarType.h"
 #include "ECourseEnter.h"
 #include "ECustomCarPartsKind.h"
 #include "ECustomCarPartsType.h"
+#include "EFistAppearance.h"
 #include "EParkingArea.h"
 #include "ERivalAppearanceSituation.h"
 #include "ERivalBattleBaseParameterTbl.h"
@@ -16,6 +18,7 @@
 #include "ERunArea.h"
 #include "EVehicleTuneKind.h"
 #include "EVehicleTuneLevel.h"
+#include "SCarEffect.h"
 #include "SCarLicensePlate.h"
 #include "SCarSettingInfo.h"
 #include "SForcedAddRivalInfo.h"
@@ -82,6 +85,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName AuraNameId;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSCarEffect Effect;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ERivalBattleCancelSituation BattleCancelSituation;
@@ -211,6 +217,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> UnlockStickerIds;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName PreBattleOrderRowName;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool UseJustAccele;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EFistAppearance FirstAppearance;
     
     FSRivalInfo();
 };

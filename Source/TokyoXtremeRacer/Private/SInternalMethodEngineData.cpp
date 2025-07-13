@@ -6,7 +6,7 @@ FSInternalMethodEngineData::FSInternalMethodEngineData() {
     this->Level = 0;
     this->RevLimit = 0;
     this->RedZoon = 0;
-    this->displacement = 0;
+    this->Displacement = 0;
     this->MaxRpm = 0;
     this->MaxPower_ps = 0;
     this->MaxPowerRpm = 0;

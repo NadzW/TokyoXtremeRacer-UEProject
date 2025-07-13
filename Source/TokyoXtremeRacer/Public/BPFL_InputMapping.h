@@ -99,7 +99,7 @@ public:
     static void QueryControllerLayoutValue(UControllerLayoutDatabase* ControllerLayoutDatabase, FControllerModel ControllerModel, FControllerLayoutKey ControllerLayoutKey, int32 Flags, FControllerLayoutValue& ControllerLayoutValue, TEnumAsByte<EFindResultPins>& FindResult);
     
     UFUNCTION(BlueprintCallable)
-    static void QueryControllerInputFullSlateBrushOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, TEnumAsByte<EQueryControllerLayoutValueFlag> Flags, const FInputActionMappingValue& InputActionMappingValue, FSlateBrush& SlateBrush, TEnumAsByte<EFindResultPins>& FindResult);
+    static void QueryControllerInputFullSlateBrushOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, EQueryControllerLayoutValueFlag Flags, const FInputActionMappingValue& InputActionMappingValue, FSlateBrush& SlateBrush, TEnumAsByte<EFindResultPins>& FindResult);
     
     UFUNCTION(BlueprintCallable)
     static void QueryControllerInputFullSlateBrush(const FControllerLayoutValue& ControllerLayoutValue, EInputActionSemantic InputActionSemantic, EInputHatDirection HatDirection, EAnalogInputSignalPolarity Polarity, FSlateBrush& SlateBrush, TEnumAsByte<EFindResultPins>& FindResult);
@@ -150,7 +150,7 @@ public:
     static FString MakeControllerInputFullDescriptionOrFallbackEx(UControllerLayoutDatabase* ControllerLayoutDatabase, bool bIsDigitalInputSemantic, FControllerModel ControllerModel, FControllerLayoutKey ControllerLayoutKey, int32 Flags, EInputHatDirection HatDirection, EAnalogInputSignalPolarity Polarity);
     
     UFUNCTION(BlueprintCallable)
-    static FString MakeControllerInputFullDescriptionOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, TEnumAsByte<EQueryControllerLayoutValueFlag> Flags, const FInputActionMappingValue& InputActionMappingValue);
+    static FString MakeControllerInputFullDescriptionOrFallback(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, FControllerModel ControllerModel, EQueryControllerLayoutValueFlag Flags, const FInputActionMappingValue& InputActionMappingValue);
     
     UFUNCTION(BlueprintCallable)
     static FString MakeControllerInputFullDescriptionFallback(FControllerLayoutKey ControllerLayoutKey, EInputHatDirection HatDirection, EAnalogInputSignalPolarity Polarity);
@@ -205,6 +205,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static void ClearInputActionSemanticAssociation();
+    
+    UFUNCTION(BlueprintCallable)
+    static bool CheckModelHasInputActionSemanticBound(FControllerModel ControllerModel, EInputActionSemantic Semantic);
     
     UFUNCTION(BlueprintCallable)
     static bool BindPresetForControllerModel(UControllerModelInputMappingTableAssociation* CMIMT, const FControllerModel& ControllerModel, bool bClearExisting, bool bAllowNotConnected, float DeadzoneThreshold);

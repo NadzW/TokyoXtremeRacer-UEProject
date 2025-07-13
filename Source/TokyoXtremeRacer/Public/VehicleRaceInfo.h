@@ -35,13 +35,16 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EDriverBattleStatus BattleStatus;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double DistanceSoFar;
+    
     UVehicleRaceInfo();
 
     UFUNCTION(BlueprintCallable)
     void SetWallShockResistancePer(const int32 Value);
     
     UFUNCTION(BlueprintCallable)
-    void SetupBase(const int32 _level, const int32 max_sp, const double current_sp, const int32 sp_attack, const int32 sp_diffence);
+    void SetupBase(const int32 _level, const int32 max_sp, const double current_sp, const int32 sp_attack, const int32 sp_diffence, const double in_millage);
     
     UFUNCTION(BlueprintCallable)
     double SetSp(const double Sp, const bool is_current);

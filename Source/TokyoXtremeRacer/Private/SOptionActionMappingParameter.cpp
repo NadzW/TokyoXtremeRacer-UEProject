@@ -3,6 +3,6 @@
 FSOptionActionMappingParameter::FSOptionActionMappingParameter() {
     this->ReactionTime = 0.00f;
     this->NeutralTime = 0.00f;
-    this->Max = 0;
+    this->max = 0;
 }
 

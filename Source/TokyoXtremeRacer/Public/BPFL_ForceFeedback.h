@@ -32,6 +32,9 @@ public:
     static void StopForceFeedbackByControllerId(const FControllerId& ID);
     
     UFUNCTION(BlueprintCallable)
+    static void EnableForceFeedbackControllersWithSteeringBound();
+    
+    UFUNCTION(BlueprintCallable)
     static bool AutoSelectForceFeedbackCapableController();
     
     UFUNCTION(BlueprintCallable)

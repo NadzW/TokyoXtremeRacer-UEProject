@@ -35,6 +35,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName CornerBrakeType;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName CornerOutInOutType;
+    
     FSRivalAIParameterInfo();
 };
 

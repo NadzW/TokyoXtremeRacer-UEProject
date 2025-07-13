@@ -39,7 +39,7 @@ public:
     bool CompareDistance(const FVector& Origin, const FVector Position0, const FVector& position1) const;
     
     UFUNCTION(BlueprintCallable)
-    void AddPosition(const FSplineComponentPoint& Position);
+    void AddPosition(const FSplineComponentPoint& position);
     
 };
 

@@ -9,7 +9,7 @@ struct TOKYOXTREMERACER_API FSMyCarNeon {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    ENeonLightPositionType Position;
+    ENeonLightPositionType position;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ENeonLightType Type;

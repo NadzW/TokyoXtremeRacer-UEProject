@@ -1,7 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
+#include "EOP_BattleBgmTiming.h"
 #include "EOP_Language.h"
+#include "EOP_MeterLayout.h"
 #include "EOP_MeterUnit.h"
 #include "EOP_ShiftChange.h"
 #include "EOP_TextSpeed.h"
@@ -38,7 +40,19 @@ public:
     EOP_MeterUnit Option_MeterUnit;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EOP_MeterLayout Option_MeterLayout;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Option_Meter;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_TireMeter;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_NitroMeter;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_InputMeter;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Option_BackMirror;
@@ -86,6 +100,9 @@ public:
     int32 Option_RumbleToAbs;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_IsCopyPhotoToSteamDir;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Option_ViewingAngle;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -117,6 +134,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Option_CarVolumn;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EOP_BattleBgmTiming Option_BattleBgmTiming;
     
     FSUserOptionGameSetting();
 };

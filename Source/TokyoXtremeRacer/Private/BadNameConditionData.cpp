@@ -7,6 +7,7 @@ FBadNameConditionData::FBadNameConditionData() {
     this->ConditionSubType = EBadNameConditionSubType::MT_None;
     this->Priority = 0;
     this->IsFirstTimeOnly = false;
+    this->SortIndex = 0;
     this->ComparisonValue_01 = 0;
     this->ComparisonValue_02 = 0;
     this->ComparisonValue_03 = 0;

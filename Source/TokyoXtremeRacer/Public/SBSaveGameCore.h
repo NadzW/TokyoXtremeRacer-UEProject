@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameFramework/SaveGame.h"
 #include "SBSaveGameCoreInterface.h"
 #include "SSBVersion.h"
-#include "GameFramework/SaveGame.h"
 #include "SBSaveGameCore.generated.h"
 
 UCLASS(Blueprintable)

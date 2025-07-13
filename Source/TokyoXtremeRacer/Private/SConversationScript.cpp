@@ -7,5 +7,7 @@ FSConversationScript::FSConversationScript() {
     this->IsSpeakerRight = false;
     this->IsSpeakerCenter = false;
     this->IsNarration = false;
+    this->IsThirdPosition = false;
+    this->ThirdPositionCenterCharacter = NULL;
 }
 

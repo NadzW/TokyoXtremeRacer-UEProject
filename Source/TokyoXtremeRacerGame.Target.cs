@@ -7,5 +7,6 @@ public class TokyoXtremeRacerGameTarget : TargetRules {
 			"TokyoXtremeRacer",
 		});
 		bOverrideBuildEnvironment = true;
+		CppStandard = CppStandardVersion.Cpp20;
 	}
 }

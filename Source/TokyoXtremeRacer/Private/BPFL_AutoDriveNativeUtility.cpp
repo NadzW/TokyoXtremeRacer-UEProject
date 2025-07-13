@@ -47,6 +47,18 @@ FName UBPFL_AutoDriveNativeUtility::ReturnEvaluateNameKeyPriorityLane() {
     return NAME_None;
 }
 
+FName UBPFL_AutoDriveNativeUtility::ReturnEvaluateNameKeyPlayerLaneBehind() {
+    return NAME_None;
+}
+
+FName UBPFL_AutoDriveNativeUtility::ReturnEvaluateNameKeyPlayerLaneAhead() {
+    return NAME_None;
+}
+
+FName UBPFL_AutoDriveNativeUtility::ReturnEvaluateNameKeyMoveToAnotherLaneForHorn() {
+    return NAME_None;
+}
+
 FName UBPFL_AutoDriveNativeUtility::ReturnEvaluateNameKeyLaneChange() {
     return NAME_None;
 }

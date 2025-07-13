@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "BadNameAcquired.h"
+#include "BadNameAcquisitionHistory.h"
 #include "BadNameState.h"
 #include "ECourseEnter.h"
 #include "ECourseExit.h"
@@ -10,6 +11,7 @@
 #include "EParkingArea.h"
 #include "ERaceTimeZone.h"
 #include "ESkillTreeType.h"
+#include "EStoryKind.h"
 #include "EStoryStage.h"
 #include "EVehicleTuneLevel.h"
 #include "SDriverInfo.h"
@@ -103,6 +105,9 @@ public:
     int64 CumulativeAcquisitionCP;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    int64 TotalCumulativeAcquisitionCP;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     int64 TotalToPayCP;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -145,10 +150,31 @@ public:
     int32 NumOfTeamDefeated;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 NumOfWandererDefeated;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalRivalBattleNum;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalOtherCarBattleNum;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalRivalBattleWinNum;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalOtherCarBattleWinNum;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalDrawNum;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FSRivalSituationInfo> RivalSituations;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> RivalsDefeated;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> TotalRivalsDefeated;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FSTeamSituationInfo> TeamSituations;
@@ -226,6 +252,9 @@ public:
     FBadNameAcquired BadNameAcquired;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FBadNameAcquisitionHistory BadNameHistory;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> NewObjectives;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -262,6 +291,9 @@ public:
     TArray<ESkillTreeType> EquipSkills;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool UseOilAndWaterTemperature;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool EnableSystemMenu;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -272,6 +304,30 @@ public:
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double MaxBattleTime;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalWinByKei;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 SeenParkingAreaConvesationNum;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EStoryKind StoryKind;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 MaxCleanCornaring;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool EquipBreakingLimitsTune;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool HitBridgePier;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double MaxDistanceCarPushed;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 DailyRandomSeed;
     
     FSUserInfo();
 };

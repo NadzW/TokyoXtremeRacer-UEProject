@@ -21,7 +21,7 @@ bool UCoursePathNNSComponent::CompareDistance(const FVector& Origin, const FVect
     return false;
 }
 
-void UCoursePathNNSComponent::AddPosition(const FCoursePathPoint& Position) {
+void UCoursePathNNSComponent::AddPosition(const FCoursePathPoint& position) {
 }
 
 

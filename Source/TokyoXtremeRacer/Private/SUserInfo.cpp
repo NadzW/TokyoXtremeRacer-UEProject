@@ -10,6 +10,7 @@ FSUserInfo::FSUserInfo() {
     this->UpperLimitCP = 0;
     this->Cp = 0;
     this->CumulativeAcquisitionCP = 0;
+    this->TotalCumulativeAcquisitionCP = 0;
     this->TotalToPayCP = 0;
     this->AverageBattleTime = 0.00f;
     this->AverageBattleDistance = 0.00f;
@@ -24,6 +25,12 @@ FSUserInfo::FSUserInfo() {
     this->WiningStreakForProvenExperienceFromPerk = 0;
     this->NumOfRivalDefeated = 0;
     this->NumOfTeamDefeated = 0;
+    this->NumOfWandererDefeated = 0;
+    this->TotalRivalBattleNum = 0;
+    this->TotalOtherCarBattleNum = 0;
+    this->TotalRivalBattleWinNum = 0;
+    this->TotalOtherCarBattleWinNum = 0;
+    this->TotalDrawNum = 0;
     this->MaxSpeed = 0.00f;
     this->TotalMileages = 0.00f;
     this->Day = 0;
@@ -36,8 +43,17 @@ FSUserInfo::FSUserInfo() {
     this->PP = 0;
     this->CumulativeAcquisitionPP = 0;
     this->StoryStage = EStoryStage::None;
+    this->UseOilAndWaterTemperature = false;
     this->EnableSystemMenu = false;
     this->MinBattleTime = 0.00f;
     this->MaxBattleTime = 0.00f;
+    this->TotalWinByKei = 0;
+    this->SeenParkingAreaConvesationNum = 0;
+    this->StoryKind = EStoryKind::None;
+    this->MaxCleanCornaring = 0;
+    this->EquipBreakingLimitsTune = false;
+    this->HitBridgePier = false;
+    this->MaxDistanceCarPushed = 0.00f;
+    this->DailyRandomSeed = 0;
 }
 

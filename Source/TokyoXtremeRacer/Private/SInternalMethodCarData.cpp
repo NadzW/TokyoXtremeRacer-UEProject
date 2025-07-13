@@ -20,7 +20,7 @@ FSInternalMethodCarData::FSInternalMethodCarData() {
     this->EngineKind = EEngineKind::Straight2;
     this->EngineFromat = EEngineFromat::E_JB_DET;
     this->EngineInspiration = ECarIceAspirationType::NA;
-    this->displacement = 0;
+    this->Displacement = 0;
     this->MaxPower = 0;
     this->MaxPowerRpm = 0;
     this->MaxTorque = 0.00f;
@@ -86,5 +86,6 @@ FSInternalMethodCarData::FSInternalMethodCarData() {
     this->FrontTireWidthMax = 0;
     this->RearTireWidthMax = 0;
     this->ShouldSoundSpeedLimitAlarm = false;
+    this->MinGroundClearanceOffset = 0.00f;
 }
 

@@ -46,6 +46,15 @@ public:
     static FName ReturnEvaluateNameKeyPriorityLane();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FName ReturnEvaluateNameKeyPlayerLaneBehind();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FName ReturnEvaluateNameKeyPlayerLaneAhead();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FName ReturnEvaluateNameKeyMoveToAnotherLaneForHorn();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FName ReturnEvaluateNameKeyLaneChange();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

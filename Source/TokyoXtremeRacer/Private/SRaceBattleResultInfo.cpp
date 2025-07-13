@@ -13,5 +13,6 @@ FSRaceBattleResultInfo::FSRaceBattleResultInfo() {
     this->IsContinuousLastBattle = false;
     this->bEnemyIsOther = false;
     this->bUseEvaluation = false;
+    this->TopCategory = ERivalCategory::SecretBoss;
 }
 

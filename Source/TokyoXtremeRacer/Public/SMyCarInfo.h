@@ -8,6 +8,7 @@
 #include "EVehicleTuneKind.h"
 #include "EWindowStickerIndex.h"
 #include "SBrakeInfo.h"
+#include "SCarEffect.h"
 #include "SCarLicensePlate.h"
 #include "SCarPaint.h"
 #include "SCarSettingInfo.h"
@@ -16,6 +17,7 @@
 #include "SMyCarBodySticker.h"
 #include "SMyCarNeon.h"
 #include "SMyCarWindowSticker.h"
+#include "SMyEngineReplacementInfo.h"
 #include "STuneInfo.h"
 #include "SWheelInfo.h"
 #include "SMyCarInfo.generated.h"
@@ -32,6 +34,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsReplacedEngine;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FName, FSMyEngineReplacementInfo> ReplacementEngines;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double Mileages;
@@ -112,10 +117,16 @@ public:
     TMap<int32, FSMyCarBodySticker> RearWingStickers;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSCarEffect Effect;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ENeonLightPositionType, FSMyCarNeon> Neons;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ENeonLightPositionType> HaveNeons;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 OrgGenuineColor;
     
     FSMyCarInfo();
 };

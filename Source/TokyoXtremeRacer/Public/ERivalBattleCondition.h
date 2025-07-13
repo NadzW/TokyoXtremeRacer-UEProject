@@ -19,6 +19,13 @@ enum class ERivalBattleCondition : uint8 {
     NoTune,
     EquipSpecificStickers,
     NotEquipNitro,
+    LowDown,
+    WorkLicensePlate,
+    TuneLevel,
+    EquipSpecialVinyl,
+    EquipAura,
+    EquipVinylNum,
+    DefeatRivalNum,
     Num,
 };
 

@@ -3,6 +3,13 @@
 UBPFL_Utility::UBPFL_Utility() {
 }
 
+FText UBPFL_Utility::VectorToTextDataTableRowFormat(const FVector& Value) {
+    return FText::GetEmpty();
+}
+
+void UBPFL_Utility::ToggleBoolean(bool& RefValue) {
+}
+
 TArray<FText> UBPFL_Utility::TextFormatNumberingListName(TArray<FText> format_list) {
     return TArray<FText>();
 }
@@ -89,6 +96,10 @@ FVector UBPFL_Utility::GetApproxSize(const UStaticMesh* StaticMesh) {
 
 TArray<FString> UBPFL_Utility::GetAllFilesInDirectory(const FString& Directory, const bool fullPath, const bool withoutExtention, const FString& onlyFilesStartingWith, const FString& onlyFilesWithExtension) {
     return TArray<FString>();
+}
+
+FText UBPFL_Utility::DoubleToTextWithoutGrouping(const double Value) {
+    return FText::GetEmpty();
 }
 
 void UBPFL_Utility::CompositeDataTableRemoveTables(UCompositeDataTable* in_root, UDataTable* in_remove_dt) {

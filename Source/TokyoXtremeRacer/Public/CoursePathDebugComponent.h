@@ -24,16 +24,16 @@ public:
     UCoursePathDebugComponent(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)
-    void UpdateOther3(const FName& RPD, const FVector& Position);
+    void UpdateOther3(const FName& RPD, const FVector& position);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateOther2(const FName& RPD, const FVector& Position);
+    void UpdateOther2(const FName& RPD, const FVector& position);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateOther1(const FName& RPD, const FVector& Position);
+    void UpdateOther1(const FName& RPD, const FVector& position);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateBase(const FName& RPD, const FVector& Position);
+    void UpdateBase(const FName& RPD, const FVector& position);
     
     UFUNCTION(BlueprintCallable)
     void LogDebug(float LastDiff, float CurrentDiff, float Threshold);

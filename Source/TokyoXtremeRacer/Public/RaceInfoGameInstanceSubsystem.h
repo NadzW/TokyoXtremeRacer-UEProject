@@ -14,6 +14,8 @@
 #include "EVehicleTuneKind.h"
 #include "RaceSubsystemBattleEndDelegateDelegate.h"
 #include "RaceSubsystemBattleStartDelegateDelegate.h"
+#include "RaceSubsystemTimeAttackEndDelegateDelegate.h"
+#include "RaceSubsystemTimeAttackStartDelegateDelegate.h"
 #include "SCourseEnterSplineKeys.h"
 #include "SCourseLineInfo.h"
 #include "SCourseTrafficJamInfo.h"
@@ -115,6 +117,12 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRaceSubsystemBattleEndDelegate BattleEndDelegate;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FRaceSubsystemTimeAttackStartDelegate TAStartDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FRaceSubsystemTimeAttackEndDelegate TAEndDelegate;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsBattle;
     
@@ -123,6 +131,24 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ParkingAreaInfoNeedUpdate;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 IsTA;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> ForcedAppearanceRivals;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 ContinuousJustAccele;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 ContinuousFirstAttack;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 ContinuousReversalAttack;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool EnableAddTimeNotDriving;
     
     URaceInfoGameInstanceSubsystem();
 
@@ -169,6 +195,9 @@ public:
     bool SetParkingAreaBattleRival(const EParkingArea parking_area, const FName rival_id);
     
     UFUNCTION(BlueprintCallable)
+    void SetIsTA(const bool in_is_battle);
+    
+    UFUNCTION(BlueprintCallable)
     void SetIsReplay(const bool is_replay);
     
     UFUNCTION(BlueprintCallable)
@@ -184,6 +213,9 @@ public:
     void SetEnterParkingArea(const EParkingArea Area);
     
     UFUNCTION(BlueprintCallable)
+    void SetEnableAddTimeNotDriving(const bool in_is_enable);
+    
+    UFUNCTION(BlueprintCallable)
     void SetCurrentSpeedForProcessAndResult(const float Speed, const float dt, bool& is_update_max_speed, float& current_distance, int32& long_run_distance, int64& long_run_bonus, float& distance_at_dt);
     
     UFUNCTION(BlueprintCallable)
@@ -197,6 +229,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 ReturnkInitialOtherCarNum() const;
+    
+    UFUNCTION(BlueprintCallable)
+    void ResetTimeNotDriving();
     
     UFUNCTION(BlueprintCallable)
     void ReplayedCutin(const FName rival_id);
@@ -244,6 +279,15 @@ public:
     void Init();
     
     UFUNCTION(BlueprintCallable)
+    int32 IncContinuousReversalAttack();
+    
+    UFUNCTION(BlueprintCallable)
+    int32 IncContinuousJustAccele();
+    
+    UFUNCTION(BlueprintCallable)
+    int32 IncContinuousFirstAttack();
+    
+    UFUNCTION(BlueprintCallable)
     bool GetValidProcessAndResult();
     
     UFUNCTION(BlueprintCallable)
@@ -266,6 +310,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     TArray<FName> GetNotClearObjective();
+    
+    UFUNCTION(BlueprintCallable)
+    double GetMaxTimeNotDriving();
+    
+    UFUNCTION(BlueprintCallable)
+    bool GetIsTA();
     
     UFUNCTION(BlueprintCallable)
     bool GetIsReplay();
@@ -310,6 +360,9 @@ public:
     void ClearTrafficJamInfo();
     
     UFUNCTION(BlueprintCallable)
+    void ClearTimeNotDriving();
+    
+    UFUNCTION(BlueprintCallable)
     void ClearSetRival();
     
     UFUNCTION(BlueprintCallable)
@@ -328,16 +381,37 @@ public:
     void ClearLongRunBonus(const bool is_load_game);
     
     UFUNCTION(BlueprintCallable)
+    void ClearIsTA();
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearForcedAppearanceRivals();
+    
+    UFUNCTION(BlueprintCallable)
     void ClearCourseSegmentSpeedTrapInfos();
     
     UFUNCTION(BlueprintCallable)
     void ClearCourseDrawLineInfos();
     
     UFUNCTION(BlueprintCallable)
+    void ClearContinuousReversalAttack();
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearContinuousJustAccele();
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearContinuousFirstAttack();
+    
+    UFUNCTION(BlueprintCallable)
     bool CheckRivalAppearance(const FSRivalAppearanceConditionInfo& appear_cond_info, const FSUserInfo& user_info);
     
     UFUNCTION(BlueprintCallable)
+    void CheckActionDailyInit();
+    
+    UFUNCTION(BlueprintCallable)
     void AddTrafficJamInfo(const FSCourseTrafficJamInfo Info);
+    
+    UFUNCTION(BlueprintCallable)
+    double AddTimeNotDriving(const double in_dt);
     
     UFUNCTION(BlueprintCallable)
     void AddRoadConstructionInfo(const ECourseArea Area, const FSObstacleConstructionSiteInfo Info);
@@ -356,6 +430,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void AddLongRunBonus(const FSRaceLongRunBonusInfo Info, const bool add_check_id);
+    
+    UFUNCTION(BlueprintCallable)
+    void AddForcedAppearanceRival(const FName in_rival_id);
     
     UFUNCTION(BlueprintCallable)
     void AddEventForcedAddRivalInfo(const FSEventForcedAddRivalInfo event_forced_rival_info);

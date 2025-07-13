@@ -18,5 +18,8 @@ enum class ETPEvaluatePointMethodType : uint8 {
     RoadLine,
     CurrentLanePlayerIgnore,
     DrivingLineLaneChange2,
+    PlayerLaneAhead,
+    PlayerLaneBehind,
+    MoveToAnotherLaneForHorn,
 };
 

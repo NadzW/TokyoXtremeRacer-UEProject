@@ -31,4 +31,7 @@ FString UBPFL_SteamUtility::GetCurrentGameLanguage() {
     return TEXT("");
 }
 
+void UBPFL_SteamUtility::AddScreenshotToLibrary(const FString& FilePath, const int32 ImageWidth, const int32 ImageHeight) {
+}
+
 

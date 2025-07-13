@@ -19,7 +19,7 @@ FSVehicleSettingSet::FSVehicleSettingSet() {
     this->BrakeBalaneFront = 0;
     this->BrakeBalaneRear = 0;
     this->TractionControl = 0;
-    this->Abs = 0;
+    this->abs = 0;
     this->OffsetFront = 0;
     this->OffsetRear = 0;
     this->LSDTypeFront = ECarLsdType::None;

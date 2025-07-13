@@ -25,6 +25,9 @@ void UBPFL_ForceFeedback::StopForceFeedbackForAllControllers() {
 void UBPFL_ForceFeedback::StopForceFeedbackByControllerId(const FControllerId& ID) {
 }
 
+void UBPFL_ForceFeedback::EnableForceFeedbackControllersWithSteeringBound() {
+}
+
 bool UBPFL_ForceFeedback::AutoSelectForceFeedbackCapableController() {
     return false;
 }
