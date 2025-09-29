@@ -28,6 +28,8 @@ enum class ECustomCarPartsKind : uint8 {
     RearBumperBrakeLamp,
     RearBumperBackLamp,
     RearSpoilerBrakeLamp,
+    FrontBumperHeadLightL,
+    FrontBumperHeadLightR,
     Num,
     None,
 };

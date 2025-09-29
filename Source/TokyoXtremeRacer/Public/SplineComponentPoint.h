@@ -8,7 +8,7 @@ struct TOKYOXTREMERACER_API FSplineComponentPoint {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector position;
+    FVector Position;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Index;

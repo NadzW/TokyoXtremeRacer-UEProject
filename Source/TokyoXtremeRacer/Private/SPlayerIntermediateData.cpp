@@ -5,5 +5,6 @@ FSPlayerIntermediateData::FSPlayerIntermediateData() {
     this->NitroRemainingCapacity = 0.00f;
     this->FrontTireLifeMax = 0.00f;
     this->RearTireLifeMax = 0.00f;
+    this->NumOfCollisionsAvoided = 0;
 }
 

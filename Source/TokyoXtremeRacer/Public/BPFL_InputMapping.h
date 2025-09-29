@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "Styling/SlateBrush.h"
 #include "ControllerId.h"
 #include "ControllerLayoutKey.h"
@@ -14,6 +14,8 @@
 #include "EQueryControllerLayoutValueFlag.h"
 #include "InputActionMappingValue.h"
 #include "InputActionMappingValues.h"
+#include "InputMappingPollData.h"
+#include "InputMappingPollInfo.h"
 #include "BPFL_InputMapping.generated.h"
 
 class IEnhancedInputSubsystemInterface;
@@ -141,6 +143,9 @@ public:
     static bool NotEqual_ControllerIdControllerId(const FControllerId& LHS, const FControllerId& RHS);
     
     UFUNCTION(BlueprintCallable)
+    static bool NearlyEqualPollData(const FInputMappingPollData& A, const FInputMappingPollData& B, float AxisThreshold, float DeltaSeconds, FInputMappingPollInfo& Info);
+    
+    UFUNCTION(BlueprintCallable)
     static void MakeSingleControllerInputFullDescriptionForInputActionSemantic(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, bool bAllowGeneric, FString& Description, TEnumAsByte<EFindResultPins>& FindResult);
     
     UFUNCTION(BlueprintCallable)
@@ -172,6 +177,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsAnalogInputActionSemantic(EInputActionSemantic Value);
+    
+    UFUNCTION(BlueprintCallable)
+    static void GetPollDataByControllerId(const FControllerId& ID, FInputMappingPollData& InputMappingPollData);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetOutGameInjectionEnabled();

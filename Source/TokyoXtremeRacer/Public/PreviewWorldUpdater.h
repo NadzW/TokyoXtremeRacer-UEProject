@@ -1,8 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
+#include "UObject/PrimaryAssetId.h"
 #include "SpawnMapCameraDelegate.h"
+#include "Engine/World.h"
 #include "PreviewWorldUpdater.generated.h"
 
 class AMiniMapManagerActor;
@@ -17,7 +18,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSpawnMapCamera SpawnMiniMapCameraPown;
     
-protected:
+public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPrimaryAssetId preview_world_id_;
     

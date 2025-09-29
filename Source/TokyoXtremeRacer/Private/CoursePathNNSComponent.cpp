@@ -3,6 +3,10 @@
 UCoursePathNNSComponent::UCoursePathNNSComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
 
+TArray<FCoursePathPoint> UCoursePathNNSComponent::GetNearestPositionInRPDNames(const FVector& Current, bool bMainRoadOnly, const TArray<float>& RangeArray, const TArray<FName>& RPDNames, const TArray<int32>& ZoneIndices) const {
+    return TArray<FCoursePathPoint>();
+}
+
 TArray<FCoursePathPoint> UCoursePathNNSComponent::GetNearestPosition(const FVector& Current, bool bMainRoadOnly, const TArray<float>& RangeArray) const {
     return TArray<FCoursePathPoint>();
 }
@@ -21,7 +25,7 @@ bool UCoursePathNNSComponent::CompareDistance(const FVector& Origin, const FVect
     return false;
 }
 
-void UCoursePathNNSComponent::AddPosition(const FCoursePathPoint& position) {
+void UCoursePathNNSComponent::AddPosition(const FCoursePathPoint& Position) {
 }
 
 

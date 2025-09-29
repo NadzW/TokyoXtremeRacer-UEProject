@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+#include "UObject/NoExportTypes.h"
 #include "EAbilityAIType.h"
 #include "EOvertakeMethod.h"
 #include "AutoDriveDriverParameterData.generated.h"

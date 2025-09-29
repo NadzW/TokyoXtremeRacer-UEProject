@@ -115,6 +115,10 @@ bool UBPFL_InputMapping::NotEqual_ControllerIdControllerId(const FControllerId& 
     return false;
 }
 
+bool UBPFL_InputMapping::NearlyEqualPollData(const FInputMappingPollData& A, const FInputMappingPollData& B, float AxisThreshold, float DeltaSeconds, FInputMappingPollInfo& Info) {
+    return false;
+}
+
 void UBPFL_InputMapping::MakeSingleControllerInputFullDescriptionForInputActionSemantic(UControllerLayoutDatabase* ControllerLayoutDatabase, EInputActionSemantic InputActionSemantic, bool bAllowGeneric, FString& Description, TEnumAsByte<EFindResultPins>& FindResult) {
 }
 
@@ -154,6 +158,9 @@ bool UBPFL_InputMapping::IsInGameInputActionSemantic(EInputActionSemantic Value)
 
 bool UBPFL_InputMapping::IsAnalogInputActionSemantic(EInputActionSemantic Value) {
     return false;
+}
+
+void UBPFL_InputMapping::GetPollDataByControllerId(const FControllerId& ID, FInputMappingPollData& InputMappingPollData) {
 }
 
 bool UBPFL_InputMapping::GetOutGameInjectionEnabled() {

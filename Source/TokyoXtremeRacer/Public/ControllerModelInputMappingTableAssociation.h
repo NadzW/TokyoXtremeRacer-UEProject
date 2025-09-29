@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+#include "UObject/NoExportTypes.h"
 #include "ControllerModel.h"
 #include "EFindResultPins.h"
 #include "ControllerModelInputMappingTableAssociation.generated.h"
@@ -22,6 +22,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UInputMappingTable* PS5;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UInputMappingTable* PS5OnPS5;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FControllerModel, UInputMappingTable*> Map;

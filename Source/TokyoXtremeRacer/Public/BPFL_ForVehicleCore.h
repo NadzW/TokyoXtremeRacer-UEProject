@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "BPFL_ForVehicleCore.generated.h"
 
 UCLASS(Blueprintable)

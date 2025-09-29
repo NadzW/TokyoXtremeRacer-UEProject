@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
 #include "ECarCutInBunnerType.h"
+#include "ERivalCategory.h"
 #include "BPI_CarCutInWidget.generated.h"
 
 class UTexture2D;
@@ -25,6 +26,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetImageEmblem(const UTexture2D* TextureImageEmblem);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void SetCutInCategoryType(const ERivalCategory RivalCategoryType);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetCutInBunnerType(const ECarCutInBunnerType CutInBunnerType);

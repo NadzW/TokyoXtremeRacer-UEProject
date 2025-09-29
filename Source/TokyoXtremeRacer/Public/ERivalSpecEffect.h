@@ -36,5 +36,7 @@ enum class ERivalSpecEffect : uint8 {
     RSE_115,
     RSE_120,
     RSE_125,
+    Nitro,
+    RSE_MAX UMETA(Hidden),
 };
 

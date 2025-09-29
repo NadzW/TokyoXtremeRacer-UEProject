@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "BPFLBitMaskCalculate.generated.h"
 
 UCLASS(Blueprintable)

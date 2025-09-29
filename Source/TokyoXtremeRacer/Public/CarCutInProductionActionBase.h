@@ -10,6 +10,7 @@ class UCarCutInProductionWorldSubsystem;
 class UDataTable;
 class UObject;
 
+
 UCLASS(Blueprintable)
 class TOKYOXTREMERACER_API UCarCutInProductionActionBase : public ULoadSoftObjectAsyncActionBase {
     GENERATED_BODY()

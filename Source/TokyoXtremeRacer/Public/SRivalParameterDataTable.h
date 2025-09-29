@@ -27,6 +27,9 @@ public:
     TSoftObjectPtr<UDataTable> PlayEffectSpecEffectTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UDataTable> ReoverySPSpecEffectTable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UDataTable> DriftPreferenceTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

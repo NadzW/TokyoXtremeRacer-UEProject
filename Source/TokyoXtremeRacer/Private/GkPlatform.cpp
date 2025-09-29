@@ -7,4 +7,8 @@ bool UGkPlatform::IsSteamDeck() {
     return false;
 }
 
+FString UGkPlatform::GetTempDirectoryPath() {
+    return TEXT("");
+}
+
 

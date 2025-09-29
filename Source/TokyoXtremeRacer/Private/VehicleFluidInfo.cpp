@@ -23,5 +23,6 @@ FVehicleFluidInfo::FVehicleFluidInfo() {
     this->ThermalConductivityCoef = 0.00f;
     this->HeatOmegaRate = 0.00f;
     this->InRedzone = false;
+    this->HeatTransferCoef = 0.00f;
 }
 

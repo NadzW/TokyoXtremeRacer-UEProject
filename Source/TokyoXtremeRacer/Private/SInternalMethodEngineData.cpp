@@ -54,5 +54,6 @@ FSInternalMethodEngineData::FSInternalMethodEngineData() {
     this->Rpm14000 = 0.00f;
     this->SoundId = 0;
     this->MaxTorqueCoef = 0.00f;
+    this->VTECrpm = 0;
 }
 

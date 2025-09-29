@@ -1,0 +1,27 @@
+{
+	"FileVersion": 3,
+	"Version": 33,
+	"VersionName": "3.0.0",
+	"FriendlyName": "Controlysis",
+	"Description": "Generic controller support for Unreal Engine. Provides blueprint nodes for discovering and polling all controllers recognized by SDL, including those only having a DirectInput driver and no XInput support.",
+	"Category": "Input Devices",
+	"CreatedBy": "TriClover",
+	"CreatedByURL": "http://triclover.net",
+	"DocsURL": "",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/ce21cc60b9b34126a2eba3b8404023f3",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "Controlysis",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	]
+}

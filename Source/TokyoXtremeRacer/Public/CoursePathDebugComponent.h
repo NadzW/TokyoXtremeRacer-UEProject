@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Components/ActorComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "CoursePathDebugPosition.h"
 #include "CoursePathDebugComponent.generated.h"
 
@@ -24,16 +24,16 @@ public:
     UCoursePathDebugComponent(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)
-    void UpdateOther3(const FName& RPD, const FVector& position);
+    void UpdateOther3(const FName& RPD, const FVector& Position);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateOther2(const FName& RPD, const FVector& position);
+    void UpdateOther2(const FName& RPD, const FVector& Position);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateOther1(const FName& RPD, const FVector& position);
+    void UpdateOther1(const FName& RPD, const FVector& Position);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateBase(const FName& RPD, const FVector& position);
+    void UpdateBase(const FName& RPD, const FVector& Position);
     
     UFUNCTION(BlueprintCallable)
     void LogDebug(float LastDiff, float CurrentDiff, float Threshold);

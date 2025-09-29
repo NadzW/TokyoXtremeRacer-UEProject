@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
 #include "Kismet/BlueprintAsyncActionBase.h"
 #include "ObjectLoadAsyncActionBase.generated.h"
 

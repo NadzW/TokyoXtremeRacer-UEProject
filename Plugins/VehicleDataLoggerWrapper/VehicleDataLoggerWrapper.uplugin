@@ -1,0 +1,28 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "2.0.1",
+	"FriendlyName": "VehicleDataLoggerWrapper",
+	"Description": "Vehicle Data Logger Wrapper Integretion",
+	"Category": "Other",
+	"CreatedBy": "G",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "VehicleDataLoggerWrapper",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac"
+			]
+		}
+	]
+}

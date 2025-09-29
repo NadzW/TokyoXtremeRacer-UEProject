@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Components/ActorComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "PointCloudAttributes.h"
 #include "PointCloudPoint.h"
 #include "PointCloudComponent.generated.h"
@@ -43,6 +43,9 @@ public:
     int32 ReturnCenterLine() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsPointIncludedIn(const FVector& Point, const float DistanceThreshold, const float DistanceBetweenPoints, float& CorrectedRoadPointKey, float& ResultDistance) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetRoadPointKeyFromLocation(const FVector Location, const int32 LineNumber) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -74,6 +77,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetLaneIndexAndRateFromLocation(float& LaneRate, const float RoadPointKey, const FVector& Location, const bool bIsClampRunnableLaneIndex) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FVector GetForwardVector(int32 LineIndex, int32 PointIndexInLine) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetDistanceFromRoadPointKey(const int32 LineNumber, const float RoadPointKey) const;

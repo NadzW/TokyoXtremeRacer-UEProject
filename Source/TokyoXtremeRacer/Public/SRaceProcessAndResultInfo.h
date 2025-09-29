@@ -36,6 +36,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSRaceBattleResultInfo> BattleResults;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> PerfectWinRivals;
+    
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ERacePrizeCpType, int64> PrizeCps;
     

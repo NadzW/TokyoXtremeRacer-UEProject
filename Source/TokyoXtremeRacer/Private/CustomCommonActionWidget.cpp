@@ -21,6 +21,9 @@ bool UCustomCommonActionWidget::IsHeldAction() const {
     return false;
 }
 
+void UCustomCommonActionWidget::HandleControlMappingsRebuilt() {
+}
+
 FSlateBrush UCustomCommonActionWidget::GetIcon() const {
     return FSlateBrush{};
 }

@@ -37,7 +37,7 @@ public:
     FBadNameState SelectBadnameConditionAll(const FSUserInfo& user_info, const FSRaceCoreInfo& race_info, FBadNameAcquired& acquired, FBadNameAcquisitionHistory& History, bool& is_reset_used_evaluation, bool& is_valid_bad_name);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FBadNameState GetBadnameCondition04Simple(const FComparisonBadNameCondition04& comparison) const;
+    FBadNameState GetBadnameCondition04Simple(const FComparisonBadNameCondition04& comparison, const FSUserInfo& user_info) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FBadNameState GetBadnameCondition04(const FSUserInfo& user_info) const;

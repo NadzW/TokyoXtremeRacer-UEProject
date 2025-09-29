@@ -55,6 +55,10 @@ enum class ERacePrizeCpType : uint8 {
     NitroRefillFee,
     CleanDrive,
     NiceBlock,
+    NoDamageBonus,
+    NumOfWinsBonus,
+    PerkPointRemathRival,
+    WinningStreakBonus,
     Num,
 };
 

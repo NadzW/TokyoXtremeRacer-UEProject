@@ -5,5 +5,6 @@ FSRaceBattleResultRivalInfo::FSRaceBattleResultRivalInfo() {
     this->IsKeiCar = false;
     this->IsTAXI = false;
     this->IsFistWin = false;
+    this->SpawnId = 0;
 }
 

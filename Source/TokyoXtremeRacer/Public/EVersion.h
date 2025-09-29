@@ -6,5 +6,6 @@ UENUM(BlueprintType)
 enum class EVersion : uint8 {
     EarlyAccess,
     Release,
+    Show,
 };
 

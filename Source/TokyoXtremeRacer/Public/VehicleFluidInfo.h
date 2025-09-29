@@ -72,6 +72,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool InRedzone;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double HeatTransferCoef;
+    
     FVehicleFluidInfo();
 };
 

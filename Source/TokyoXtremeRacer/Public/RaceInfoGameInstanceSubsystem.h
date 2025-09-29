@@ -3,7 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Subsystems/GameInstanceSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "ECourseArea.h"
 #include "ECourseEnter.h"
 #include "ECourseExit.h"
@@ -71,6 +71,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ERunArea StartArea;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EParkingArea EnterParkingArea;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsReturnPakingAreaBattle;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EParkingArea ExitParkingArea;
@@ -210,7 +216,7 @@ public:
     void SetExitParkingArea(const EParkingArea Area);
     
     UFUNCTION(BlueprintCallable)
-    void SetEnterParkingArea(const EParkingArea Area);
+    void SetEnterParkingArea(const EParkingArea Area, const bool in_is_return_pa_battle);
     
     UFUNCTION(BlueprintCallable)
     void SetEnableAddTimeNotDriving(const bool in_is_enable);
@@ -264,6 +270,9 @@ public:
     void RaceStart();
     
     UFUNCTION(BlueprintCallable)
+    void LookConversation();
+    
+    UFUNCTION(BlueprintCallable)
     bool IsValidRivalDataTable();
     
     UFUNCTION(BlueprintCallable)
@@ -289,6 +298,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool GetValidProcessAndResult();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    EParkingArea GetTunerAppearsParkingArea() const;
     
     UFUNCTION(BlueprintCallable)
     FSCourseTrafficJamInfoForRefrences GetTrafficJamInfos(const ERunArea Area);
@@ -336,7 +348,7 @@ public:
     FSEventForcedAddRivalInfo GetEventForcedAddRivalInfo(const ERunArea Area, bool& is_exist);
     
     UFUNCTION(BlueprintCallable)
-    EParkingArea GetEnterParkingArea();
+    EParkingArea GetEnterParkingArea(bool& out_is_return_pa_battle);
     
     UFUNCTION(BlueprintCallable)
     double GetDistanceTravelledToday();
@@ -406,6 +418,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void CheckActionDailyInit();
+    
+    UFUNCTION(BlueprintCallable)
+    bool CanGetPerfectBonusFromRival(const FName in_rival_id);
     
     UFUNCTION(BlueprintCallable)
     void AddTrafficJamInfo(const FSCourseTrafficJamInfo Info);

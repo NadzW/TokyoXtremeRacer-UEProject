@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/GameInstanceSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "StreamableGameInstanceSubsystem.generated.h"
 
 UCLASS(Blueprintable)

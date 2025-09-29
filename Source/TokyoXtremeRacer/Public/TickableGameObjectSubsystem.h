@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/GameInstanceSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "Templates/SubclassOf.h"
 #include "TickableGameObjectSubsystem.generated.h"
 
@@ -9,6 +9,11 @@ class UTickableGameObjectSubsystemElement;
 UCLASS(Blueprintable)
 class TOKYOXTREMERACER_API UTickableGameObjectSubsystem : public UGameInstanceSubsystem {
     GENERATED_BODY()
+public:
+private:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> RemoveElementKeys;
+    
 public:
     UTickableGameObjectSubsystem();
 

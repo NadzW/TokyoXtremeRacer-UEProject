@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DeveloperSettings.h"
+#include "UObject/NoExportTypes.h"
 #include "Templates/SubclassOf.h"
 #include "CutInProductionSubsystemSetting.generated.h"
 

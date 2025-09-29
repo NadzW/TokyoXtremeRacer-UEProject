@@ -5,6 +5,7 @@
 UENUM(BlueprintType)
 enum class EOP_FPS_Limit : uint8 {
     OP_UNLIMITED,
+    OP_FPS_30,
     OP_NOT_CHANGABLE,
     OP_FPS_100,
     OP_FPS_120,

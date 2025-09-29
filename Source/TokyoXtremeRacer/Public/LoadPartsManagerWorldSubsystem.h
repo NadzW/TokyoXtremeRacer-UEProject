@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/WorldSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "LoadPartsManagerWorldSubsystem.generated.h"
 
 UCLASS(Blueprintable)

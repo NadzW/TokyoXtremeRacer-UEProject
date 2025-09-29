@@ -55,6 +55,9 @@ public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double MaxTorqueCoef;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 VTECrpm;
+    
     FSEngineLevelData();
 };
 

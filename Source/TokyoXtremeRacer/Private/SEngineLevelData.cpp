@@ -16,5 +16,6 @@ FSEngineLevelData::FSEngineLevelData() {
     this->IsTurbo = false;
     this->Weight = 0;
     this->MaxTorqueCoef = 0.00f;
+    this->VTECrpm = 0;
 }
 

@@ -17,6 +17,7 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_BackMirror = false;
     this->Option_BackMirror_BonnetView = false;
     this->Option_DriversInformation = false;
+    this->Option_RivalMarker = false;
     this->Option_Segment = false;
     this->Option_SpeedTrap = false;
     this->Option_TextSpeed = EOP_TextSpeed::OP_SLOW;
@@ -30,6 +31,7 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_RumbleToAero = 0;
     this->Option_RumbleToAbs = 0;
     this->Option_IsCopyPhotoToSteamDir = false;
+    this->Option_IsPhotoToHDR = false;
     this->Option_ViewingAngle = 0;
     this->Option_Brightness = 0;
     this->Option_UpscalingMode = EOP_Upscaling_Mode::OP_OFF;
@@ -37,10 +39,13 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_FrameGeneration = false;
     this->Option_UpscalingQuality = EOP_Upscaling_Quality::OP_Native;
     this->Option_ScreenPercentage = 0;
+    this->Option_HDR = false;
     this->Option_MasterVolumn = 0;
     this->Option_BgmVolumn = 0;
     this->Option_SeVolumn = 0;
     this->Option_CarVolumn = 0;
     this->Option_BattleBgmTiming = EOP_BattleBgmTiming::OP_AfterBattleStart;
+    this->Option_ShiftAlert = false;
+    this->Option_ShowLimitTimeType = EOP_LimitTimeType::OP_NoLimit;
 }
 

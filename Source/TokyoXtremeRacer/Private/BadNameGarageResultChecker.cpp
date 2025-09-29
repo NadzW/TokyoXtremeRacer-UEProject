@@ -14,7 +14,7 @@ FBadNameState UBadNameGarageResultChecker::SelectBadnameConditionAll(const FSUse
     return FBadNameState{};
 }
 
-FBadNameState UBadNameGarageResultChecker::GetBadnameCondition04Simple(const FComparisonBadNameCondition04& comparison) const {
+FBadNameState UBadNameGarageResultChecker::GetBadnameCondition04Simple(const FComparisonBadNameCondition04& comparison, const FSUserInfo& user_info) const {
     return FBadNameState{};
 }
 

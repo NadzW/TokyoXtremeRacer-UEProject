@@ -4,7 +4,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "Engine/TimerHandle.h"
 #include "SSBVersion.h"
 #include "BPFL_Utility.generated.h"
@@ -15,6 +15,7 @@ class UCompositeDataTable;
 class UDataTable;
 class UObject;
 class UPrimaryAssetLabel;
+class UPrimitiveComponent;
 class USkeletalMesh;
 class UStaticMesh;
 
@@ -46,6 +47,11 @@ private:
     UFUNCTION(BlueprintCallable)
     static void SetNetDriverName(AActor* in_actor, const FName in_name);
     
+public:
+    UFUNCTION(BlueprintCallable)
+    static void SetIgnoreComponent(UPrimitiveComponent* Source, UPrimitiveComponent* Target);
+    
+private:
     UFUNCTION(BlueprintCallable)
     static void SetDemoNetDriverName(AActor* in_actor);
     
@@ -97,13 +103,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static FString GetGPUAdapterName();
     
-private:
     UFUNCTION(BlueprintCallable)
     static int32 GetExplicitObjectLengthFromPrimaryAssetLabel(UPrimaryAssetLabel* Label);
     
     UFUNCTION(BlueprintCallable)
     static UObject* GetExplicitObjectFromPrimaryAssetLabel(UPrimaryAssetLabel* Label, int32 Index);
     
+private:
     UFUNCTION(BlueprintCallable)
     static FVector GetApproxSize(const UStaticMesh* StaticMesh);
     
@@ -113,6 +119,9 @@ private:
 public:
     UFUNCTION(BlueprintCallable)
     static FText DoubleToTextWithoutGrouping(const double Value);
+    
+    UFUNCTION(BlueprintCallable)
+    static void ComputeAddDate(const int32 in_year, const int32 in_month, const int32 in_day, const int32 in_add_days, int32& out_year, int32& out_month, int32& out_day);
     
     UFUNCTION(BlueprintCallable)
     static void CompositeDataTableRemoveTables(UCompositeDataTable* in_root, UDataTable* in_remove_dt);
@@ -129,13 +138,6 @@ public:
 private:
     UFUNCTION(BlueprintCallable)
     static FString AsDateTimeText_4d2d2d2d2d2d(const FDateTime& InDateTime);
-    
-public:
-    UFUNCTION(BlueprintCallable)
-    static TArray<UCompositeDataTable*> AppendCompositeDataTableFromSplitControlDT2(UDataTable* in_split_control_dt, const TArray<int32> in_group_ids);
-    
-    UFUNCTION(BlueprintCallable)
-    static TArray<UCompositeDataTable*> AppendCompositeDataTableFromSplitControlDT(UDataTable* in_split_control_dt, const int32 in_group_id);
     
 };
 

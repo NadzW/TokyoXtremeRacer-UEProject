@@ -9,6 +9,7 @@ enum class EStoryAxis : uint8 {
     Step2,
     Step3,
     Step4,
+    Other,
     Num,
 };
 

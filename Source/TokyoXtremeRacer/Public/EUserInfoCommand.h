@@ -15,6 +15,7 @@ enum class EUserInfoCommand : uint8 {
     SetMilageTheSelectedCar,
     AddBuyableCar,
     AddBuyableCarAll,
+    FullReplicateSelectMyCar,
     AddBuyableEngine,
     AddBuyableEngineAll,
     AddCarIntoGarage,
@@ -29,6 +30,7 @@ enum class EUserInfoCommand : uint8 {
     ClearForcedAppearanceRivals,
     SetTutorialMode,
     SetStoryStage,
+    SetObjectiveClearPreset,
     SetObjectiveClear,
     SetPAConversation,
     SetVersion,
@@ -53,6 +55,11 @@ enum class EUserInfoCommand : uint8 {
     SetNumOfTunedByTuner,
     AddBadnameHistory,
     AddBadnameHistoryAll,
+    AddPerk,
+    AddPerkAll,
+    RemovePerkAll,
+    AddLiveryAura,
+    AddLiveryAuraAll,
     Num,
 };
 

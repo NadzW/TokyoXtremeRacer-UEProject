@@ -21,6 +21,9 @@ public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double RearTireLifeMax;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 NumOfCollisionsAvoided;
+    
     FSPlayerIntermediateData();
 };
 

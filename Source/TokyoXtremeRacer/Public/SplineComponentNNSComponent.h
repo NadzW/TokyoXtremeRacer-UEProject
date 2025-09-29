@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Components/ActorComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "SplineComponentPoint.h"
 #include "SplineComponentNNSComponent.generated.h"
 
@@ -39,7 +39,7 @@ public:
     bool CompareDistance(const FVector& Origin, const FVector Position0, const FVector& position1) const;
     
     UFUNCTION(BlueprintCallable)
-    void AddPosition(const FSplineComponentPoint& position);
+    void AddPosition(const FSplineComponentPoint& Position);
     
 };
 

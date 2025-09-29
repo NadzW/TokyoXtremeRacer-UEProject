@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/WorldSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "EBGMType.h"
 #include "ESEType.h"
 #include "OutgameSoundWorldSubsystem.generated.h"

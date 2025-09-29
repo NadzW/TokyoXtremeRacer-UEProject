@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+#include "UObject/NoExportTypes.h"
 #include "ControllerLayoutKey.h"
 #include "ControllerLayoutValue.h"
 #include "ControllerLayoutData.generated.h"

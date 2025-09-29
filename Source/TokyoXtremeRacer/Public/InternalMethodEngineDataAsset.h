@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+#include "UObject/NoExportTypes.h"
 #include "SEngineData.h"
 #include "InternalMethodEngineDataAsset.generated.h"
 

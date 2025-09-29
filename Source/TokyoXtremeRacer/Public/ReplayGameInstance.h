@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/GameInstance.h"
+#include "UObject/NoExportTypes.h"
 #include "S_ReplayInfo.h"
 #include "ReplayGameInstance.generated.h"
 

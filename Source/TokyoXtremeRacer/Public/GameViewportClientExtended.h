@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/GameViewportClient.h"
+#include "UObject/NoExportTypes.h"
 #include "GameViewportClientExtended.generated.h"
 
 UCLASS(Blueprintable, NonTransient)

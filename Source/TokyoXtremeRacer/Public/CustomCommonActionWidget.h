@@ -3,6 +3,7 @@
 #include "Engine/DataTable.h"
 #include "Styling/SlateBrush.h"
 #include "Styling/SlateColor.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/Widget.h"
 #include "CustomCommonActionWidget.generated.h"
 
@@ -61,6 +62,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHeldAction() const;
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void HandleControlMappingsRebuilt();
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlateBrush GetIcon() const;
     

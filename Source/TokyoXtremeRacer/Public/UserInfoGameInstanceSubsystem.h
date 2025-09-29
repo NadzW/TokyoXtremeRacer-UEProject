@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Subsystems/GameInstanceSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "ECarSetting.h"
 #include "ECarSettingAutoKind.h"
 #include "ECarSettingAutoType.h"
@@ -28,6 +28,7 @@
 #include "ESkillTreeCategory.h"
 #include "ESkillTreeStatus.h"
 #include "ESkillTreeType.h"
+#include "EStoryKind.h"
 #include "EStoryStage.h"
 #include "EVehicleTuneKind.h"
 #include "EVehicleTuneLevel.h"
@@ -50,7 +51,9 @@
 #include "SObjectiveInfo.h"
 #include "SOptionInputMappingInfo.h"
 #include "SParkingAreaConversationDispInfo.h"
+#include "SPerkCategoryInfo.h"
 #include "SPerkCategoryRootInfo.h"
+#include "SPerkStatusInfo.h"
 #include "SPerkTreeMachineInfo.h"
 #include "SRaceBattleResultInfo.h"
 #include "SRaceProcessAndResultInfo.h"
@@ -72,6 +75,8 @@
 #include "UserSubSystemTutorialModeUpdateDelegateDelegate.h"
 #include "UserInfoGameInstanceSubsystem.generated.h"
 
+class UAvaliableDLCInfo;
+class UCDTManageSubsystem;
 class UDataTable;
 
 UCLASS(Blueprintable)
@@ -174,6 +179,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUserSubSystemRivalSituationChangeDelegate OnChangeRivalSituation;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCDTManageSubsystem* CDTSubSystem;
+    
     UUserInfoGameInstanceSubsystem();
 
     UFUNCTION(BlueprintCallable)
@@ -189,7 +197,13 @@ public:
     void UpdateCleardAndNewObjective(const UDataTable* objective_data_table);
     
     UFUNCTION(BlueprintCallable)
+    void SetUpperLimitPP(const int32 new_pp);
+    
+    UFUNCTION(BlueprintCallable)
     void SetUpperLimitCP(const int64 new_cp);
+    
+    UFUNCTION(BlueprintCallable)
+    bool SetupNewGamePlus(const FSUserInfo in_user_info, const bool in_is_no_mercy, const UDataTable* in_perk_root_dt);
     
     UFUNCTION(BlueprintCallable)
     void SetupBaseInfo(const FSBaseInfo base_info);
@@ -228,7 +242,7 @@ public:
     void SetSelectedCarTunerTune(const EVehicleTuneKind tune_kind);
     
     UFUNCTION(BlueprintCallable)
-    bool SetSelectedCarTunePartsEquipLevel(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings);
+    bool SetSelectedCarTunePartsEquipLevel(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings, const FSCarSettingInfo in_default_setting_info);
     
     UFUNCTION(BlueprintCallable)
     bool SetSelectedCarTuneEngineReplacement(const FName engine_name_id);
@@ -279,13 +293,16 @@ public:
     void SetSelectedCarBodyStikers(const TMap<int32, FSMyCarBodySticker> body_stickers);
     
     UFUNCTION(BlueprintCallable)
+    void SetSelectedCarAura(const FName aura_name_id);
+    
+    UFUNCTION(BlueprintCallable)
     bool SetRivalSituationReadFlag(const FName rival_id, const bool is_rumors);
     
     UFUNCTION(BlueprintCallable)
     bool SetRivalSituationAnimationFlag(const FName rival_id, const bool is_unlock);
     
     UFUNCTION(BlueprintCallable)
-    bool SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, const bool rival_is_wanderer, int32& num_of_rival_defated, int32& num_of_team_defated);
+    bool SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, const bool rival_is_wanderer, const bool in_use_nitro, int32& num_of_rival_defated, int32& num_of_team_defated);
     
     UFUNCTION(BlueprintCallable)
     bool SetPerkTreeStatus(const UDataTable* in_root_datatable, const FName in_category, const FName in_row_name, const ESkillTreeStatus in_status);
@@ -324,7 +341,7 @@ public:
     void SetNextGameModeForMovieTeather(const EGameMode next_mode);
     
     UFUNCTION(BlueprintCallable)
-    bool SetMyCarTunePartsEquipLevel(const int32 in_key, const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings);
+    bool SetMyCarTunePartsEquipLevel(const int32 in_key, const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings, const FSCarSettingInfo in_default_setting_info);
     
     UFUNCTION(BlueprintCallable)
     bool SetMaxGarageMyCarNum(const int32 car_num);
@@ -345,6 +362,9 @@ public:
     void SetIsDispCurrentTutorialModePopup(const bool is_disp);
     
     UFUNCTION(BlueprintCallable)
+    void SetIsChallengeMode(const bool in_is_challenge_mode);
+    
+    UFUNCTION(BlueprintCallable)
     void SetHitBridgePier();
     
     UFUNCTION(BlueprintCallable)
@@ -360,10 +380,13 @@ public:
     void SetEquipBreakingLimitsTune();
     
     UFUNCTION(BlueprintCallable)
-    int32 SetEnterParkingArea(const EParkingArea parking_area);
+    int32 SetEnterParkingArea(const EParkingArea parking_area, const bool in_count_visits);
     
     UFUNCTION(BlueprintCallable)
     void SetEnableSystemMenu(const bool is_enable);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetDLCUseStatus(const UAvaliableDLCInfo* in_dlc_info);
     
     UFUNCTION(BlueprintCallable)
     void SetDailyRandomSeed(const int32 in_seed);
@@ -387,7 +410,7 @@ public:
     void ResetOptionSaveDataChangedFlag();
     
     UFUNCTION(BlueprintCallable)
-    void RepayPerkPoint(const UDataTable* repayment_datatable);
+    void RepayPerkPoint();
     
     UFUNCTION(BlueprintCallable)
     void RemoveSelectedCarTunerTune();
@@ -397,6 +420,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void RemoveNewLiverySticker(const FName in_sticker);
+    
+    UFUNCTION(BlueprintCallable)
+    void RemoveNewLiveryAura(const FName in_aura);
     
     UFUNCTION(BlueprintCallable)
     bool RemoveMyCar(const int32 my_car_id);
@@ -412,6 +438,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     int32 RecordSegment(const FName name_id, const double Time, const FName car_name_id, const FDateTime Date, const int32 Day, const double in_distance, const bool in_is_wall_hit, double& out_last_best_result);
+    
+    UFUNCTION(BlueprintCallable)
+    void RecalcUpperLimit(const UDataTable* in_root_datatable);
     
     UFUNCTION(BlueprintCallable)
     void RaceRestartResetParameter();
@@ -445,6 +474,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool IsNewMarkCanBoughtCar(const FName car_name_id);
+    
+    UFUNCTION(BlueprintCallable)
+    bool IsNewGamePlusValid(const FSUserInfo in_user_info);
     
     UFUNCTION(BlueprintCallable)
     bool IsIncludedCurrentStoryStage(const EStoryStage in_check_stage);
@@ -522,6 +554,9 @@ public:
     EVehicleTuneLevel GetTunePartsMaxOpenLevel(const EVehicleTuneKind tune_kind);
     
     UFUNCTION(BlueprintCallable)
+    EVehicleTuneLevel GetTunePartsHaveMaxLevel(const int32 in_my_car_id, const EVehicleTuneKind tune_kind);
+    
+    UFUNCTION(BlueprintCallable)
     ERaceTimeZone GetTimeZone();
     
     UFUNCTION(BlueprintCallable)
@@ -529,6 +564,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     EStoryStage GetStoryStage();
+    
+    UFUNCTION(BlueprintCallable)
+    EStoryKind GetStoryKind();
     
     UFUNCTION(BlueprintCallable)
     FSSpeedTrapRecords GetSpeedTrapRecord(const FName name_id, const bool clear_update_best);
@@ -576,7 +614,7 @@ public:
     FName GetSelectedCarNormalEngineId();
     
     UFUNCTION(BlueprintCallable)
-    FSMyCarNeon GetSelectedCarNeon(const ENeonLightPositionType position);
+    FSMyCarNeon GetSelectedCarNeon(const ENeonLightPositionType Position);
     
     UFUNCTION(BlueprintCallable)
     TArray<EVehicleTuneLevel> GetSelectedCarHaveReplacementEngineLevels(const FName in_engine_id, const EVehicleTuneKind in_tune_kind);
@@ -639,6 +677,9 @@ public:
     TArray<ECourseEnter> GetOpenCourseEnter();
     
     UFUNCTION(BlueprintCallable)
+    int32 GetNumOfClearedTeamRivals(const UDataTable* data_table, const TArray<FName> target_rival_ids, int32& member_num);
+    
+    UFUNCTION(BlueprintCallable)
     TMap<FName, FSPerkTreeMachineInfo> GetNumberOfPerkTreeMachineAcquired(const UDataTable* in_root_datatable);
     
     UFUNCTION(BlueprintCallable)
@@ -696,6 +737,9 @@ public:
     TArray<FName> GetNewLiveryStickers();
     
     UFUNCTION(BlueprintCallable)
+    TArray<FName> GetNewLiveryAuras();
+    
+    UFUNCTION(BlueprintCallable)
     TMap<int32, FSMyCarInfo> GetMyCars();
     
     UFUNCTION(BlueprintCallable)
@@ -726,7 +770,16 @@ public:
     FSRaceBattleResultInfo GetLastBattleResult();
     
     UFUNCTION(BlueprintCallable)
+    EStoryStage GetKeepStoryStage(const bool is_check);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    ERivalSituation GetKeepRivalSituation(const FName in_id) const;
+    
+    UFUNCTION(BlueprintCallable)
     bool GetIsDispCurrentTutorialModePopup();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetIsChallengeMode() const;
     
     UFUNCTION(BlueprintCallable)
     TArray<FSInputActionKeyMapping> GetInputActionKeyMapping();
@@ -742,6 +795,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     TArray<FSGarageInfo> GetGarages();
+    
+    UFUNCTION(BlueprintCallable)
+    ESkillTreeType GetEquipPerkSkillInSlot(const int32 in_slot);
     
     UFUNCTION(BlueprintCallable)
     TArray<ESkillTreeType> GetEquipPerkSkill();
@@ -806,11 +862,20 @@ public:
     UFUNCTION(BlueprintCallable)
     TArray<FName> GetCanBoughtCarNameIds();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure=false)
+    UAvaliableDLCInfo* GetAvaliableDLCInfo() const;
+    
     UFUNCTION(BlueprintCallable)
     TMap<FName, FSTeamSituationInfo> GetAllTeamSituation();
     
     UFUNCTION(BlueprintCallable)
     TMap<FName, FSRivalSituationInfo> GetAllRivalSituation();
+    
+    UFUNCTION(BlueprintCallable)
+    FSPerkStatusInfo GetAcquiredStatus(const ESkillTreeType in_type, bool& out_is_find);
+    
+    UFUNCTION(BlueprintCallable)
+    int32 GetAcquiredPerkSkillTotalLevel(const UDataTable* in_skill_datatable, int32& Num);
     
     UFUNCTION(BlueprintCallable)
     FSSkillTree GetAcquiredPerkSkill(const UDataTable* in_root_datatable, const ESkillTreeType in_type, bool& out_is_find);
@@ -828,6 +893,9 @@ public:
     void FixAddStickerFromRivalInfo(const UDataTable* in_rival_dt);
     
     UFUNCTION(BlueprintCallable)
+    void FixAddAuraFromRivalInfo(const UDataTable* in_rival_dt);
+    
+    UFUNCTION(BlueprintCallable)
     void FixAchievement(const UDataTable* in_rival_dt);
     
     UFUNCTION(BlueprintCallable)
@@ -835,6 +903,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool EnableFastTravelCourseExitShop(const ECourseExit course_exit, const ECourseExitShopTypeFlag Type);
+    
+    UFUNCTION(BlueprintCallable)
+    void DuplicateObjectiveAndRivalInfoForNewGamePlus();
     
     UFUNCTION(BlueprintCallable)
     void DepriveAllMyCar();
@@ -852,7 +923,16 @@ public:
     void DataFixAfterDataLoad();
     
     UFUNCTION(BlueprintCallable)
+    bool ContainKeepClearedObjectives(const FName in_id);
+    
+    UFUNCTION(BlueprintCallable)
     bool ConsumePP(const int32 in_consume_pp, int32& out_current_pp);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 ComputeTotalBpFromUnlockPerk(const UDataTable* in_perk_root_dt, const TMap<FName, FSPerkCategoryInfo> in_perk_category_statuses) const;
+    
+    UFUNCTION(BlueprintCallable)
+    void ComputeForDampingSettingStepChanges();
     
     UFUNCTION(BlueprintCallable)
     void ClearWiningStreakForProvenExperienceFromPerk();
@@ -897,13 +977,16 @@ public:
     void ClearMovieTeatherPlayMovieId(const bool in_is_all);
     
     UFUNCTION(BlueprintCallable)
-    void ClearEquipPerkSkill();
+    void ClearEquipPerkSkill(const int32 in_slot);
     
     UFUNCTION(BlueprintCallable)
     void ClearAnnounceUnlockedTunes();
     
     UFUNCTION(BlueprintCallable)
     bool CheckCarYouOwn(const FName in_check_car_name_id);
+    
+    UFUNCTION(BlueprintCallable)
+    void ChangeEquipSkillsSaved();
     
     UFUNCTION(BlueprintCallable)
     bool ChangeCurrentGarageInfo(const int32 ID);
@@ -924,16 +1007,16 @@ public:
     bool AddSelectedCarTunePartsHaveFlag(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level);
     
     UFUNCTION(BlueprintCallable)
-    bool AddSelectedCarNeon(const ENeonLightPositionType position, const FSMyCarNeon my_neon_info);
+    bool AddSelectedCarNeon(const ENeonLightPositionType Position, const FSMyCarNeon my_neon_info);
     
     UFUNCTION(BlueprintCallable)
     bool AddSelectedCarCustomParts(const ECustomCarPartsKind Kind, const ECustomCarPartsType Type, const bool is_equip);
     
     UFUNCTION(BlueprintCallable)
-    int32 AddPP(const int32 in_add_pp, const bool in_add_cumulative_acquisition, int32& overflowed_pp);
+    int32 AddPP(const int32 in_add_pp, const bool in_add_cumulative_acquisition, const bool in_is_overflow_allowed, int32& overflowed_pp);
     
     UFUNCTION(BlueprintCallable)
-    void AddPerk(const FName in_category, const FName in_row_name, const FSSkillTree in_perk);
+    bool AddPerk(const FName in_category, const FName in_row_name, const FSSkillTree in_perk);
     
     UFUNCTION(BlueprintCallable)
     void AddOutGameStackScenes(const EJumpScene add_scene, const EParkingArea in_pa);
@@ -949,6 +1032,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void AddNewLiverySticker(const FName in_sticker);
+    
+    UFUNCTION(BlueprintCallable)
+    void AddNewLiveryAura(const FName in_aura);
     
     UFUNCTION(BlueprintCallable)
     bool AddMyCarSettingInfo(const int32 in_key, const ECarSetting in_setting_type, const int32 in_setting_value, const bool in_add_forced);
@@ -969,7 +1055,7 @@ public:
     void AddGarage(const FName garage, const bool is_use);
     
     UFUNCTION(BlueprintCallable)
-    bool AddEquipPerkSkill(const ESkillTreeType in_type);
+    bool AddEquipPerkSkill(const ESkillTreeType in_type, const int32 in_slot);
     
     UFUNCTION(BlueprintCallable)
     int32 AddDriverSkill(const ESkillTreeType Type, const int32 Value, const bool increment_level, int32& new_level, int32& new_value);

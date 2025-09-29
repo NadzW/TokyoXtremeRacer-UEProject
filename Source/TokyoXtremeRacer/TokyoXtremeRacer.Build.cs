@@ -4,7 +4,7 @@ public class TokyoXtremeRacer : ModuleRules {
     public TokyoXtremeRacer(ReadOnlyTargetRules Target) : base(Target) {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         bLegacyPublicIncludePaths = false;
-        ShadowVariableWarningLevel = WarningLevel.Warning;
+        CppCompileWarningSettings.ShadowVariableWarningLevel = WarningLevel.Warning;
         
         PublicDependencyModuleNames.AddRange(new string[] {
             "AIModule",
@@ -15,6 +15,7 @@ public class TokyoXtremeRacer : ModuleRules {
             "DeveloperSettings",
             "Engine",
             "EnhancedInput",
+            "GkOnlinePlatformSystem",
             "InputCore",
             "JsonUtilities",
             "MetasoundEngine",

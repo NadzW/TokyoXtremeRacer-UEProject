@@ -3,5 +3,6 @@
 FCoursePathPoint::FCoursePathPoint() {
     this->Index = 0;
     this->bMainRoad = false;
+    this->ZoneIndex = 0;
 }
 

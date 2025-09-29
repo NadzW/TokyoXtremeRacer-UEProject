@@ -40,9 +40,11 @@ FSUserInfo::FSUserInfo() {
     this->NumberOfTimesMetTuner = 0;
     this->NumberOfTimesTunedByTuner = 0;
     this->TunerAppears = false;
+    this->UpperLimitPP = 0;
     this->PP = 0;
     this->CumulativeAcquisitionPP = 0;
     this->StoryStage = EStoryStage::None;
+    this->KeepStoryStage = EStoryStage::None;
     this->UseOilAndWaterTemperature = false;
     this->EnableSystemMenu = false;
     this->MinBattleTime = 0.00f;
@@ -55,5 +57,6 @@ FSUserInfo::FSUserInfo() {
     this->HitBridgePier = false;
     this->MaxDistanceCarPushed = 0.00f;
     this->DailyRandomSeed = 0;
+    this->IsChallengeMode = false;
 }
 

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "CommonInput/Public/CommonInputTypeEnum.h"
 #include "UObject/NoExportTypes.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "ControllerId.h"
 #include "ControllerModel.h"
 #include "BPFL_InputUi.generated.h"

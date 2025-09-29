@@ -1,0 +1,36 @@
+{
+	"FileVersion": 3,
+	"Version": 50,
+	"VersionName": "8.1.0-NGX310.2.1.0",
+	"FriendlyName": "NVIDIA DLSS Super Resolution/Ray Reconstruction/DLAA",
+	"Description": "DLSS Super Resolution boosts frame rates by rendering fewer pixels and using AI to output high resolution frames. DLSS Ray Reconstruction enhances image quality by generating high-quality pixels between sampled rays for intensive ray traced content. DLAA is an AI-based anti-aliasing mode to improve image quality.",
+	"Category": "Rendering",
+	"CreatedBy": "NVIDIA",
+	"CreatedByURL": "https://developer.nvidia.com/dlss",
+	"DocsURL": "",
+	"MarketplaceURL": "https://www.unrealengine.com/marketplace/en-US/product/nvidia-dlss",
+	"SupportURL": "mailto:DLSS-Support@nvidia.com",
+	"EngineVersion": "5.6.0",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"SupportedTargetPlatforms": [
+		"Win64"
+	],
+	"Modules": [
+		{
+			"Name": "DLSS",
+			"Type": "Runtime",
+			"LoadingPhase": "PostEngineInit",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "DLSSBlueprint",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		}
+	]
+}

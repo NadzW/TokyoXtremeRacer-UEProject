@@ -1,7 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/GameInstanceSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "EAchievementsPlatform.h"
+#include "EDispMessage.h"
+#include "ESkillTreeType.h"
 #include "EVehicleTuneKind.h"
 #include "EVehicleTuneLevel.h"
 #include "EVersion.h"
@@ -9,6 +11,8 @@
 #include "SControllerSetting.h"
 #include "SRaceBattleResultInfo.h"
 #include "SSBVersion.h"
+#include "SSkillAccessInfo.h"
+#include "SSkillTree.h"
 #include "SUserInfo.h"
 #include "GameInfoGameInstanceSubsystem.generated.h"
 
@@ -47,8 +51,17 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAchievementsPlatform UseAchievementPlatform;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<ESkillTreeType, FSSkillAccessInfo> SkillAccessInfos;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EDispMessage DispMessage;
+    
     UGameInfoGameInstanceSubsystem();
 
+    UFUNCTION(BlueprintCallable)
+    void SkillSetup(const UDataTable* in_root_datatableconst, const FName in_category, const bool in_exe_empty);
+    
     UFUNCTION(BlueprintCallable)
     void SetupAchievemet(UDataTable* data_table, const bool in_achievementinfo_reflect_to_userinfo, FSUserInfo& in_user_info, const TMap<EVehicleTuneKind, EVehicleTuneLevel> in_max_tune_levels, const UDataTable* rival_data_table);
     
@@ -56,7 +69,13 @@ public:
     void SetForcedVibrationStop(const bool in_is_forced_stop);
     
     UFUNCTION(BlueprintCallable)
+    void SetDispMessage(const EDispMessage in_message_type);
+    
+    UFUNCTION(BlueprintCallable)
     EVersion GetVersion(FName& out_number);
+    
+    UFUNCTION(BlueprintCallable)
+    bool GetSkillInfo(const ESkillTreeType in_type, const int32 in_level, FSSkillTree& out_info);
     
     UFUNCTION(BlueprintCallable)
     FSSBVersion GetSBVersion();
@@ -66,6 +85,12 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetForcedVibrationStop() const;
+    
+    UFUNCTION(BlueprintCallable)
+    EDispMessage GetDispMessage();
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearDispMessage();
     
     UFUNCTION(BlueprintCallable)
     void CheckPlatformAchievement(const TArray<FSAchievementsIdsForPlatform> in_check_achievements);

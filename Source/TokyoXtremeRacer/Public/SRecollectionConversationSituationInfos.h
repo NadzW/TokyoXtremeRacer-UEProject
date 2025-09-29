@@ -8,7 +8,7 @@ struct TOKYOXTREMERACER_API FSRecollectionConversationSituationInfos {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TMap<FName, FSRecollectionConversationSituationInfo> ConversationSituations;
+    TMap<FName, FSRecollectionConversationSituationInfo> ConversationList;
     
     FSRecollectionConversationSituationInfos();
 };

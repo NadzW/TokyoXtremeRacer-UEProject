@@ -11,6 +11,8 @@ URaceInfoGameInstanceSubsystem::URaceInfoGameInstanceSubsystem() {
     this->StartCourseEnter = ECourseEnter::HW_C1_Ginza_Inner;
     this->ExitCourseExit = ECourseExit::HW_C1_Takarachou_Outer;
     this->StartArea = ERunArea::ERA_None;
+    this->EnterParkingArea = EParkingArea::PA_6_9_Hakozaki;
+    this->IsReturnPakingAreaBattle = false;
     this->ExitParkingArea = EParkingArea::PA_6_9_Hakozaki;
     this->OnCouseForBattle = false;
     this->UpdateDay = 0;
@@ -89,7 +91,7 @@ bool URaceInfoGameInstanceSubsystem::SetForceParkingAreaBattleRival(const ECours
 void URaceInfoGameInstanceSubsystem::SetExitParkingArea(const EParkingArea Area) {
 }
 
-void URaceInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea Area) {
+void URaceInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea Area, const bool in_is_return_pa_battle) {
 }
 
 void URaceInfoGameInstanceSubsystem::SetEnableAddTimeNotDriving(const bool in_is_enable) {
@@ -146,6 +148,9 @@ void URaceInfoGameInstanceSubsystem::RecordSegmentForProcessAndResult(const FNam
 void URaceInfoGameInstanceSubsystem::RaceStart() {
 }
 
+void URaceInfoGameInstanceSubsystem::LookConversation() {
+}
+
 bool URaceInfoGameInstanceSubsystem::IsValidRivalDataTable() {
     return false;
 }
@@ -179,6 +184,10 @@ int32 URaceInfoGameInstanceSubsystem::IncContinuousFirstAttack() {
 
 bool URaceInfoGameInstanceSubsystem::GetValidProcessAndResult() {
     return false;
+}
+
+EParkingArea URaceInfoGameInstanceSubsystem::GetTunerAppearsParkingArea() const {
+    return EParkingArea::PA_6_9_Hakozaki;
 }
 
 FSCourseTrafficJamInfoForRefrences URaceInfoGameInstanceSubsystem::GetTrafficJamInfos(const ERunArea Area) {
@@ -239,7 +248,7 @@ FSEventForcedAddRivalInfo URaceInfoGameInstanceSubsystem::GetEventForcedAddRival
     return FSEventForcedAddRivalInfo{};
 }
 
-EParkingArea URaceInfoGameInstanceSubsystem::GetEnterParkingArea() {
+EParkingArea URaceInfoGameInstanceSubsystem::GetEnterParkingArea(bool& out_is_return_pa_battle) {
     return EParkingArea::PA_6_9_Hakozaki;
 }
 
@@ -316,6 +325,10 @@ bool URaceInfoGameInstanceSubsystem::CheckRivalAppearance(const FSRivalAppearanc
 }
 
 void URaceInfoGameInstanceSubsystem::CheckActionDailyInit() {
+}
+
+bool URaceInfoGameInstanceSubsystem::CanGetPerfectBonusFromRival(const FName in_rival_id) {
+    return false;
 }
 
 void URaceInfoGameInstanceSubsystem::AddTrafficJamInfo(const FSCourseTrafficJamInfo Info) {

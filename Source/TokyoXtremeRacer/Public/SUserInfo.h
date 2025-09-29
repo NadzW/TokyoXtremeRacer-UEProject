@@ -7,9 +7,11 @@
 #include "ECourseExit.h"
 #include "ECourseOpenArea.h"
 #include "ECustomCarPartsKind.h"
+#include "EDLCAvaliableStatus.h"
 #include "EGameTutorialMode.h"
 #include "EParkingArea.h"
 #include "ERaceTimeZone.h"
+#include "ERivalSituation.h"
 #include "ESkillTreeType.h"
 #include "EStoryKind.h"
 #include "EStoryStage.h"
@@ -25,6 +27,7 @@
 #include "SPerkInfo.h"
 #include "SRaceBattleResultInfo.h"
 #include "SRaceDayResultInfo.h"
+#include "SRecollectionConversationSituationInfoList.h"
 #include "SRivalSituationInfo.h"
 #include "SSegmentSpeedTrapRecords.h"
 #include "SShopFistTravelInfo.h"
@@ -171,6 +174,9 @@ public:
     TMap<FName, FSRivalSituationInfo> RivalSituations;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FName, ERivalSituation> KeepRivalSituations;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> RivalsDefeated;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -183,10 +189,16 @@ public:
     TMap<EParkingArea, FSParkingAreaConversationSituationInfos> ParkingConversationSituationsMap;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSRecollectionConversationSituationInfoList RecollectionConversationSituationList;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FSObjectiveProgress> ObjectiveProgresses;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> ClearedObjectives;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> KeepClearedObjectives;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double MaxSpeed;
@@ -270,6 +282,9 @@ public:
     TArray<FName> UnlockStickers;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> UnlockAuras;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> UnlockStickerTargetMeker;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -277,6 +292,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> NewUnlockStickers;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> NewUnlockAuras;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    int64 UpperLimitPP;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PP;
@@ -288,7 +309,13 @@ public:
     EStoryStage StoryStage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EStoryStage KeepStoryStage;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<ESkillTreeType> EquipSkills;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<int32, ESkillTreeType> SkillsEquipInSlot;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseOilAndWaterTemperature;
@@ -328,6 +355,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 DailyRandomSeed;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FName, EDLCAvaliableStatus> DLCUseStatus;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsChallengeMode;
     
     FSUserInfo();
 };

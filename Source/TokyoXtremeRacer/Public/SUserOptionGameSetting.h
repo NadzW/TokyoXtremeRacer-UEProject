@@ -3,6 +3,7 @@
 #include "Engine/DataTable.h"
 #include "EOP_BattleBgmTiming.h"
 #include "EOP_Language.h"
+#include "EOP_LimitTimeType.h"
 #include "EOP_MeterLayout.h"
 #include "EOP_MeterUnit.h"
 #include "EOP_ShiftChange.h"
@@ -64,6 +65,9 @@ public:
     bool Option_DriversInformation;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_RivalMarker;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Option_Segment;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -103,6 +107,9 @@ public:
     bool Option_IsCopyPhotoToSteamDir;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_IsPhotoToHDR;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Option_ViewingAngle;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -124,6 +131,9 @@ public:
     int32 Option_ScreenPercentage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_HDR;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Option_MasterVolumn;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -137,6 +147,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EOP_BattleBgmTiming Option_BattleBgmTiming;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_ShiftAlert;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EOP_LimitTimeType Option_ShowLimitTimeType;
     
     FSUserOptionGameSetting();
 };

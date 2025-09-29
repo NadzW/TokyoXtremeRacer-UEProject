@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/GameInstanceSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "RankingResultDelegate.h"
 #include "RankingGameInstanceSubsystem.generated.h"
 

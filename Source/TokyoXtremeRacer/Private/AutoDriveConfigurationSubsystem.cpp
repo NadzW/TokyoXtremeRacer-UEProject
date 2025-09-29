@@ -7,6 +7,7 @@ UAutoDriveConfigurationSubsystem::UAutoDriveConfigurationSubsystem() {
     this->TorqueSpecEffectTable = NULL;
     this->GripSpecEffectTable = NULL;
     this->PlayEffectSpecEffectTable = NULL;
+    this->ReoverySPSpecEffectTable = NULL;
     this->DriftPreferenceTable = NULL;
     this->CrusingParameterTable = NULL;
     this->RivalDrivingParameterTable = NULL;
@@ -17,6 +18,10 @@ FSRivalDrivingParameter UAutoDriveConfigurationSubsystem::RivalDrivingParameter(
 }
 
 float UAutoDriveConfigurationSubsystem::ReturnTorqueSpecEffect(ERivalSpecEffect SpecRivalEffect) {
+    return 0.0f;
+}
+
+float UAutoDriveConfigurationSubsystem::ReturnRecoverySPSpecEffect(ERivalSpecEffect SpecRivalEffect) {
     return 0.0f;
 }
 

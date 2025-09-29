@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "BPFL_PhotoMode.generated.h"
 
 class UObject;
@@ -13,6 +13,9 @@ public:
 
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetCameraMovableWhenPaused(const UObject* WorldContextObject, bool bIsMovable);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsPhotomodeSaveDirTempDir();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetPhotomodeSaveDir();

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/WorldSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "AutoDriveCrusingDefinitionParameter.h"
 #include "EAutoDriveCrusingType.h"
 #include "EBlockMethod.h"
@@ -45,6 +45,9 @@ private:
     UDataTable* PlayEffectSpecEffectTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UDataTable* ReoverySPSpecEffectTable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UDataTable* DriftPreferenceTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -72,6 +75,9 @@ private:
     TMap<ERivalSpecEffect, float> PlayEffectSpecEffectValues;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<ERivalSpecEffect, float> RecoverySPSpecEffectValues;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ERivalDriftPreference, float> DriftPreferenceValues;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -88,6 +94,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     float ReturnTorqueSpecEffect(ERivalSpecEffect SpecRivalEffect);
+    
+    UFUNCTION(BlueprintCallable)
+    float ReturnRecoverySPSpecEffect(ERivalSpecEffect SpecRivalEffect);
     
     UFUNCTION(BlueprintCallable)
     float ReturnRandomLaneChangeRate(ERivalRandomLaneChange RivalRandomLaneChange);

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "EWrappedStreamlineDLSSGMode.h"
 #include "EWrappedStreamlineFeatureSupport.h"
 #include "UWrappedDLSSMode.h"

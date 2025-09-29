@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "BPI_RPMCornerProcComponent.h"
 #include "BP_RPMCornerProcComponent.generated.h"
 

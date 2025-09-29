@@ -27,6 +27,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EOP_BattleBgmTiming Option_BattleBgmTiming;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Option_ShiftAlert;
+    
     FSSbSoundSettingInfo();
 };
 

@@ -54,6 +54,7 @@ enum class EBadNameConditionSubType : uint8 {
     MT_WinsSpecialRivals_01,
     MT_WinsSpecialRivals_02,
     MT_WinsSpecialRivals_03,
+    MT_Aura,
     MT_Num,
     MT_Condition03_Top = MT_IncarnationOfHighway,
     MT_Condition03_End = MT_Tourists,

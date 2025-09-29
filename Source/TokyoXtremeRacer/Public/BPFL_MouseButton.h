@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "InputCoreTypes.h"
 #include "Input/Events.h"
 #include "BPFL_MouseButton.generated.h"

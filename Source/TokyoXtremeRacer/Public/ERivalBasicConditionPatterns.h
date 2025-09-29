@@ -20,5 +20,7 @@ enum class ERivalBasicConditionPatterns : uint8 {
     RBCP_PassedByPlayer,
     RBCP_BlockPlayer,
     RBCP_BlockedPlayer,
+    RBCP_SpeedSlower,
+    RBCP_SpeedFaster,
 };
 

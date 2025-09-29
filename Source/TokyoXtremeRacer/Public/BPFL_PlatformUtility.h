@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "EGkBuildPlatformType.h"
 #include "BPFL_PlatformUtility.generated.h"
 

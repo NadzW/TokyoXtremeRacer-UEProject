@@ -14,5 +14,8 @@ FSRaceBattleResultInfo::FSRaceBattleResultInfo() {
     this->bEnemyIsOther = false;
     this->bUseEvaluation = false;
     this->TopCategory = ERivalCategory::SecretBoss;
+    this->DidPlayerTakeDamage = false;
+    this->PerfectWin = false;
+    this->bUseNitro = false;
 }
 

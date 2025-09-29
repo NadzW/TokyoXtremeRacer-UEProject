@@ -32,5 +32,9 @@ FSRivalInfo::FSRivalInfo() {
     this->ShiftUpMinusRpm = 0.00f;
     this->UseJustAccele = false;
     this->FirstAppearance = EFistAppearance::EarlyAccess;
+    this->LevelSP = 0;
+    this->LevelATK = 0;
+    this->LevelDEF = 0;
+    this->LevelPHY = 0;
 }
 

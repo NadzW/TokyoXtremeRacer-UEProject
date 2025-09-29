@@ -7,6 +7,10 @@ TArray<float> UBPFL_GameUtility::UpdateTRUEFORCEArray(const TArray<float> in_a, 
     return TArray<float>();
 }
 
+FSBattleTargetInfos UBPFL_GameUtility::UpdateBattleTargetInfos(const FSBattleTargetInfos in_infos, const int32 in_get_index, const FSBattleTargetInfo in_info) {
+    return FSBattleTargetInfos{};
+}
+
 void UBPFL_GameUtility::RefrectTuneInfoToParameter(const TMap<EVehicleTuneKind, FSTuneInfo>& src_info, UTuneParameter* dst_param) {
 }
 
@@ -37,8 +41,12 @@ TArray<ERunArea> UBPFL_GameUtility::GetValidRunArea(const ECourseOpenArea in_ope
     return TArray<ERunArea>();
 }
 
-bool UBPFL_GameUtility::GetRivalSituationInfoNewFlag(const FSRivalSituationInfo& Info, const bool is_win) {
+bool UBPFL_GameUtility::GetRivalSituationInfoNewFlag(const FSRivalSituationInfo& Info, const bool is_win, const ERivalSituation keep_situation, ERivalSituation& out_situation) {
     return false;
+}
+
+int32 UBPFL_GameUtility::GetRivalDriverLevel(const FSRivalInfo in_info) {
+    return 0;
 }
 
 FSCarLicensePlate UBPFL_GameUtility::GetRandomLicensePlate(const int32 in_category) {
@@ -49,12 +57,20 @@ bool UBPFL_GameUtility::GetPassingTiming(const double in_timer, const double in_
     return false;
 }
 
+TMap<EVehicleTuneKind, EVehicleTuneLevel> UBPFL_GameUtility::GetMaxTuneLevelAtStageFromPerk(const EStoryStage in_stage, const UDataTable* in_perk_root_datatable, int32& out_total_level) {
+    return TMap<EVehicleTuneKind, EVehicleTuneLevel>();
+}
+
 TArray<double> UBPFL_GameUtility::GetGears(const FSInternalMethodCarData in_data) {
     return TArray<double>();
 }
 
 ERaceDayOfWeek UBPFL_GameUtility::GetDayOfWeek(const int32& Day) {
     return ERaceDayOfWeek::Sun;
+}
+
+FSBattleTargetInfo UBPFL_GameUtility::GetBattleTargetInfo(const FSBattleTargetInfos in_infos, const int32 in_get_index) {
+    return FSBattleTargetInfo{};
 }
 
 FSRivalBattleInfo UBPFL_GameUtility::GetBattleInfoFromDT(const UDataTable* data_table, ERivalBattleBaseParameterTbl Type, const int32 Level) {
@@ -73,6 +89,10 @@ double UBPFL_GameUtility::ComputeTireGripRateFromDegradationInfo(const FSCarTire
     return 0.0;
 }
 
+bool UBPFL_GameUtility::ComputeSpRecoveryFromSkillTechnique(const ESkillTarget in_tec, const FSBattleBaseInfo in_base_info, const UVehicleRaceInfo* in_race_info, const double in_coef, double& out_recovery_value) {
+    return false;
+}
+
 void UBPFL_GameUtility::ComputeSplitRateByDCCD(const double in_dt, const double in_speed, const double in_ang_vel, const double in_accele, const double in_brake, const double in_steer_angle, const bool in_side_brake, const double in_steer_limit_angle, const double in_a_split_rate, const double in_move_speed, const double in_old_rate_a, double& out_rate_a, double& out_rate_b) {
 }
 
@@ -80,6 +100,18 @@ void UBPFL_GameUtility::ComputeSplitRateByAYC(const double in_dt, const double i
 }
 
 void UBPFL_GameUtility::ComputeSplitRateByATTESA_ETS(const double in_dt, const double in_a_split_rate, const double in_a_force, const double in_b_force, const double in_b_max_force, const bool in_is_b_slip, const double in_move_speed, const double in_old_rate_a, double& out_rate_a, double& out_rate_b) {
+}
+
+bool UBPFL_GameUtility::ComputeSpDamageFromSkillTechnique(const double in_battle_time, const ESkillTarget in_tec, const FSBattleBaseInfo in_attacker_base_info, const UVehicleRaceInfo* in_attacker_info, const FSBattleBaseInfo in_defender_base_info, const UVehicleRaceInfo* in_defender_info, double& out_damage_value, bool& out_exe_defense_skill, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus) {
+    return false;
+}
+
+bool UBPFL_GameUtility::ComputeSpDamage(const double in_dt, const double in_battle_time, const double in_distance_coef, const double in_attack_coef, const double in_defense_coef, const double in_max_damage, const FSBattleBaseInfo in_player_base_info, const UVehicleRaceInfo* in_player_info, const FSBattleBaseInfo in_rival_base_info, const UVehicleRaceInfo* in_rival_info, const double in_distance_from_player, const double in_base_distance, const bool in_use_pure_distance, const FSBattleTargetInfo in_targe_info, bool& out_is_player_attack_side, double& out_damage, double& out_use_distance, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus, bool& out_exe_attack_coef, bool& out_exe_defence_coef, FSBattleTargetInfo& out_targe_info) {
+    return false;
+}
+
+int32 UBPFL_GameUtility::ComputeRewardBattlePoints(const int32 in_level, const bool in_is_first_win) {
+    return 0;
 }
 
 double UBPFL_GameUtility::ComputeRearDriveRateFromSettingTorqueBalance(const double in_base_drive_rate, const double in_setting_torque_balance) {
@@ -108,6 +140,10 @@ void UBPFL_GameUtility::ComputeGearChangeRpmAndOtheres(const double in_max_rpm, 
 }
 
 void UBPFL_GameUtility::ComputeEnginePhyiscsParameter(const EEngineKind in_engine_kind, const int32 in_engine_displacement, const ECarIceAspirationType in_engine_aspirationtype, double& out_engine_weight, double& out_com_offset_z) {
+}
+
+FRandomStream UBPFL_GameUtility::ComputeEachLevelFromDriverLevel(FRandomStream in_random_stream, const int32 in_level, const int32 in_max_level, int32& out_sp_level, int32& out_atk_level, int32& out_def_level, int32& out_phy_level, int32& out_level) {
+    return FRandomStream{};
 }
 
 double UBPFL_GameUtility::ComputeDopplerEffect(const double in_listener_v, const double in_target_v, const double in_target_f) {
@@ -145,12 +181,24 @@ TArray<float> UBPFL_GameUtility::CombiningTRUEFORCEArray(const TArray<float> in_
     return TArray<float>();
 }
 
+bool UBPFL_GameUtility::CheckRivalPlacementSituation(const FName& rival_name_id, const ERivalPlacementSituation& placement_situation, const FSUserInfo& user_info) {
+    return false;
+}
+
 ERivalDispSituation UBPFL_GameUtility::CheckRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival, int32& out_win_num) {
     return ERivalDispSituation::None;
 }
 
 bool UBPFL_GameUtility::CheckRivalAppearance(const FSRivalAppearanceConditionInfo& rival_appear_cond, const FSUserInfo& user_info, const UDataTable* data_table, int32& clear_group_num) {
     return false;
+}
+
+ERivalDispSituation UBPFL_GameUtility::CheckNormalAndKeepRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival) {
+    return ERivalDispSituation::None;
+}
+
+ERivalDispSituation UBPFL_GameUtility::CheckKeepRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival) {
+    return ERivalDispSituation::None;
 }
 
 

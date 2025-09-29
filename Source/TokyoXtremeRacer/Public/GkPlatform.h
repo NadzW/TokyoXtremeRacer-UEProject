@@ -12,5 +12,8 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsSteamDeck();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FString GetTempDirectoryPath();
+    
 };
 

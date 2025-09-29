@@ -20,6 +20,9 @@ public:
     FName ReturnRPDName_C() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void ReturnRelatedRoadPointNames_C(TArray<FName>& RelatedRPDNames) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     ERPDZoneAttribute ReturnFirstPointZone_C() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)

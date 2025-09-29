@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/WorldSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "ECarCutInProductionType.h"
 #include "CarCutInProductionWorldSubsystem.generated.h"
 

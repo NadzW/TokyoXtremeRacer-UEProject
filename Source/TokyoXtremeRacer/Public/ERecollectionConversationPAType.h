@@ -16,5 +16,6 @@ enum class ERecollectionConversationPAType : uint8 {
     PostBattle_Defeated,
     PostBattle_DefeatAfterWinning,
     PostBattle_Draw,
+    Num,
 };
 

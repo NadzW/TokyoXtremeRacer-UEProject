@@ -10,5 +10,8 @@ FSRivalSituationInfo::FSRivalSituationInfo() {
     this->IsHearRumors = false;
     this->IsReadRumors = false;
     this->IsReadProfile = false;
+    this->NumOfWinsWithoutNitro = 0;
+    this->NumOfWinsInNoMercy = 0;
+    this->NumOfWinsInNoMercyWithOutNitro = 0;
 }
 

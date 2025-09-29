@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
 #include "BadNameAcquired.h"
 #include "BadNameAcquisitionHistory.h"
 #include "BadNameConditionData.h"
@@ -53,7 +53,7 @@ public:
     static FBadNameUnit GetDefaultAlphaBadName(int32 Area, UDataTable* AlphaTable);
     
     UFUNCTION(BlueprintCallable)
-    static int32 GetConditionSubType03AcquiredKey(const FBadNameConditionData& Record);
+    static int32 GetConditionSubType03AcquiredKey(const FBadNameConditionData& record);
     
     UFUNCTION(BlueprintCallable)
     static FText GetBadNameText(const FBadNameState& bad_name, const EOP_Language& Option_Language);
@@ -70,10 +70,10 @@ private:
     
 public:
     UFUNCTION(BlueprintCallable)
-    static FBadNameUnit CreateBadNameUnit(const FBadNameConditionData& Record);
+    static FBadNameUnit CreateBadNameUnit(const FBadNameConditionData& record);
     
     UFUNCTION(BlueprintCallable)
-    static FBadNameState CreateBadNameFull(const FBadNameConditionData& Record);
+    static FBadNameState CreateBadNameFull(const FBadNameConditionData& record);
     
     UFUNCTION(BlueprintCallable)
     static FBadNameState CreateBadNameAlphaAndBeta(const FBadNameConditionData& a_record, const FBadNameConditionData& b_record);

@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "ECarIceAspirationType.h"
 #include "ECourseOpenArea.h"
 #include "EEngineKind.h"
@@ -9,10 +10,17 @@
 #include "ERaceDayOfWeek.h"
 #include "ERivalBattleBaseParameterTbl.h"
 #include "ERivalDispSituation.h"
+#include "ERivalPlacementSituation.h"
+#include "ERivalSituation.h"
 #include "ERunArea.h"
+#include "ESkillTarget.h"
+#include "EStoryStage.h"
 #include "EVehicleTuneKind.h"
 #include "EVehicleTuneLevel.h"
 #include "EVehicleTuneLevelFlag.h"
+#include "SBattleBaseInfo.h"
+#include "SBattleTargetInfo.h"
+#include "SBattleTargetInfos.h"
 #include "SBrakeRotorParameter.h"
 #include "SCarLicensePlate.h"
 #include "SCarPaint.h"
@@ -22,6 +30,7 @@
 #include "SMyCarInfo.h"
 #include "SRivalAppearanceConditionInfo.h"
 #include "SRivalBattleInfo.h"
+#include "SRivalInfo.h"
 #include "SRivalSituationInfo.h"
 #include "STuneInfo.h"
 #include "SUserInfo.h"
@@ -29,6 +38,7 @@
 
 class UDataTable;
 class UTuneParameter;
+class UVehicleRaceInfo;
 
 UCLASS(Blueprintable)
 class TOKYOXTREMERACER_API UBPFL_GameUtility : public UBlueprintFunctionLibrary {
@@ -39,6 +49,9 @@ public:
 private:
     UFUNCTION(BlueprintCallable)
     static TArray<float> UpdateTRUEFORCEArray(const TArray<float> in_a, const float in_dt, const float in_seg_dt);
+    
+    UFUNCTION(BlueprintCallable)
+    static FSBattleTargetInfos UpdateBattleTargetInfos(const FSBattleTargetInfos in_infos, const int32 in_get_index, const FSBattleTargetInfo in_info);
     
     UFUNCTION(BlueprintCallable)
     static void RefrectTuneInfoToParameter(const TMap<EVehicleTuneKind, FSTuneInfo>& src_info, UTuneParameter* dst_param);
@@ -66,20 +79,29 @@ private:
     
 public:
     UFUNCTION(BlueprintCallable)
-    static bool GetRivalSituationInfoNewFlag(const FSRivalSituationInfo& Info, const bool is_win);
+    static bool GetRivalSituationInfoNewFlag(const FSRivalSituationInfo& Info, const bool is_win, const ERivalSituation keep_situation, ERivalSituation& out_situation);
     
 private:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static int32 GetRivalDriverLevel(const FSRivalInfo in_info);
+    
     UFUNCTION(BlueprintCallable)
     static FSCarLicensePlate GetRandomLicensePlate(const int32 in_category);
     
     UFUNCTION(BlueprintCallable)
     static bool GetPassingTiming(const double in_timer, const double in_first_wait_time, const double in_lighting_time, const double in_lighting_between_time, const double in_last_wait_time, bool& out_is_finished);
     
+    UFUNCTION(BlueprintCallable)
+    static TMap<EVehicleTuneKind, EVehicleTuneLevel> GetMaxTuneLevelAtStageFromPerk(const EStoryStage in_stage, const UDataTable* in_perk_root_datatable, int32& out_total_level);
+    
     UFUNCTION(BlueprintPure)
     static TArray<double> GetGears(const FSInternalMethodCarData in_data);
     
     UFUNCTION(BlueprintCallable)
     static ERaceDayOfWeek GetDayOfWeek(const int32& Day);
+    
+    UFUNCTION(BlueprintCallable)
+    static FSBattleTargetInfo GetBattleTargetInfo(const FSBattleTargetInfos in_infos, const int32 in_get_index);
     
     UFUNCTION(BlueprintCallable)
     static FSRivalBattleInfo GetBattleInfoFromDT(const UDataTable* data_table, ERivalBattleBaseParameterTbl Type, const int32 Level);
@@ -94,6 +116,9 @@ private:
     static double ComputeTireGripRateFromDegradationInfo(const FSCarTireDegradationInfo in_degra_info, const double in_current_life, FSCarTireConditionInfo& out_condition_info, double& out_side_grip);
     
     UFUNCTION(BlueprintCallable)
+    static bool ComputeSpRecoveryFromSkillTechnique(const ESkillTarget in_tec, const FSBattleBaseInfo in_base_info, const UVehicleRaceInfo* in_race_info, const double in_coef, double& out_recovery_value);
+    
+    UFUNCTION(BlueprintCallable)
     static void ComputeSplitRateByDCCD(const double in_dt, const double in_speed, const double in_ang_vel, const double in_accele, const double in_brake, const double in_steer_angle, const bool in_side_brake, const double in_steer_limit_angle, const double in_a_split_rate, const double in_move_speed, const double in_old_rate_a, double& out_rate_a, double& out_rate_b);
     
     UFUNCTION(BlueprintCallable)
@@ -101,6 +126,15 @@ private:
     
     UFUNCTION(BlueprintCallable)
     static void ComputeSplitRateByATTESA_ETS(const double in_dt, const double in_a_split_rate, const double in_a_force, const double in_b_force, const double in_b_max_force, const bool in_is_b_slip, const double in_move_speed, const double in_old_rate_a, double& out_rate_a, double& out_rate_b);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool ComputeSpDamageFromSkillTechnique(const double in_battle_time, const ESkillTarget in_tec, const FSBattleBaseInfo in_attacker_base_info, const UVehicleRaceInfo* in_attacker_info, const FSBattleBaseInfo in_defender_base_info, const UVehicleRaceInfo* in_defender_info, double& out_damage_value, bool& out_exe_defense_skill, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool ComputeSpDamage(const double in_dt, const double in_battle_time, const double in_distance_coef, const double in_attack_coef, const double in_defense_coef, const double in_max_damage, const FSBattleBaseInfo in_player_base_info, const UVehicleRaceInfo* in_player_info, const FSBattleBaseInfo in_rival_base_info, const UVehicleRaceInfo* in_rival_info, const double in_distance_from_player, const double in_base_distance, const bool in_use_pure_distance, const FSBattleTargetInfo in_targe_info, bool& out_is_player_attack_side, double& out_damage, double& out_use_distance, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus, bool& out_exe_attack_coef, bool& out_exe_defence_coef, FSBattleTargetInfo& out_targe_info);
+    
+    UFUNCTION(BlueprintCallable)
+    static int32 ComputeRewardBattlePoints(const int32 in_level, const bool in_is_first_win);
     
     UFUNCTION(BlueprintCallable)
     static double ComputeRearDriveRateFromSettingTorqueBalance(const double in_base_drive_rate, const double in_setting_torque_balance);
@@ -125,6 +159,9 @@ private:
     
     UFUNCTION(BlueprintCallable)
     static void ComputeEnginePhyiscsParameter(const EEngineKind in_engine_kind, const int32 in_engine_displacement, const ECarIceAspirationType in_engine_aspirationtype, double& out_engine_weight, double& out_com_offset_z);
+    
+    UFUNCTION(BlueprintCallable)
+    static FRandomStream ComputeEachLevelFromDriverLevel(FRandomStream in_random_stream, const int32 in_level, const int32 in_max_level, int32& out_sp_level, int32& out_atk_level, int32& out_def_level, int32& out_phy_level, int32& out_level);
     
     UFUNCTION(BlueprintCallable)
     static double ComputeDopplerEffect(const double in_listener_v, const double in_target_v, const double in_target_f);
@@ -154,10 +191,19 @@ private:
     static TArray<float> CombiningTRUEFORCEArray(const TArray<float> in_a, const TArray<float> in_b, const float in_max, const float in_min);
     
     UFUNCTION(BlueprintCallable)
+    static bool CheckRivalPlacementSituation(const FName& rival_name_id, const ERivalPlacementSituation& placement_situation, const FSUserInfo& user_info);
+    
+    UFUNCTION(BlueprintCallable)
     static ERivalDispSituation CheckRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival, int32& out_win_num);
     
     UFUNCTION(BlueprintCallable)
     static bool CheckRivalAppearance(const FSRivalAppearanceConditionInfo& rival_appear_cond, const FSUserInfo& user_info, const UDataTable* data_table, int32& clear_group_num);
+    
+    UFUNCTION(BlueprintCallable)
+    static ERivalDispSituation CheckNormalAndKeepRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival);
+    
+    UFUNCTION(BlueprintCallable)
+    static ERivalDispSituation CheckKeepRivalDispSituation(const UDataTable* in_data_table, const FSUserInfo& in_user_info, const FName in_root_rival);
     
 };
 

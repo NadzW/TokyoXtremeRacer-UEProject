@@ -5,8 +5,9 @@
 UENUM(BlueprintType)
 enum class ERecollectionLockSituation : uint8 {
     None,
-    Locked,
+    TimeLocked,
     OpenNotRead,
     Open,
+    Num,
 };
 

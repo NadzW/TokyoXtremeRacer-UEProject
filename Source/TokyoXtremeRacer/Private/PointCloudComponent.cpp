@@ -15,6 +15,10 @@ int32 UPointCloudComponent::ReturnCenterLine() const {
     return 0;
 }
 
+bool UPointCloudComponent::IsPointIncludedIn(const FVector& Point, const float DistanceThreshold, const float DistanceBetweenPoints, float& CorrectedRoadPointKey, float& ResultDistance) const {
+    return false;
+}
+
 float UPointCloudComponent::GetRoadPointKeyFromLocation(const FVector Location, const int32 LineNumber) const {
     return 0.0f;
 }
@@ -57,6 +61,10 @@ FVector UPointCloudComponent::GetLaneLocationFromRoadPointKey(const int32 LaneIn
 
 int32 UPointCloudComponent::GetLaneIndexAndRateFromLocation(float& LaneRate, const float RoadPointKey, const FVector& Location, const bool bIsClampRunnableLaneIndex) const {
     return 0;
+}
+
+FVector UPointCloudComponent::GetForwardVector(int32 LineIndex, int32 PointIndexInLine) const {
+    return FVector{};
 }
 
 float UPointCloudComponent::GetDistanceFromRoadPointKey(const int32 LineNumber, const float RoadPointKey) const {

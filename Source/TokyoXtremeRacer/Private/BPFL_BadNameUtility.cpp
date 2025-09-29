@@ -44,7 +44,7 @@ FBadNameUnit UBPFL_BadNameUtility::GetDefaultAlphaBadName(int32 Area, UDataTable
     return FBadNameUnit{};
 }
 
-int32 UBPFL_BadNameUtility::GetConditionSubType03AcquiredKey(const FBadNameConditionData& Record) {
+int32 UBPFL_BadNameUtility::GetConditionSubType03AcquiredKey(const FBadNameConditionData& record) {
     return 0;
 }
 
@@ -64,11 +64,11 @@ FBadNameState UBPFL_BadNameUtility::CreateSimpleBadName(const FText& Name) {
     return FBadNameState{};
 }
 
-FBadNameUnit UBPFL_BadNameUtility::CreateBadNameUnit(const FBadNameConditionData& Record) {
+FBadNameUnit UBPFL_BadNameUtility::CreateBadNameUnit(const FBadNameConditionData& record) {
     return FBadNameUnit{};
 }
 
-FBadNameState UBPFL_BadNameUtility::CreateBadNameFull(const FBadNameConditionData& Record) {
+FBadNameState UBPFL_BadNameUtility::CreateBadNameFull(const FBadNameConditionData& record) {
     return FBadNameState{};
 }
 

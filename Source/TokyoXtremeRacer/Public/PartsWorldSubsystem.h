@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/WorldSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "EBrakeCaliperType.h"
 #include "ECustomCarPartsKind.h"
 #include "ECustomCarPartsType.h"

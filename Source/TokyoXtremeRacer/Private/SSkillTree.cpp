@@ -16,5 +16,8 @@ FSSkillTree::FSSkillTree() {
     this->AppearanceStage = EStoryStage::None;
     this->IsVisible = false;
     this->TreeNo = 0;
+    this->Deprecated = false;
+    this->needs_to_be_equip = false;
+    this->ActualAppearanceStage = EStoryStage::None;
 }
 

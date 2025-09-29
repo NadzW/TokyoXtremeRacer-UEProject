@@ -21,6 +21,7 @@ UUserInfoGameInstanceSubsystem::UUserInfoGameInstanceSubsystem() {
     this->OptionSaveDataChangedFlag = false;
     this->Is_First_Time_Startup = true;
     this->Is_Option_Initialized = false;
+    this->CDTSubSystem = NULL;
 }
 
 void UUserInfoGameInstanceSubsystem::UsedEvaluationLatestBattleResult() {
@@ -36,7 +37,14 @@ void UUserInfoGameInstanceSubsystem::UpdateCurrentGrangeInfo(const FSGarageInfo 
 void UUserInfoGameInstanceSubsystem::UpdateCleardAndNewObjective(const UDataTable* objective_data_table) {
 }
 
+void UUserInfoGameInstanceSubsystem::SetUpperLimitPP(const int32 new_pp) {
+}
+
 void UUserInfoGameInstanceSubsystem::SetUpperLimitCP(const int64 new_cp) {
+}
+
+bool UUserInfoGameInstanceSubsystem::SetupNewGamePlus(const FSUserInfo in_user_info, const bool in_is_no_mercy, const UDataTable* in_perk_root_dt) {
+    return false;
 }
 
 void UUserInfoGameInstanceSubsystem::SetupBaseInfo(const FSBaseInfo base_info) {
@@ -79,7 +87,7 @@ void UUserInfoGameInstanceSubsystem::SetSelectedCarWheel(const FSWheelInfo wheel
 void UUserInfoGameInstanceSubsystem::SetSelectedCarTunerTune(const EVehicleTuneKind tune_kind) {
 }
 
-bool UUserInfoGameInstanceSubsystem::SetSelectedCarTunePartsEquipLevel(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings) {
+bool UUserInfoGameInstanceSubsystem::SetSelectedCarTunePartsEquipLevel(const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings, const FSCarSettingInfo in_default_setting_info) {
     return false;
 }
 
@@ -139,6 +147,9 @@ void UUserInfoGameInstanceSubsystem::SetSelectedCarBrake(const FSBrakeInfo brake
 void UUserInfoGameInstanceSubsystem::SetSelectedCarBodyStikers(const TMap<int32, FSMyCarBodySticker> body_stickers) {
 }
 
+void UUserInfoGameInstanceSubsystem::SetSelectedCarAura(const FName aura_name_id) {
+}
+
 bool UUserInfoGameInstanceSubsystem::SetRivalSituationReadFlag(const FName rival_id, const bool is_rumors) {
     return false;
 }
@@ -147,7 +158,7 @@ bool UUserInfoGameInstanceSubsystem::SetRivalSituationAnimationFlag(const FName 
     return false;
 }
 
-bool UUserInfoGameInstanceSubsystem::SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, const bool rival_is_wanderer, int32& num_of_rival_defated, int32& num_of_team_defated) {
+bool UUserInfoGameInstanceSubsystem::SetRivalSituation(const FName rival_id, const ERivalSituation rival_situation, const bool rival_is_team_leader, const bool rival_is_wanderer, const bool in_use_nitro, int32& num_of_rival_defated, int32& num_of_team_defated) {
     return false;
 }
 
@@ -189,7 +200,7 @@ void UUserInfoGameInstanceSubsystem::SetNextGameModeForNowhereConversation(const
 void UUserInfoGameInstanceSubsystem::SetNextGameModeForMovieTeather(const EGameMode next_mode) {
 }
 
-bool UUserInfoGameInstanceSubsystem::SetMyCarTunePartsEquipLevel(const int32 in_key, const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings) {
+bool UUserInfoGameInstanceSubsystem::SetMyCarTunePartsEquipLevel(const int32 in_key, const EVehicleTuneKind tune_kind, const EVehicleTuneLevel Level, const TArray<ECustomCarPartsSimpleKind> unlockcustoms, const TArray<ECustomCarPartsSimpleKind> lockcustoms, const TArray<ECarSetting> unlock_setttings, const FSCarSettingInfo in_default_setting_info) {
     return false;
 }
 
@@ -212,6 +223,9 @@ void UUserInfoGameInstanceSubsystem::SetLicensePlate(const int32& car_id, const 
 void UUserInfoGameInstanceSubsystem::SetIsDispCurrentTutorialModePopup(const bool is_disp) {
 }
 
+void UUserInfoGameInstanceSubsystem::SetIsChallengeMode(const bool in_is_challenge_mode) {
+}
+
 void UUserInfoGameInstanceSubsystem::SetHitBridgePier() {
 }
 
@@ -228,11 +242,14 @@ int64 UUserInfoGameInstanceSubsystem::SetGarageResult(const FSRaceProcessAndResu
 void UUserInfoGameInstanceSubsystem::SetEquipBreakingLimitsTune() {
 }
 
-int32 UUserInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea parking_area) {
+int32 UUserInfoGameInstanceSubsystem::SetEnterParkingArea(const EParkingArea parking_area, const bool in_count_visits) {
     return 0;
 }
 
 void UUserInfoGameInstanceSubsystem::SetEnableSystemMenu(const bool is_enable) {
+}
+
+void UUserInfoGameInstanceSubsystem::SetDLCUseStatus(const UAvaliableDLCInfo* in_dlc_info) {
 }
 
 void UUserInfoGameInstanceSubsystem::SetDailyRandomSeed(const int32 in_seed) {
@@ -258,7 +275,7 @@ void UUserInfoGameInstanceSubsystem::ResetSaveDataChangedFlag() {
 void UUserInfoGameInstanceSubsystem::ResetOptionSaveDataChangedFlag() {
 }
 
-void UUserInfoGameInstanceSubsystem::RepayPerkPoint(const UDataTable* repayment_datatable) {
+void UUserInfoGameInstanceSubsystem::RepayPerkPoint() {
 }
 
 void UUserInfoGameInstanceSubsystem::RemoveSelectedCarTunerTune() {
@@ -268,6 +285,9 @@ void UUserInfoGameInstanceSubsystem::RemoveNewLiveryVinyls(const FName in_vinyl)
 }
 
 void UUserInfoGameInstanceSubsystem::RemoveNewLiverySticker(const FName in_sticker) {
+}
+
+void UUserInfoGameInstanceSubsystem::RemoveNewLiveryAura(const FName in_aura) {
 }
 
 bool UUserInfoGameInstanceSubsystem::RemoveMyCar(const int32 my_car_id) {
@@ -286,6 +306,9 @@ int32 UUserInfoGameInstanceSubsystem::RecordSpeedTrap(const FName name_id, const
 
 int32 UUserInfoGameInstanceSubsystem::RecordSegment(const FName name_id, const double Time, const FName car_name_id, const FDateTime Date, const int32 Day, const double in_distance, const bool in_is_wall_hit, double& out_last_best_result) {
     return 0;
+}
+
+void UUserInfoGameInstanceSubsystem::RecalcUpperLimit(const UDataTable* in_root_datatable) {
 }
 
 void UUserInfoGameInstanceSubsystem::RaceRestartResetParameter() {
@@ -326,6 +349,10 @@ bool UUserInfoGameInstanceSubsystem::IsNewMarkCanBoughtEngine(const FName engine
 }
 
 bool UUserInfoGameInstanceSubsystem::IsNewMarkCanBoughtCar(const FName car_name_id) {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::IsNewGamePlusValid(const FSUserInfo in_user_info) {
     return false;
 }
 
@@ -428,6 +455,10 @@ EVehicleTuneLevel UUserInfoGameInstanceSubsystem::GetTunePartsMaxOpenLevel(const
     return EVehicleTuneLevel::None;
 }
 
+EVehicleTuneLevel UUserInfoGameInstanceSubsystem::GetTunePartsHaveMaxLevel(const int32 in_my_car_id, const EVehicleTuneKind tune_kind) {
+    return EVehicleTuneLevel::None;
+}
+
 ERaceTimeZone UUserInfoGameInstanceSubsystem::GetTimeZone() {
     return ERaceTimeZone::RTZ_1;
 }
@@ -438,6 +469,10 @@ FSTeamSituationInfo UUserInfoGameInstanceSubsystem::GetTeamSituation(const FName
 
 EStoryStage UUserInfoGameInstanceSubsystem::GetStoryStage() {
     return EStoryStage::None;
+}
+
+EStoryKind UUserInfoGameInstanceSubsystem::GetStoryKind() {
+    return EStoryKind::None;
 }
 
 FSSpeedTrapRecords UUserInfoGameInstanceSubsystem::GetSpeedTrapRecord(const FName name_id, const bool clear_update_best) {
@@ -500,7 +535,7 @@ FName UUserInfoGameInstanceSubsystem::GetSelectedCarNormalEngineId() {
     return NAME_None;
 }
 
-FSMyCarNeon UUserInfoGameInstanceSubsystem::GetSelectedCarNeon(const ENeonLightPositionType position) {
+FSMyCarNeon UUserInfoGameInstanceSubsystem::GetSelectedCarNeon(const ENeonLightPositionType Position) {
     return FSMyCarNeon{};
 }
 
@@ -584,6 +619,10 @@ TArray<ECourseEnter> UUserInfoGameInstanceSubsystem::GetOpenCourseEnter() {
     return TArray<ECourseEnter>();
 }
 
+int32 UUserInfoGameInstanceSubsystem::GetNumOfClearedTeamRivals(const UDataTable* data_table, const TArray<FName> target_rival_ids, int32& member_num) {
+    return 0;
+}
+
 TMap<FName, FSPerkTreeMachineInfo> UUserInfoGameInstanceSubsystem::GetNumberOfPerkTreeMachineAcquired(const UDataTable* in_root_datatable) {
     return TMap<FName, FSPerkTreeMachineInfo>();
 }
@@ -660,6 +699,10 @@ TArray<FName> UUserInfoGameInstanceSubsystem::GetNewLiveryStickers() {
     return TArray<FName>();
 }
 
+TArray<FName> UUserInfoGameInstanceSubsystem::GetNewLiveryAuras() {
+    return TArray<FName>();
+}
+
 TMap<int32, FSMyCarInfo> UUserInfoGameInstanceSubsystem::GetMyCars() {
     return TMap<int32, FSMyCarInfo>();
 }
@@ -700,7 +743,19 @@ FSRaceBattleResultInfo UUserInfoGameInstanceSubsystem::GetLastBattleResult() {
     return FSRaceBattleResultInfo{};
 }
 
+EStoryStage UUserInfoGameInstanceSubsystem::GetKeepStoryStage(const bool is_check) {
+    return EStoryStage::None;
+}
+
+ERivalSituation UUserInfoGameInstanceSubsystem::GetKeepRivalSituation(const FName in_id) const {
+    return ERivalSituation::None;
+}
+
 bool UUserInfoGameInstanceSubsystem::GetIsDispCurrentTutorialModePopup() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::GetIsChallengeMode() const {
     return false;
 }
 
@@ -722,6 +777,10 @@ FSGarageVehicleCameraInfo UUserInfoGameInstanceSubsystem::GetGarageVehicleCamera
 
 TArray<FSGarageInfo> UUserInfoGameInstanceSubsystem::GetGarages() {
     return TArray<FSGarageInfo>();
+}
+
+ESkillTreeType UUserInfoGameInstanceSubsystem::GetEquipPerkSkillInSlot(const int32 in_slot) {
+    return ESkillTreeType::STT_NEW_WALLET;
 }
 
 TArray<ESkillTreeType> UUserInfoGameInstanceSubsystem::GetEquipPerkSkill() {
@@ -807,12 +866,24 @@ TArray<FName> UUserInfoGameInstanceSubsystem::GetCanBoughtCarNameIds() {
     return TArray<FName>();
 }
 
+UAvaliableDLCInfo* UUserInfoGameInstanceSubsystem::GetAvaliableDLCInfo() const {
+    return NULL;
+}
+
 TMap<FName, FSTeamSituationInfo> UUserInfoGameInstanceSubsystem::GetAllTeamSituation() {
     return TMap<FName, FSTeamSituationInfo>();
 }
 
 TMap<FName, FSRivalSituationInfo> UUserInfoGameInstanceSubsystem::GetAllRivalSituation() {
     return TMap<FName, FSRivalSituationInfo>();
+}
+
+FSPerkStatusInfo UUserInfoGameInstanceSubsystem::GetAcquiredStatus(const ESkillTreeType in_type, bool& out_is_find) {
+    return FSPerkStatusInfo{};
+}
+
+int32 UUserInfoGameInstanceSubsystem::GetAcquiredPerkSkillTotalLevel(const UDataTable* in_skill_datatable, int32& Num) {
+    return 0;
 }
 
 FSSkillTree UUserInfoGameInstanceSubsystem::GetAcquiredPerkSkill(const UDataTable* in_root_datatable, const ESkillTreeType in_type, bool& out_is_find) {
@@ -831,6 +902,9 @@ void UUserInfoGameInstanceSubsystem::FixAddVinylFromRivalInfo(const UDataTable* 
 void UUserInfoGameInstanceSubsystem::FixAddStickerFromRivalInfo(const UDataTable* in_rival_dt) {
 }
 
+void UUserInfoGameInstanceSubsystem::FixAddAuraFromRivalInfo(const UDataTable* in_rival_dt) {
+}
+
 void UUserInfoGameInstanceSubsystem::FixAchievement(const UDataTable* in_rival_dt) {
 }
 
@@ -840,6 +914,9 @@ bool UUserInfoGameInstanceSubsystem::EquipSelectedCarCustomParts(const ECustomCa
 
 bool UUserInfoGameInstanceSubsystem::EnableFastTravelCourseExitShop(const ECourseExit course_exit, const ECourseExitShopTypeFlag Type) {
     return false;
+}
+
+void UUserInfoGameInstanceSubsystem::DuplicateObjectiveAndRivalInfoForNewGamePlus() {
 }
 
 void UUserInfoGameInstanceSubsystem::DepriveAllMyCar() {
@@ -858,8 +935,19 @@ void UUserInfoGameInstanceSubsystem::DeleteNewMarkCanBoughtCar(const FName car_n
 void UUserInfoGameInstanceSubsystem::DataFixAfterDataLoad() {
 }
 
+bool UUserInfoGameInstanceSubsystem::ContainKeepClearedObjectives(const FName in_id) {
+    return false;
+}
+
 bool UUserInfoGameInstanceSubsystem::ConsumePP(const int32 in_consume_pp, int32& out_current_pp) {
     return false;
+}
+
+int32 UUserInfoGameInstanceSubsystem::ComputeTotalBpFromUnlockPerk(const UDataTable* in_perk_root_dt, const TMap<FName, FSPerkCategoryInfo> in_perk_category_statuses) const {
+    return 0;
+}
+
+void UUserInfoGameInstanceSubsystem::ComputeForDampingSettingStepChanges() {
 }
 
 void UUserInfoGameInstanceSubsystem::ClearWiningStreakForProvenExperienceFromPerk() {
@@ -904,7 +992,7 @@ void UUserInfoGameInstanceSubsystem::ClearNewLiveryStickers() {
 void UUserInfoGameInstanceSubsystem::ClearMovieTeatherPlayMovieId(const bool in_is_all) {
 }
 
-void UUserInfoGameInstanceSubsystem::ClearEquipPerkSkill() {
+void UUserInfoGameInstanceSubsystem::ClearEquipPerkSkill(const int32 in_slot) {
 }
 
 void UUserInfoGameInstanceSubsystem::ClearAnnounceUnlockedTunes() {
@@ -912,6 +1000,9 @@ void UUserInfoGameInstanceSubsystem::ClearAnnounceUnlockedTunes() {
 
 bool UUserInfoGameInstanceSubsystem::CheckCarYouOwn(const FName in_check_car_name_id) {
     return false;
+}
+
+void UUserInfoGameInstanceSubsystem::ChangeEquipSkillsSaved() {
 }
 
 bool UUserInfoGameInstanceSubsystem::ChangeCurrentGarageInfo(const int32 ID) {
@@ -938,7 +1029,7 @@ bool UUserInfoGameInstanceSubsystem::AddSelectedCarTunePartsHaveFlag(const EVehi
     return false;
 }
 
-bool UUserInfoGameInstanceSubsystem::AddSelectedCarNeon(const ENeonLightPositionType position, const FSMyCarNeon my_neon_info) {
+bool UUserInfoGameInstanceSubsystem::AddSelectedCarNeon(const ENeonLightPositionType Position, const FSMyCarNeon my_neon_info) {
     return false;
 }
 
@@ -946,11 +1037,12 @@ bool UUserInfoGameInstanceSubsystem::AddSelectedCarCustomParts(const ECustomCarP
     return false;
 }
 
-int32 UUserInfoGameInstanceSubsystem::AddPP(const int32 in_add_pp, const bool in_add_cumulative_acquisition, int32& overflowed_pp) {
+int32 UUserInfoGameInstanceSubsystem::AddPP(const int32 in_add_pp, const bool in_add_cumulative_acquisition, const bool in_is_overflow_allowed, int32& overflowed_pp) {
     return 0;
 }
 
-void UUserInfoGameInstanceSubsystem::AddPerk(const FName in_category, const FName in_row_name, const FSSkillTree in_perk) {
+bool UUserInfoGameInstanceSubsystem::AddPerk(const FName in_category, const FName in_row_name, const FSSkillTree in_perk) {
+    return false;
 }
 
 void UUserInfoGameInstanceSubsystem::AddOutGameStackScenes(const EJumpScene add_scene, const EParkingArea in_pa) {
@@ -967,6 +1059,9 @@ void UUserInfoGameInstanceSubsystem::AddNewLiveryVinyl(const FName in_vinyl) {
 }
 
 void UUserInfoGameInstanceSubsystem::AddNewLiverySticker(const FName in_sticker) {
+}
+
+void UUserInfoGameInstanceSubsystem::AddNewLiveryAura(const FName in_aura) {
 }
 
 bool UUserInfoGameInstanceSubsystem::AddMyCarSettingInfo(const int32 in_key, const ECarSetting in_setting_type, const int32 in_setting_value, const bool in_add_forced) {
@@ -990,7 +1085,7 @@ void UUserInfoGameInstanceSubsystem::AddInputActionKeyMapping(const FSInputActio
 void UUserInfoGameInstanceSubsystem::AddGarage(const FName garage, const bool is_use) {
 }
 
-bool UUserInfoGameInstanceSubsystem::AddEquipPerkSkill(const ESkillTreeType in_type) {
+bool UUserInfoGameInstanceSubsystem::AddEquipPerkSkill(const ESkillTreeType in_type, const int32 in_slot) {
     return false;
 }
 

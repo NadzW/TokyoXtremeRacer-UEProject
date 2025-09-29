@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Subsystems/WorldSubsystem.h"
+#include "UObject/NoExportTypes.h"
 #include "SAbilityDatabase.h"
 #include "AbilityManagerSubsystem.generated.h"
 

@@ -29,6 +29,9 @@ TArray<int32> UBPFL_Utility::Sort(const TArray<float>& Values, const bool is_des
 void UBPFL_Utility::SetNetDriverName(AActor* in_actor, const FName in_name) {
 }
 
+void UBPFL_Utility::SetIgnoreComponent(UPrimitiveComponent* Source, UPrimitiveComponent* Target) {
+}
+
 void UBPFL_Utility::SetDemoNetDriverName(AActor* in_actor) {
 }
 
@@ -102,6 +105,9 @@ FText UBPFL_Utility::DoubleToTextWithoutGrouping(const double Value) {
     return FText::GetEmpty();
 }
 
+void UBPFL_Utility::ComputeAddDate(const int32 in_year, const int32 in_month, const int32 in_day, const int32 in_add_days, int32& out_year, int32& out_month, int32& out_day) {
+}
+
 void UBPFL_Utility::CompositeDataTableRemoveTables(UCompositeDataTable* in_root, UDataTable* in_remove_dt) {
 }
 
@@ -116,14 +122,6 @@ void UBPFL_Utility::CompositeDataTableAddTables(UCompositeDataTable* in_root, UD
 
 FString UBPFL_Utility::AsDateTimeText_4d2d2d2d2d2d(const FDateTime& InDateTime) {
     return TEXT("");
-}
-
-TArray<UCompositeDataTable*> UBPFL_Utility::AppendCompositeDataTableFromSplitControlDT2(UDataTable* in_split_control_dt, const TArray<int32> in_group_ids) {
-    return TArray<UCompositeDataTable*>();
-}
-
-TArray<UCompositeDataTable*> UBPFL_Utility::AppendCompositeDataTableFromSplitControlDT(UDataTable* in_split_control_dt, const int32 in_group_id) {
-    return TArray<UCompositeDataTable*>();
 }
 
 

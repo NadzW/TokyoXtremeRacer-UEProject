@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "ParallelBehaviorTree",
+	"Description": "BehaviorTreeComponent executed in parallel threads by the BackGround thread.",
+	"Category": "AI",
+	"CreatedBy": "otsuka-y",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "ParallelBehaviorTree",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SbAIModules",
+			"Enabled": true
+		}
+	]
+}

@@ -7,6 +7,7 @@
 #include "EStoryStage.h"
 #include "EVehicleTuneEngine.h"
 #include "EVehicleTuneKind.h"
+#include "SSkillTargetInfo.h"
 #include "SSkillTree.generated.h"
 
 USTRUCT(BlueprintType)
@@ -34,11 +35,11 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ESkillTreeType Type_01;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float Value_00;
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double Value_00;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float Value_01;
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double Value_01;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Level;
@@ -51,6 +52,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText Detail;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FText LockedText;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName NameId;
@@ -72,6 +76,18 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> NecessaryRivalsToAppear;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FSSkillTargetInfo> SkillTargetInfos;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool Deprecated;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool needs_to_be_equip;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EStoryStage ActualAppearanceStage;
     
     FSSkillTree();
 };

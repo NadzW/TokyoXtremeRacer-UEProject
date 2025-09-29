@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Components/ActorComponent.h"
+#include "UObject/NoExportTypes.h"
 #include "CoursePathPoint.h"
 #include "CoursePathNNSComponent.generated.h"
 
@@ -15,6 +15,9 @@ public:
     
     UCoursePathNNSComponent(const FObjectInitializer& ObjectInitializer);
 
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    TArray<FCoursePathPoint> GetNearestPositionInRPDNames(const FVector& Current, bool bMainRoadOnly, const TArray<float>& RangeArray, const TArray<FName>& RPDNames, const TArray<int32>& ZoneIndices) const;
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FCoursePathPoint> GetNearestPosition(const FVector& Current, bool bMainRoadOnly, const TArray<float>& RangeArray) const;
     
@@ -31,7 +34,7 @@ public:
     bool CompareDistance(const FVector& Origin, const FVector Position0, const FVector& position1) const;
     
     UFUNCTION(BlueprintCallable)
-    void AddPosition(const FCoursePathPoint& position);
+    void AddPosition(const FCoursePathPoint& Position);
     
 };
 
