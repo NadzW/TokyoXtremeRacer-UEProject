@@ -117,15 +117,12 @@
 *.target.xml
 *.exe.config
 *.exe.manifest
-/.kdev4/
-/UE4CodeCompletionFolders.txt
-/UE4CodeLitePreProcessor.txt
 
 # Add exceptions for .dlls needed to run built version
 !/Binaries/Win64/*
 !/Plugins/**/Binaries/Win64/*
+!Plugins/**/Resources/**
 *.pdb
-
 
 !USMAP/*
 
@@ -136,11 +133,6 @@ obj/
 # Ignore any saved local files
 /Saved/*
 /Saved/Logs/*
-
-!/Content/Shared/Material/MASTER/*
-!Content/**
-
-
 
 /Engine/Programs/UnrealBuildTool/**
 /LocalBuilds/
