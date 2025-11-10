@@ -141,3 +141,5 @@ obj/
 .DS_Store
 
 !CookedMeshumap/**
+
+!Content/**
