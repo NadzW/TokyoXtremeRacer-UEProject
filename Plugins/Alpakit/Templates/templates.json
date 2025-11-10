@@ -1,0 +1,10 @@
+{
+    "$schema": "./templates.schema.json",
+    "templates": [
+        {
+            "name": "Additional Assets Only",
+            "description": "Create a mod that contains only additional assets.",
+            "path": "AssetsBlank"
+        }
+    ]
+}

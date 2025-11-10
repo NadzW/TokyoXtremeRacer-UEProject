@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- set this to your actual engine path or pass it via -p:EngineDir=... -->
+  <PropertyGroup>
+    <EngineDir>G:\Program Files\Epic Games\UE_5.6\Engine</EngineDir>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Alpakit.Automation</RootNamespace>
+    <AssemblyName>Alpakit.Automation</AssemblyName>
+
+    <!-- AutomationTool looks here for custom commands -->
+    <OutputPath>$(EngineDir)\Binaries\DotNET\AutomationTool\AutomationScripts\Alpakit</OutputPath>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <!-- Replace project refs with DLL refs from the Launcher install -->
+  <ItemGroup>
+    <Reference Include="AutomationTool">
+      <HintPath>$(EngineDir)\Binaries\DotNET\AutomationTool\AutomationTool.dll</HintPath>
+    </Reference>
+    <Reference Include="AutomationScripts.Automation">
+      <HintPath>$(EngineDir)\Binaries\DotNET\AutomationTool\AutomationScripts\Scripts\AutomationScripts.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="AutomationUtils.Automation">
+      <HintPath>$(EngineDir)\Binaries\DotNET\AutomationTool\AutomationUtils\AutomationUtils.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="EpicGames.Core">
+      <HintPath>$(EngineDir)\Binaries\DotNET\UnrealBuildTool\EpicGames.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EpicGames.Build">
+      <HintPath>$(EngineDir)\Binaries\DotNET\UnrealBuildTool\EpicGames.Build.dll</HintPath>
+    </Reference>
+    <Reference Include="UnrealBuildTool">
+      <HintPath>$(EngineDir)\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

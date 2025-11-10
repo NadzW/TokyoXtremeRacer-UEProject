@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "3.0.0",
+	"FriendlyName": "Alpakit",
+	"Description": "Pak your Tokyo Xtreme Racer mods and copy them to the game folder",
+	"Category": "Modding",
+	"CreatedBy": "Nadz, WistfulHopes, Mircea Roata",
+	"CreatedByURL": "",
+	"DocsURL": "https://docs.ficsit.app/",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+    "EnabledByDefault" : true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Alpakit",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+        }
+	],
+	"Plugins": [
+		{
+			"Name": "PluginBrowser",
+			"Enabled": true
+		}
+	]
+}
