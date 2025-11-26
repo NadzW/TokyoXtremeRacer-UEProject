@@ -122,6 +122,7 @@
 !/Binaries/Win64/*
 !/Plugins/**/Binaries/Win64/*
 !Plugins/**/Resources/**
+!Plugins/**/Content/**
 *.pdb
 
 !USMAP/*
