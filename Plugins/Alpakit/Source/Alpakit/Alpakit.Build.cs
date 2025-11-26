@@ -29,6 +29,8 @@ public class Alpakit : ModuleRules
 			"UATHelper",
 			"DesktopPlatform",
 			"AssetRegistry",
+			"AssetTools",
+			"EditorScriptingUtilities"
 		});
 	}
 }

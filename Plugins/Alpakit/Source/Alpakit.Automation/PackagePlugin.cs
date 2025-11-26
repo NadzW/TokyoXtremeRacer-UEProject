@@ -164,6 +164,7 @@ namespace Alpakit.Automation
 				var projectName = projectParams.RawProjectPath.GetFileNameWithoutAnyExtensions();
 
 				string dlcSourceDirectory;
+				
 				if (projectParams.DLCFile.IsUnderDirectory(deploymentContext.EngineRoot))
 					dlcSourceDirectory = Path.Combine("Engine", projectParams.DLCFile.Directory.ParentDirectory.MakeRelativeTo(deploymentContext.EngineRoot));
 				else if (projectParams.DLCFile.IsUnderDirectory(deploymentContext.ProjectRoot))

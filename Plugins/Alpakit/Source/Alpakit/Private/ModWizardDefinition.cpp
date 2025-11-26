@@ -1,6 +1,7 @@
 #include "ModWizardDefinition.h"
 
 #include "Alpakit.h"
+#include "AlpakitSettings.h"
 #include "Dom/JsonObject.h"
 #include "Features/IPluginsEditorFeature.h"
 #include "GenericPlatform/GenericPlatformFile.h"
@@ -11,6 +12,11 @@
 #include "UObject/SavePackage.h"
 #include "Modules/ModuleManager.h"
 #include "PluginDescriptor.h"
+#include "IAssetTools.h"
+#include "AssetToolsModule.h"
+#include "Subsystems/EditorAssetSubsystem.h"
+#include "Engine/PrimaryAssetLabel.h"
+#include "EditorAssetLibrary.h"
 
 #define LOCTEXT_NAMESPACE "NewModWizard"
 
@@ -137,6 +143,190 @@ TArray<FString> FModWizardDefinition::GetFoldersForSelection() const
 	return SelectedFolders;
 }
 
+void FModWizardDefinition::RenameTemplateAssetsForBlankMods(const FString& PluginName) const
+{
+	// Find the mounted asset path of the target plugin
+    TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(PluginName);
+    if (!Plugin.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("Plugin not found: %s"), *PluginName);
+        return;
+    }
+ 
+    FString PluginContentPath = Plugin->GetMountedAssetPath();
+ 
+    // Access Asset Registry module to get assets under the plugin's content folder
+    FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+ 
+    TArray<FAssetData> AssetDataArray;
+    AssetRegistryModule.Get().GetAssetsByPath(FName(*PluginContentPath), AssetDataArray, true);
+ 
+    TArray<FAssetRenameData> RenameDataList;
+
+	for (const FAssetData& AssetData : AssetDataArray)
+    {
+        FString OldName = AssetData.AssetName.ToString();
+ 
+        // Check if asset name starts with "PLACEHOLDER_" and ends with "BLANK"
+        if (OldName.StartsWith(TEXT("PLACEHOLDER_")) && OldName.EndsWith(TEXT("BLANK")))
+        {
+            // Remove prefix "PLACEHOLDER_"
+            FString NewName = OldName.RightChop(12);
+ 
+            // Remove suffix "BLANK"
+            NewName = NewName.LeftChop(5);
+ 
+            // Append new plugin name as suffix
+            NewName += PluginName;
+ 
+            // Prepare rename data (keep in same folder/package path)
+            RenameDataList.Add(FAssetRenameData(AssetData.GetAsset(), AssetData.PackagePath.ToString(), NewName));
+        }
+	}
+
+    if (RenameDataList.Num() > 0)
+    {
+        // Use AssetTools to rename assets and update references safely
+        FAssetToolsModule& AssetToolsModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools");
+        AssetToolsModule.Get().RenameAssets(RenameDataList);
+        UE_LOG(LogTemp, Log, TEXT("Renamed %d assets in plugin '%s'."), RenameDataList.Num(), *PluginName);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("No assets matched rename criteria in plugin '%s'."), *PluginName);
+    }
+
+	// Fixes up explicit asset reference in PAL
+	FString PALName = PluginContentPath + FString::Printf(TEXT("PAL_%s"), *PluginName);
+    UPrimaryAssetLabel* Label = Cast<UPrimaryAssetLabel>(UEditorAssetLibrary::LoadAsset(*PALName));
+    if (!Label)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to load PrimaryAssetLabel at %s"), *PALName);
+        return;
+    }
+
+    int32 Index = 0;
+	FString DataAssetName = PluginContentPath + FString::Printf(TEXT("DA_%s"), *PluginName) + "." + FString::Printf(TEXT("DA_%s"), *PluginName);
+    Label->ExplicitAssets[Index] = FSoftObjectPath(*DataAssetName);
+
+	// Load and update cached UObject reference to ensure it is valid
+	UObject* LoadedAsset = Label->ExplicitAssets[Index].LoadSynchronous();
+	if (!LoadedAsset)
+	{
+    	UE_LOG(LogTemp, Warning, TEXT("Failed to load new explicit asset %s"), *DataAssetName);
+	}
+	else
+	{
+    	UE_LOG(LogTemp, Log, TEXT("Loaded new explicit asset %s successfully"), *DataAssetName);
+	}
+
+    // Mark package dirty for Editor
+    Label->MarkPackageDirty();
+
+    // Save the updated asset
+    UEditorAssetSubsystem* AssetSubsystem = GEditor->GetEditorSubsystem<UEditorAssetSubsystem>();
+    if (AssetSubsystem && AssetSubsystem->SaveAsset(*PALName))
+    {
+    	UE_LOG(LogTemp, Log, TEXT("Successfully replaced explicit asset and saved %s"), *PALName);
+    }
+    else
+    {
+    	UE_LOG(LogTemp, Error, TEXT("Failed to save PrimaryAssetLabel asset %s"), *PALName);
+    }
+}
+
+void FModWizardDefinition::RenameTemplateAssetsForLogicMods(const FString& PluginName) const
+{
+	// Find the mounted asset path of the target plugin
+    TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(PluginName);
+    if (!Plugin.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("Plugin not found: %s"), *PluginName);
+        return;
+    }
+ 
+    FString PluginContentPath = Plugin->GetMountedAssetPath();
+ 
+    // Access Asset Registry module to get assets under the plugin's content folder
+    FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+ 
+    TArray<FAssetData> AssetDataArray;
+    AssetRegistryModule.Get().GetAssetsByPath(FName(*PluginContentPath), AssetDataArray, true);
+ 
+    TArray<FAssetRenameData> RenameDataList;
+
+	for (const FAssetData& AssetData : AssetDataArray)
+    {
+        FString OldName = AssetData.AssetName.ToString();
+ 
+        // Check if asset name starts with "PLACEHOLDER_" and ends with "LOGICMOD"
+        if (OldName.StartsWith(TEXT("PLACEHOLDER_")) && OldName.EndsWith(TEXT("LOGICMOD")))
+        {
+            // Remove prefix "PLACEHOLDER_"
+            FString NewName = OldName.RightChop(12);
+ 
+            // Remove suffix "LOGICMOD"
+            NewName = NewName.LeftChop(8);
+ 
+            // Append new plugin name as suffix
+            NewName += PluginName;
+ 
+            // Prepare rename data (keep in same folder/package path)
+            RenameDataList.Add(FAssetRenameData(AssetData.GetAsset(), AssetData.PackagePath.ToString(), NewName));
+        }
+	}
+
+    if (RenameDataList.Num() > 0)
+    {
+        // Use AssetTools to rename assets and update references safely
+        FAssetToolsModule& AssetToolsModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools");
+        AssetToolsModule.Get().RenameAssets(RenameDataList);
+        UE_LOG(LogTemp, Log, TEXT("Renamed %d assets in plugin '%s'."), RenameDataList.Num(), *PluginName);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("No assets matched rename criteria in plugin '%s'."), *PluginName);
+    }
+
+	// Fixes up explicit asset reference in PAL
+	FString PALName = PluginContentPath + FString::Printf(TEXT("PAL_%s"), *PluginName);
+    UPrimaryAssetLabel* Label = Cast<UPrimaryAssetLabel>(UEditorAssetLibrary::LoadAsset(*PALName));
+    if (!Label)
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to load PrimaryAssetLabel at %s"), *PALName);
+        return;
+    }
+
+    int32 Index = 0;
+	FString DataAssetName = PluginContentPath + FString::Printf(TEXT("DA_%s"), *PluginName) + "." + FString::Printf(TEXT("DA_%s"), *PluginName);
+    Label->ExplicitAssets[Index] = FSoftObjectPath(*DataAssetName);
+
+	// Load and update cached UObject reference to ensure it is valid
+	UObject* LoadedAsset = Label->ExplicitAssets[Index].LoadSynchronous();
+	if (!LoadedAsset)
+	{
+    	UE_LOG(LogTemp, Warning, TEXT("Failed to load new explicit asset %s"), *DataAssetName);
+	}
+	else
+	{
+    	UE_LOG(LogTemp, Log, TEXT("Loaded new explicit asset %s successfully"), *DataAssetName);
+	}
+
+    // Mark package dirty for Editor
+    Label->MarkPackageDirty();
+
+    // Save the updated asset
+    UEditorAssetSubsystem* AssetSubsystem = GEditor->GetEditorSubsystem<UEditorAssetSubsystem>();
+    if (AssetSubsystem && AssetSubsystem->SaveAsset(*PALName))
+    {
+    	UE_LOG(LogTemp, Log, TEXT("Successfully replaced explicit asset and saved %s"), *PALName);
+    }
+    else
+    {
+    	UE_LOG(LogTemp, Error, TEXT("Failed to save PrimaryAssetLabel asset %s"), *PALName);
+    }
+}
+
 void FModWizardDefinition::PluginCreated(const FString& PluginName, bool bWasSuccessful) const
 {
 	if(!bWasSuccessful)
@@ -186,6 +376,9 @@ void FModWizardDefinition::PluginCreated(const FString& PluginName, bool bWasSuc
 	}
 
 	UE_LOG(LogAlpakit, Log, TEXT("Created mod %s"), *PluginName);
+
+	RenameTemplateAssetsForBlankMods(PluginName);
+	RenameTemplateAssetsForLogicMods(PluginName);
 }
 
 FString FModWizardDefinition::GetPluginFolderPath() const

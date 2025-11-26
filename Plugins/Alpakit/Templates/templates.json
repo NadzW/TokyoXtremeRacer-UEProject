@@ -2,9 +2,19 @@
     "$schema": "./templates.schema.json",
     "templates": [
         {
-            "name": "Additional Assets Only",
-            "description": "Create a mod that contains only additional assets.",
-            "path": "AssetsBlank"
+            "name": "Blank",
+            "description": "Create a blank mod plugin.",
+            "path": "blank"
+        },
+        {
+            "name": "Addon Car",
+            "description": "Create a mod plugin that contains the basics of an Addon Car mod.",
+            "path": "AddonCar"
+        },
+        {
+            "name": "Logic Mod",
+            "description": "Create a mod plugin that contains the basic assets needed for a blueprint logic mod.",
+            "path": "LogicMod"
         }
     ]
 }
