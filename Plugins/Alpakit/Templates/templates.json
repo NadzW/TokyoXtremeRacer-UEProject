@@ -10,6 +10,16 @@
             "name": "Logic Mod",
             "description": "Create a mod plugin that contains the basic assets needed for a blueprint logic mod.",
             "path": "LogicMod"
+        },
+        {
+            "name": "HUD Widget",
+            "description": "Create a mod plugin that contains the basic assets needed for a a HUD Widget mod.",
+            "path": "HUDWidget"
+        },
+        {
+            "name": "Engine Replacement",
+            "description": "Create a mod plugin that contains the basic needed for engine replacement mods.",
+            "path": "EngineReplacement"
         }
     ]
 }

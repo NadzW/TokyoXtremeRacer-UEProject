@@ -33,8 +33,7 @@ public:
 	virtual void PluginCreated(const FString& PluginName, bool bWasSuccessful) const override;
 	// End IPluginWizardDefinition interface
 
-	void RenameTemplateAssetsForBlankMods(const FString& PluginName) const;
-	void RenameTemplateAssetsForLogicMods(const FString& PluginName) const;
+	void RenameTemplateAssetsForMods(const FString& PluginName) const;
 
 private:
 	/** Gets the folder for the specified template. */
