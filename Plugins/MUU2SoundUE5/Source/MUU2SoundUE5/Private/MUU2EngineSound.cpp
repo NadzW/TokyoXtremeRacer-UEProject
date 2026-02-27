@@ -43,6 +43,9 @@ bool AMUU2EngineSound::SetEmitterSceneComponent(USceneComponent* InParent) {
 void AMUU2EngineSound::SetAccel(const float Value) {
 }
 
+void AMUU2EngineSound::ResetSpatialFlag() {
+}
+
 int32 AMUU2EngineSound::MaxTuneEffects() {
     return 0;
 }

@@ -25,6 +25,7 @@ enum class ERivalAppearanceCondition : uint8 {
     ObjectiveUnchecked,
     NoRivalOnCourse,
     NoRivalOnPA,
+    NoActorOnPA,
     RivalAppCondNotMet,
     BattleNum,
     RivalDefeatNum,

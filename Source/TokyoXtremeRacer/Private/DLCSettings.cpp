@@ -3,4 +3,8 @@
 UDLCSettings::UDLCSettings() {
 }
 
+UDataTable* UDLCSettings::GetDLCApplicationDataTable() {
+    return NULL;
+}
+
 

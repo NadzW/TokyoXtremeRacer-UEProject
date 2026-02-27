@@ -3,6 +3,9 @@
 UBPFL_PlatformUtility::UBPFL_PlatformUtility() {
 }
 
+void UBPFL_PlatformUtility::SetupPS5SaveGameInfoDelegate() {
+}
+
 FString UBPFL_PlatformUtility::GetPlatformTempDirectory() {
     return TEXT("");
 }

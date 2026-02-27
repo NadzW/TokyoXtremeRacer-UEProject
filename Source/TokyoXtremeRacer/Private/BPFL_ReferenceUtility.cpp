@@ -18,6 +18,10 @@ bool UBPFL_ReferenceUtility::UpdateRecllectionConversationSituationInfoByPABattl
     return false;
 }
 
+bool UBPFL_ReferenceUtility::UpdateRecllectionConversationSituationInfoByNotDeatRivalAll(FSRecollectionConversationSituationInfoList& info_list, const TMap<FName, FSRivalSituationInfo>& RivalSituations, const UDataTable* conversation_data_table) {
+    return false;
+}
+
 void UBPFL_ReferenceUtility::SortRecollectionRivalInfoDataForConversationList(FSRecollectionRivalInfoData& data_value, bool is_top) {
 }
 

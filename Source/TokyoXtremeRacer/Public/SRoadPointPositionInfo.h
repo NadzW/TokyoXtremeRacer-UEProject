@@ -12,6 +12,9 @@ public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     double RoadPointKey;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    double RealRoadPointKey;
+    
     TOKYOXTREMERACER_API FSRoadPointPositionInfo();
 };
 

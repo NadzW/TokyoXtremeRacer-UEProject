@@ -30,8 +30,10 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_RumbleToWheelspin = 0;
     this->Option_RumbleToAero = 0;
     this->Option_RumbleToAbs = 0;
+    this->Option_AdaptiveTriggersIntensity = 0;
     this->Option_IsCopyPhotoToSteamDir = false;
     this->Option_IsPhotoToHDR = false;
+    this->Option_IsSaveBattleReplay = false;
     this->Option_ViewingAngle = 0;
     this->Option_Brightness = 0;
     this->Option_UpscalingMode = EOP_Upscaling_Mode::OP_OFF;
@@ -44,6 +46,7 @@ FSUserOptionGameSetting::FSUserOptionGameSetting() {
     this->Option_BgmVolumn = 0;
     this->Option_SeVolumn = 0;
     this->Option_CarVolumn = 0;
+    this->Option_CarEngineVolumn = 0;
     this->Option_BattleBgmTiming = EOP_BattleBgmTiming::OP_AfterBattleStart;
     this->Option_ShiftAlert = false;
     this->Option_ShowLimitTimeType = EOP_LimitTimeType::OP_NoLimit;

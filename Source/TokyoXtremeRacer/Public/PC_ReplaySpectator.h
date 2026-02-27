@@ -10,6 +10,9 @@ public:
     APC_ReplaySpectator(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)
+    void SetCurrentReplayTimeToSecondsFloat(float Seconds);
+    
+    UFUNCTION(BlueprintCallable)
     void SetCurrentReplayTimeToSeconds(int32 Seconds);
     
     UFUNCTION(BlueprintCallable)
@@ -22,9 +25,6 @@ public:
     void SetCurrentReplayPause();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void ReplayStartedCallback();
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ReplayScrubCompleteCallback();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
@@ -33,11 +33,17 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PauseChannelsChangedCallback();
     
+    UFUNCTION(BlueprintCallable)
+    void JumpToTimeEndOfLiveReplay();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCurrentReplayTotalTimeInSecondsFloat() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCurrentReplayTotalTimeInSeconds() const;
+    
+    UFUNCTION(BlueprintCallable)
+    float GetCurrentReplayPlayRate();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCurrentReplayPause() const;

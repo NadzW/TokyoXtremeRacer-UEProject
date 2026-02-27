@@ -45,6 +45,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPointIncludedIn(const FVector& Point, const float DistanceThreshold, const float DistanceBetweenPoints, float& CorrectedRoadPointKey, float& ResultDistance) const;
     
+    UFUNCTION(BlueprintPure)
+    double GetRoadRate(bool& bIsInRoad, const float RoadPointKey, const FVector& Location, const bool bIsClampRunnableRate) const;
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetRoadPointKeyFromLocation(const FVector Location, const int32 LineNumber) const;
     
@@ -91,10 +94,16 @@ public:
     FPointCloudAttributes GetAttribute(const int32 LineNumber, const int32 PointIndexInLine) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    void ComputeRunnableRoadWidth(const float RoadPointKey, float& LeftWidth, float& RightWidth) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     void ComputeRoadWidth(const float RoadPointKey, float& LeftWidth, float& RightWidth) const;
     
     UFUNCTION(BlueprintCallable)
     float ComputeLaneOneWidth(const float RoadPointKey);
+    
+    UFUNCTION(BlueprintPure)
+    double ComputeFullRoadX(double& RoadWidth, const float RoadPointKey, const FVector& Location) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float ComputeCenterX(const float RoadPointKey, const FVector& Location) const;

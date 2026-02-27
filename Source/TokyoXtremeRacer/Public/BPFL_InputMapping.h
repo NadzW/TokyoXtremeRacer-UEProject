@@ -35,6 +35,12 @@ public:
     UBPFL_InputMapping();
 
     UFUNCTION(BlueprintCallable)
+    static void TriggerEffectSlopeFeedbackAcceleratorBrakeFromSlipRatio(float LeftDrivenWheelLongitudinalSlip, float RightDrivenWheelLongitudinalSlip, float Scale);
+    
+    UFUNCTION(BlueprintCallable)
+    static void TriggerEffectSlopeFeedbackAcceleratorBrake(bool WriteAccelerator, uint8 AcceleratorZoneLength, uint8 AcceleratorStartStrength, uint8 AcceleratorEndStrength, bool WriteBrake, uint8 BrakeZoneLength, uint8 BrakeStartStrength, uint8 BrakeEndStrength);
+    
+    UFUNCTION(BlueprintCallable)
     static void SetOutGameInjectionEnabled(bool bEnabled);
     
     UFUNCTION(BlueprintCallable)
@@ -62,7 +68,7 @@ public:
     static void RumbleTriggersActiveControllers(float LeftIntensity, float RightIntensity, int32 DurationMs);
     
     UFUNCTION(BlueprintCallable)
-    static void RumbleByControllerId(const FControllerId& ID, float LowFrequencyIntensity, float HighFrequencyIntensity, int32 DurationMs);
+    static void RumbleByControllerId(const FControllerId& ID, float LowFrequencyIntensity, float HighFrequencyIntensity, int32 DurationMs, float LeftVolume, float RightVolume);
     
     UFUNCTION(BlueprintCallable)
     static void RumbleActiveControllers(float LowFrequencyIntensity, float HighFrequencyIntensity, int32 DurationMs);

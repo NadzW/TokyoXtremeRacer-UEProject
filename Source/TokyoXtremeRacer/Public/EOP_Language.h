@@ -8,6 +8,8 @@ enum class EOP_Language : uint8 {
     OP_ENGLISH,
     OP_CHINESE_CN,
     OP_CHINESE_TW,
+    OP_ESPANOL,
+    OP_FRENCH,
     Num,
 };
 

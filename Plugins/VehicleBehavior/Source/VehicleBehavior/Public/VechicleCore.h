@@ -57,3 +57,4 @@ public:
     AVechicleCore(const FObjectInitializer& ObjectInitializer);
 
 };
+

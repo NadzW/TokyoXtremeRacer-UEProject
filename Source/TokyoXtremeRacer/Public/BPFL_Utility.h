@@ -42,6 +42,9 @@ private:
     static int64 StringToInt64(const FString& src_string);
     
     UFUNCTION(BlueprintCallable)
+    static TArray<float> SortNearest(const TArray<float>& Values, const float Value);
+    
+    UFUNCTION(BlueprintCallable)
     static TArray<int32> Sort(const TArray<float>& Values, const bool is_descending);
     
     UFUNCTION(BlueprintCallable)

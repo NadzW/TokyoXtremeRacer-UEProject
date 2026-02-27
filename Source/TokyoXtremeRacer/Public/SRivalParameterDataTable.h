@@ -32,9 +32,6 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UDataTable> DriftPreferenceTable;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSoftObjectPtr<UDataTable> CrusingSpeedSetting;
-    
     TOKYOXTREMERACER_API FSRivalParameterDataTable();
 };
 

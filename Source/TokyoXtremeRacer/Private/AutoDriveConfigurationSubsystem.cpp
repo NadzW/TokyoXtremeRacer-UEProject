@@ -13,6 +13,9 @@ UAutoDriveConfigurationSubsystem::UAutoDriveConfigurationSubsystem() {
     this->RivalDrivingParameterTable = NULL;
 }
 
+void UAutoDriveConfigurationSubsystem::SetCrusingParameters(const TMap<EAutoDriveCrusingType, FAutoDriveCrusingDefinitionParameter> tCrusingParameters) {
+}
+
 FSRivalDrivingParameter UAutoDriveConfigurationSubsystem::RivalDrivingParameter(const FName RivalID) const {
     return FSRivalDrivingParameter{};
 }

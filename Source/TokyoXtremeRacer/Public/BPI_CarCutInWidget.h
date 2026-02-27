@@ -31,6 +31,9 @@ public:
     void SetCutInCategoryType(const ERivalCategory RivalCategoryType);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void SetCutInCarName(const FText& CarName);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetCutInBunnerType(const ECarCutInBunnerType CutInBunnerType);
     
 };

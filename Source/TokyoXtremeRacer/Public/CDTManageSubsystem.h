@@ -3,7 +3,8 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "BPI_CDTManageSystem.h"
-#include "SManagedCDTList.h"
+#include "ECDTRegisterResult.h"
+#include "ECDTReplaceResult.h"
 #include "CDTManageSubsystem.generated.h"
 
 class UCDTManageLogicObject;
@@ -12,19 +13,10 @@ class UDataTable;
 class UPrimaryAssetLabel;
 
 UCLASS(Blueprintable)
-class TOKYOXTREMERACER_API UCDTManageSubsystem : public UGameInstanceSubsystem, public IBPI_CDTManageSystem {
+class TOKYOXTREMERACER_API UCDTManageSubsystem : public UEngineSubsystem, public IBPI_CDTManageSystem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    TMap<FName, FSManagedCDTList> CDTLists;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    UPrimaryAssetLabel* CurrentPALCDTList;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    TMap<FString, UDataTable*> TransientLoadedDataTables;
-    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UCDTManageLogicObject* CDTManageLogicComponent;
     
@@ -37,19 +29,25 @@ public:
     bool UnregisterAllCDT() override PURE_VIRTUAL(UnregisterAllCDT, return false;);
     
     UFUNCTION(BlueprintCallable)
-    bool RequestReplaceParentDataTable(FSoftObjectPath TargetCompositeDataTablePath, const FString& BaseDataTablePath, const FString& ReplaceDataTablePath) override PURE_VIRTUAL(RequestReplaceParentDataTable, return false;);
+    ECDTReplaceResult RequestReplaceParentDataTable(FSoftObjectPath TargetCompositeDataTablePath, const FString& BaseDataTablePath, const FString& ReplaceDataTablePath) override PURE_VIRTUAL(RequestReplaceParentDataTable, return ECDTReplaceResult::ECDTRR_Success;);
     
     UFUNCTION(BlueprintCallable)
-    void RegisterCDTsFromCDTList(UPrimaryAssetLabel* PALCDTList, UDataTable* DTReplaceList) override PURE_VIRTUAL(RegisterCDTsFromCDTList,);
+    ECDTRegisterResult RegisterCDTsFromCDTList(UPrimaryAssetLabel* PALCDTList, UDataTable* DTReplaceList) override PURE_VIRTUAL(RegisterCDTsFromCDTList, return ECDTRegisterResult::ECDTRR_Success;);
     
     UFUNCTION(BlueprintCallable)
     bool RegisterBaseCompositeDataTable(UCompositeDataTable* BaseCompositeDataTable) override PURE_VIRTUAL(RegisterBaseCompositeDataTable, return false;);
+    
+    UFUNCTION(BlueprintCallable)
+    void RegisterAcceptRootName(const FString& RootName) override PURE_VIRTUAL(RegisterAcceptRootName,);
     
     UFUNCTION(BlueprintCallable)
     UCompositeDataTable* GetCompositeDataTableFromPath(TSoftObjectPtr<UCompositeDataTable> CDTPath) override PURE_VIRTUAL(GetCompositeDataTableFromPath, return NULL;);
     
     UFUNCTION()
     UCompositeDataTable* GetCompositeDataTable(FName CDTName) const override PURE_VIRTUAL(GetCompositeDataTable, return NULL;);
+    
+    UFUNCTION(BlueprintCallable)
+    void ForceReleaseCDT() override PURE_VIRTUAL(ForceReleaseCDT,);
     
 };
 

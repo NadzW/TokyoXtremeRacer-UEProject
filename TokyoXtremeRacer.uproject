@@ -173,8 +173,9 @@
 				"Editor"
 			]
 		}
-    ],
+	],
 	"TargetPlatforms": [
+		"PS5",
 		"Windows"
 	]
 }

@@ -22,6 +22,10 @@ int64 UBPFL_Utility::StringToInt64(const FString& src_string) {
     return 0;
 }
 
+TArray<float> UBPFL_Utility::SortNearest(const TArray<float>& Values, const float Value) {
+    return TArray<float>();
+}
+
 TArray<int32> UBPFL_Utility::Sort(const TArray<float>& Values, const bool is_descending) {
     return TArray<int32>();
 }

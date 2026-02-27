@@ -11,6 +11,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<EDLCPlatform, FString> DLCPlatformIDs;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString DLCRootPackagePath;
+    
     FSDLCApplicationInfo();
 };
 

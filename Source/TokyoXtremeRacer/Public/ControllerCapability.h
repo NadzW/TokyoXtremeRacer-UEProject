@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "ControllerTrueForceCapability.h"
 #include "EControllerDriverType.h"
+#include "EGkControllerDeviceClass.h"
 #include "EInputControllerType.h"
 #include "FWheelControllerLedType.h"
 #include "ControllerCapability.generated.h"
@@ -29,6 +30,9 @@ public:
     bool hasRumbleTriggers;
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool HasTriggerEffect;
+    
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FControllerTrueForceCapability TrueForce;
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -36,6 +40,9 @@ public:
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FWheelControllerLedType LedType;
+    
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool HasDisplayParameters;
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsXInputCapable;
@@ -48,6 +55,9 @@ public:
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsDirectInputUsed;
+    
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EGkControllerDeviceClass DeviceClass;
     
     FControllerCapability();
 };

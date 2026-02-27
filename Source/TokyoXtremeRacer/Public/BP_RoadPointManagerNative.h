@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "GameFramework/Actor.h"
 #include "BPI_RoadPointManagerNative.h"
 #include "SRPDBranchInfo.h"
 #include "BP_RoadPointManagerNative.generated.h"

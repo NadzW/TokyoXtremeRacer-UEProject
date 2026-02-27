@@ -17,6 +17,9 @@ public:
     FString Name;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SimpleDisplay, meta=(AllowPrivateAccess=true))
+    FText LocalizedName;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SimpleDisplay, meta=(AllowPrivateAccess=true))
     FControllerCapability Capability;
     
     FControllerDesc();

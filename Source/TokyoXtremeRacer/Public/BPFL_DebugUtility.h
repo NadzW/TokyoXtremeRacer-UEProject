@@ -17,7 +17,19 @@ private:
     static bool GetIsDisplayDebugMessage();
     
     UFUNCTION(BlueprintCallable)
+    static void DoEnsureWithMessage(const bool bIsException, const FString& Message);
+    
+    UFUNCTION(BlueprintCallable)
+    static void DoEnsure(const bool bIsException);
+    
+    UFUNCTION(BlueprintCallable)
     static void DoDebugBreak();
+    
+    UFUNCTION(BlueprintCallable)
+    static void DoCheckWithMessage(bool bIsException, const FString& Message);
+    
+    UFUNCTION(BlueprintCallable)
+    static void DoCheck(const bool bIsException);
     
 };
 

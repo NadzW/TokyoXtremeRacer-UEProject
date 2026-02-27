@@ -56,6 +56,10 @@ bool UBPFL_BadNameUtility::GetBadNameHistoryData(const FBadNameAcquisitionHistor
     return false;
 }
 
+bool UBPFL_BadNameUtility::GetBadNameConditionDataFromDT(const int32& check_id, UDataTable* DataTable, FBadNameConditionData& out_data) {
+    return false;
+}
+
 int32 UBPFL_BadNameUtility::GetAcquisitionCountBadNameHistory(const FBadNameAcquisitionHistory& in_history) {
     return 0;
 }
@@ -80,8 +84,12 @@ FBadNameState UBPFL_BadNameUtility::CombineBadName(const FBadNameState& base, co
     return FBadNameState{};
 }
 
-FBadNameAcquisitionHistory UBPFL_BadNameUtility::CombineAcquisitionHistory(const FBadNameAcquisitionHistory& base_history, const FBadNameAcquisitionHistory& add_history) {
+FBadNameAcquisitionHistory UBPFL_BadNameUtility::CombineAcquisitionHistory(const FBadNameAcquisitionHistory& base_history, const FBadNameAcquisitionHistory& add_history, bool& is_add) {
     return FBadNameAcquisitionHistory{};
+}
+
+bool UBPFL_BadNameUtility::CheckUpdateBadNameText(FBadNameState& badname_state, UDataTable* CheckTable) {
+    return false;
 }
 
 bool UBPFL_BadNameUtility::CheckBadName(const FBadNameState& base, const FBadNameState& Add, FBadNameState& new_bad_name) {

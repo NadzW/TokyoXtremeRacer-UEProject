@@ -30,8 +30,8 @@
 #include "SMyCarInfo.h"
 #include "SRivalAppearanceConditionInfo.h"
 #include "SRivalBattleInfo.h"
-#include "SRivalInfo.h"
 #include "SRivalSituationInfo.h"
+#include "SRivalSkillInfo.h"
 #include "STuneInfo.h"
 #include "SUserInfo.h"
 #include "BPFL_GameUtility.generated.h"
@@ -83,7 +83,7 @@ public:
     
 private:
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static int32 GetRivalDriverLevel(const FSRivalInfo in_info);
+    static int32 GetRivalDriverLevel(const FSRivalSkillInfo in_info);
     
     UFUNCTION(BlueprintCallable)
     static FSCarLicensePlate GetRandomLicensePlate(const int32 in_category);
@@ -128,7 +128,7 @@ private:
     static void ComputeSplitRateByATTESA_ETS(const double in_dt, const double in_a_split_rate, const double in_a_force, const double in_b_force, const double in_b_max_force, const bool in_is_b_slip, const double in_move_speed, const double in_old_rate_a, double& out_rate_a, double& out_rate_b);
     
     UFUNCTION(BlueprintCallable)
-    static bool ComputeSpDamageFromSkillTechnique(const double in_battle_time, const ESkillTarget in_tec, const FSBattleBaseInfo in_attacker_base_info, const UVehicleRaceInfo* in_attacker_info, const FSBattleBaseInfo in_defender_base_info, const UVehicleRaceInfo* in_defender_info, double& out_damage_value, bool& out_exe_defense_skill, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus);
+    static bool ComputeSpDamageFromSkillTechnique(const double in_battle_time, const double in_attack_coef, const double in_defense_coef, const ESkillTarget in_tec, const FSBattleBaseInfo in_attacker_base_info, const UVehicleRaceInfo* in_attacker_info, const FSBattleBaseInfo in_defender_base_info, const UVehicleRaceInfo* in_defender_info, double& out_damage_value, bool& out_exe_defense_skill, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus);
     
     UFUNCTION(BlueprintCallable)
     static bool ComputeSpDamage(const double in_dt, const double in_battle_time, const double in_distance_coef, const double in_attack_coef, const double in_defense_coef, const double in_max_damage, const FSBattleBaseInfo in_player_base_info, const UVehicleRaceInfo* in_player_info, const FSBattleBaseInfo in_rival_base_info, const UVehicleRaceInfo* in_rival_info, const double in_distance_from_player, const double in_base_distance, const bool in_use_pure_distance, const FSBattleTargetInfo in_targe_info, bool& out_is_player_attack_side, double& out_damage, double& out_use_distance, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus, bool& out_exe_attack_coef, bool& out_exe_defence_coef, FSBattleTargetInfo& out_targe_info);

@@ -36,5 +36,6 @@ FSRivalInfo::FSRivalInfo() {
     this->LevelATK = 0;
     this->LevelDEF = 0;
     this->LevelPHY = 0;
+    this->stage = EStoryStage::None;
 }
 

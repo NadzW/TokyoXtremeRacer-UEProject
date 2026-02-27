@@ -124,13 +124,16 @@ public:
     void SetBase(const int32 max_sp, const double current_sp, const int32 sp_attack, const int32 sp_diffence);
     
     UFUNCTION(BlueprintCallable)
-    void ResetBeforeEveryBattle(const bool in_is_continuous_battle);
+    void ResetBeforeEveryBattle();
     
     UFUNCTION(BlueprintCallable)
     int32 RefrectSkillParameter(const FSSkillTree in_skill);
     
     UFUNCTION(BlueprintCallable)
     bool IsCollisionsAvoided();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HaveCollisionAvoidedSkill() const;
     
     UFUNCTION(BlueprintCallable)
     bool GetRecoveryValueOrg(const ESkillTarget in_target, int32& out_value);
@@ -179,6 +182,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     int32 GetATK(const bool in_is_pa_battle);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool FinishedCollisionAvoidedSkill() const;
     
     UFUNCTION(BlueprintCallable)
     void ClearEquipSkills();

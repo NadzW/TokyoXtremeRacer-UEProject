@@ -18,6 +18,7 @@ UUserInfoGameInstanceSubsystem::UUserInfoGameInstanceSubsystem() {
     this->SaveDataChangedFlagReadReference = false;
     this->SaveDataChangedFlagSeenConv = false;
     this->SaveDataChangedFlagReplacementEngine = false;
+    this->SaveDataChangedChangedBadNameHistory = false;
     this->OptionSaveDataChangedFlag = false;
     this->Is_First_Time_Startup = true;
     this->Is_Option_Initialized = false;
@@ -70,6 +71,9 @@ bool UUserInfoGameInstanceSubsystem::SetStoryStage(const EStoryStage in_new_stag
 
 bool UUserInfoGameInstanceSubsystem::SetSkillTreeStatus(const int32 ID, const ESkillTreeStatus Status, const int32 DT_No, const int32 Step) {
     return false;
+}
+
+void UUserInfoGameInstanceSubsystem::SetSelectedMyCarOrgGenuineColor(const int32 ID) {
 }
 
 void UUserInfoGameInstanceSubsystem::SetSelectedMyCarId(const int32 ID) {
@@ -176,6 +180,9 @@ void UUserInfoGameInstanceSubsystem::SetOptionVehicleInfoTransmissionType(const 
 void UUserInfoGameInstanceSubsystem::SetOptionVehicleInfo(const FSUserOptionVehicleInfo vehicle_info) {
 }
 
+void UUserInfoGameInstanceSubsystem::SetOptionMusicSelectInfo(const FSOptionMusicSelectInfo setting_info) {
+}
+
 void UUserInfoGameInstanceSubsystem::SetOptionInputMappingInfo(const FSOptionInputMappingInfo setting_info) {
 }
 
@@ -263,6 +270,9 @@ void UUserInfoGameInstanceSubsystem::SetBattleResult(const FSRaceBattleResultInf
 
 int32 UUserInfoGameInstanceSubsystem::SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info) {
     return 0;
+}
+
+void UUserInfoGameInstanceSubsystem::RevertingIncorrectStageProgressByHasegawaSisters(const FName in_stage4_clear_objective) {
 }
 
 bool UUserInfoGameInstanceSubsystem::ReturnNormalSelectedCarTuneEngineReplacement() {
@@ -360,6 +370,10 @@ bool UUserInfoGameInstanceSubsystem::IsIncludedCurrentStoryStage(const EStorySta
     return false;
 }
 
+bool UUserInfoGameInstanceSubsystem::IsHaveBadNameHistory(const FBadNameState& BadName) const {
+    return false;
+}
+
 bool UUserInfoGameInstanceSubsystem::IsExistNowhereConversation() {
     return false;
 }
@@ -408,6 +422,10 @@ bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedCp() {
 }
 
 bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedBuyCar() {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::HasSaveDataChangedBadNameHistory() {
     return false;
 }
 
@@ -601,6 +619,10 @@ ECarTransmissionType UUserInfoGameInstanceSubsystem::GetOptionVehicleInfoTransmi
 
 FSUserOptionVehicleInfo UUserInfoGameInstanceSubsystem::GetOptionVehicleInfo() {
     return FSUserOptionVehicleInfo{};
+}
+
+FSOptionMusicSelectInfo UUserInfoGameInstanceSubsystem::GetOptionMusicSelectInfo() {
+    return FSOptionMusicSelectInfo{};
 }
 
 FSUserOptionInfo UUserInfoGameInstanceSubsystem::GetOptionInfo() {
@@ -998,7 +1020,17 @@ void UUserInfoGameInstanceSubsystem::ClearEquipPerkSkill(const int32 in_slot) {
 void UUserInfoGameInstanceSubsystem::ClearAnnounceUnlockedTunes() {
 }
 
+void UUserInfoGameInstanceSubsystem::CheckMyCarsPeelOffStickers(const TMap<FName, FNameArray>& vinyl_stickers, const TMap<FName, FNameArray>& window_stickers, const TMap<FName, FName>& car_to_maker) {
+}
+
+void UUserInfoGameInstanceSubsystem::CheckMyCarsEnableForOrgGenuineColor() {
+}
+
 bool UUserInfoGameInstanceSubsystem::CheckCarYouOwn(const FName in_check_car_name_id) {
+    return false;
+}
+
+bool UUserInfoGameInstanceSubsystem::CheckAddBadNameHistory(const FBadNameAcquisitionHistory& in_add_history) {
     return false;
 }
 
@@ -1011,6 +1043,9 @@ bool UUserInfoGameInstanceSubsystem::ChangeCurrentGarageInfo(const int32 ID) {
 
 bool UUserInfoGameInstanceSubsystem::BuySelectedCarNeon(const ENeonLightPositionType in_buy_position) {
     return false;
+}
+
+void UUserInfoGameInstanceSubsystem::AllEnterOpen() {
 }
 
 int32 UUserInfoGameInstanceSubsystem::AdvanceTimeZone(const ERaceTimeZone next_timezone) {

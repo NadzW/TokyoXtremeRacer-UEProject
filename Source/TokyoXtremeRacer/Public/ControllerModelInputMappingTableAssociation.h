@@ -27,6 +27,9 @@ public:
     UInputMappingTable* PS5OnPS5;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UInputMappingTable* PS5WheelOnPS5;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FControllerModel, UInputMappingTable*> Map;
     
     UControllerModelInputMappingTableAssociation();

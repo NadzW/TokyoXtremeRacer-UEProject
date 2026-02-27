@@ -17,6 +17,7 @@ enum class ETutorialAction : uint8 {
     NoBattleRestart,
     DisableSystemMenu,
     EnableSystemMenu,
+    AllEnterOpneExceptPAExit,
     Num,
 };
 

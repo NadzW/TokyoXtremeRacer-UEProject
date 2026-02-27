@@ -6,6 +6,9 @@ APC_ReplaySpectator::APC_ReplaySpectator(const FObjectInitializer& ObjectInitial
     this->bShouldPerformFullTickWhenPaused = true;
 }
 
+void APC_ReplaySpectator::SetCurrentReplayTimeToSecondsFloat(float Seconds) {
+}
+
 void APC_ReplaySpectator::SetCurrentReplayTimeToSeconds(int32 Seconds) {
 }
 
@@ -22,6 +25,8 @@ void APC_ReplaySpectator::SetCurrentReplayPause() {
 
 
 
+void APC_ReplaySpectator::JumpToTimeEndOfLiveReplay() {
+}
 
 float APC_ReplaySpectator::GetCurrentReplayTotalTimeInSecondsFloat() const {
     return 0.0f;
@@ -29,6 +34,10 @@ float APC_ReplaySpectator::GetCurrentReplayTotalTimeInSecondsFloat() const {
 
 int32 APC_ReplaySpectator::GetCurrentReplayTotalTimeInSeconds() const {
     return 0;
+}
+
+float APC_ReplaySpectator::GetCurrentReplayPlayRate() {
+    return 0.0f;
 }
 
 bool APC_ReplaySpectator::GetCurrentReplayPause() const {
