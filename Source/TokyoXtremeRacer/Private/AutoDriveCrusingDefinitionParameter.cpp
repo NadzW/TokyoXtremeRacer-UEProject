@@ -5,5 +5,6 @@ FAutoDriveCrusingDefinitionParameter::FAutoDriveCrusingDefinitionParameter() {
     this->DefaultTargetSpeedKmh = 0.00f;
     this->DiffMinBaseCrusingSpeedKmh = 0.00f;
     this->DiffMaxBaseCrusingSpeedKmh = 0.00f;
+    this->InBattleTargetSpeedKmh = 0.00f;
 }
 

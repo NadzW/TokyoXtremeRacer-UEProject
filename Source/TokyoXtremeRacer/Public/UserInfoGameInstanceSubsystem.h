@@ -3,6 +3,8 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "BadNameAcquisitionHistory.h"
+#include "BadNameState.h"
 #include "ECarSetting.h"
 #include "ECarSettingAutoKind.h"
 #include "ECarSettingAutoType.h"
@@ -33,6 +35,7 @@
 #include "EVehicleTuneKind.h"
 #include "EVehicleTuneLevel.h"
 #include "EWindowStickerIndex.h"
+#include "NameArray.h"
 #include "SBaseInfo.h"
 #include "SBrakeInfo.h"
 #include "SCarLicensePlate.h"
@@ -50,6 +53,7 @@
 #include "SMyCarWindowSticker.h"
 #include "SObjectiveInfo.h"
 #include "SOptionInputMappingInfo.h"
+#include "SOptionMusicSelectInfo.h"
 #include "SParkingAreaConversationDispInfo.h"
 #include "SPerkCategoryInfo.h"
 #include "SPerkCategoryRootInfo.h"
@@ -162,6 +166,9 @@ public:
     bool SaveDataChangedFlagReplacementEngine;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SaveDataChangedChangedBadNameHistory;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool OptionSaveDataChangedFlag;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -225,6 +232,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool SetSkillTreeStatus(const int32 ID, const ESkillTreeStatus Status, const int32 DT_No, const int32 Step);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetSelectedMyCarOrgGenuineColor(const int32 ID);
     
     UFUNCTION(BlueprintCallable)
     void SetSelectedMyCarId(const int32 ID);
@@ -317,6 +327,9 @@ public:
     void SetOptionVehicleInfo(const FSUserOptionVehicleInfo vehicle_info);
     
     UFUNCTION(BlueprintCallable)
+    void SetOptionMusicSelectInfo(const FSOptionMusicSelectInfo setting_info);
+    
+    UFUNCTION(BlueprintCallable)
     void SetOptionInputMappingInfo(const FSOptionInputMappingInfo setting_info);
     
     UFUNCTION(BlueprintCallable)
@@ -401,6 +414,9 @@ public:
     int32 SeenParkingAreaConversation(const EParkingArea parking_area, const FSParkingAreaConversationDispInfo conv_info);
     
     UFUNCTION(BlueprintCallable)
+    void RevertingIncorrectStageProgressByHasegawaSisters(const FName in_stage4_clear_objective);
+    
+    UFUNCTION(BlueprintCallable)
     bool ReturnNormalSelectedCarTuneEngineReplacement();
     
     UFUNCTION(BlueprintCallable)
@@ -481,6 +497,9 @@ public:
     UFUNCTION(BlueprintCallable)
     bool IsIncludedCurrentStoryStage(const EStoryStage in_check_stage);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsHaveBadNameHistory(const FBadNameState& BadName) const;
+    
     UFUNCTION(BlueprintCallable)
     bool IsExistNowhereConversation();
     
@@ -519,6 +538,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool HasSaveDataChangedBuyCar();
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasSaveDataChangedBadNameHistory();
     
     UFUNCTION(BlueprintCallable)
     bool HasSaveDataChanged();
@@ -663,6 +685,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     FSUserOptionVehicleInfo GetOptionVehicleInfo();
+    
+    UFUNCTION(BlueprintCallable)
+    FSOptionMusicSelectInfo GetOptionMusicSelectInfo();
     
     UFUNCTION(BlueprintCallable)
     FSUserOptionInfo GetOptionInfo();
@@ -983,7 +1008,16 @@ public:
     void ClearAnnounceUnlockedTunes();
     
     UFUNCTION(BlueprintCallable)
+    void CheckMyCarsPeelOffStickers(const TMap<FName, FNameArray>& vinyl_stickers, const TMap<FName, FNameArray>& window_stickers, const TMap<FName, FName>& car_to_maker);
+    
+    UFUNCTION(BlueprintCallable)
+    void CheckMyCarsEnableForOrgGenuineColor();
+    
+    UFUNCTION(BlueprintCallable)
     bool CheckCarYouOwn(const FName in_check_car_name_id);
+    
+    UFUNCTION(BlueprintCallable)
+    bool CheckAddBadNameHistory(const FBadNameAcquisitionHistory& in_add_history);
     
     UFUNCTION(BlueprintCallable)
     void ChangeEquipSkillsSaved();
@@ -993,6 +1027,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool BuySelectedCarNeon(const ENeonLightPositionType in_buy_position);
+    
+    UFUNCTION(BlueprintCallable)
+    void AllEnterOpen();
     
     UFUNCTION(BlueprintCallable)
     int32 AdvanceTimeZone(const ERaceTimeZone next_timezone);

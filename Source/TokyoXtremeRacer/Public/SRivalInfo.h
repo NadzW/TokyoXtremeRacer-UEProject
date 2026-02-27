@@ -17,6 +17,7 @@
 #include "ERivalPlacementSituation.h"
 #include "ERunArea.h"
 #include "ESkillTreeType.h"
+#include "EStoryStage.h"
 #include "EVehicleTuneKind.h"
 #include "EVehicleTuneLevel.h"
 #include "SCarEffect.h"
@@ -25,6 +26,7 @@
 #include "SForcedAddRivalInfo.h"
 #include "SRivalAppearanceConditionInfo.h"
 #include "SRivalBattleConditionInfo.h"
+#include "SRivalSkillInfo.h"
 #include "STuneInfo.h"
 #include "SRivalInfo.generated.h"
 
@@ -242,6 +244,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 LevelPHY;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FSRivalSkillInfo> SkillsByStoryKind;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EStoryStage stage;
     
     FSRivalInfo();
 };

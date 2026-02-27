@@ -46,6 +46,7 @@ FSUserInfo::FSUserInfo() {
     this->StoryStage = EStoryStage::None;
     this->KeepStoryStage = EStoryStage::None;
     this->UseOilAndWaterTemperature = false;
+    this->UseStoicBattleRule = false;
     this->EnableSystemMenu = false;
     this->MinBattleTime = 0.00f;
     this->MaxBattleTime = 0.00f;

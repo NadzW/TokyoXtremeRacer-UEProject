@@ -207,6 +207,9 @@ public:
     void SetIsReplay(const bool is_replay);
     
     UFUNCTION(BlueprintCallable)
+    void SetIsBattleDriveMode(const bool in_is_battle);
+    
+    UFUNCTION(BlueprintCallable)
     void SetIsBattle(const bool in_is_battle);
     
     UFUNCTION(BlueprintCallable)
@@ -336,6 +339,9 @@ public:
     bool GetIsMeetTheBattleConditionRival(const FName in_check_rival);
     
     UFUNCTION(BlueprintCallable)
+    bool GetIsBattleDriveMode();
+    
+    UFUNCTION(BlueprintCallable)
     bool GetIsBattle();
     
     UFUNCTION(BlueprintCallable)
@@ -418,9 +424,6 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void CheckActionDailyInit();
-    
-    UFUNCTION(BlueprintCallable)
-    bool CanGetPerfectBonusFromRival(const FName in_rival_id);
     
     UFUNCTION(BlueprintCallable)
     void AddTrafficJamInfo(const FSCourseTrafficJamInfo Info);

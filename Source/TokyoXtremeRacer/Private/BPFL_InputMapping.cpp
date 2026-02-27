@@ -3,6 +3,12 @@
 UBPFL_InputMapping::UBPFL_InputMapping() {
 }
 
+void UBPFL_InputMapping::TriggerEffectSlopeFeedbackAcceleratorBrakeFromSlipRatio(float LeftDrivenWheelLongitudinalSlip, float RightDrivenWheelLongitudinalSlip, float Scale) {
+}
+
+void UBPFL_InputMapping::TriggerEffectSlopeFeedbackAcceleratorBrake(bool WriteAccelerator, uint8 AcceleratorZoneLength, uint8 AcceleratorStartStrength, uint8 AcceleratorEndStrength, bool WriteBrake, uint8 BrakeZoneLength, uint8 BrakeStartStrength, uint8 BrakeEndStrength) {
+}
+
 void UBPFL_InputMapping::SetOutGameInjectionEnabled(bool bEnabled) {
 }
 
@@ -30,7 +36,7 @@ void UBPFL_InputMapping::RumbleTriggersByControllerId(const FControllerId& ID, f
 void UBPFL_InputMapping::RumbleTriggersActiveControllers(float LeftIntensity, float RightIntensity, int32 DurationMs) {
 }
 
-void UBPFL_InputMapping::RumbleByControllerId(const FControllerId& ID, float LowFrequencyIntensity, float HighFrequencyIntensity, int32 DurationMs) {
+void UBPFL_InputMapping::RumbleByControllerId(const FControllerId& ID, float LowFrequencyIntensity, float HighFrequencyIntensity, int32 DurationMs, float LeftVolume, float RightVolume) {
 }
 
 void UBPFL_InputMapping::RumbleActiveControllers(float LowFrequencyIntensity, float HighFrequencyIntensity, int32 DurationMs) {

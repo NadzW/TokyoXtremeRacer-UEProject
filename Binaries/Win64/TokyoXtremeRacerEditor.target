@@ -34,6 +34,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/Alpakit/Binaries/Win64/UnrealEditor-Alpakit.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Alpakit/Binaries/Win64/UnrealEditor-Alpakit.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Alpakit/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/Controlysis/Binaries/Win64/UnrealEditor-Controlysis.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -4724,6 +4736,10 @@
 	],
 	"RuntimeDependencies": [
 		{
+			"Path": "$(ProjectDir)/Plugins/Alpakit/Alpakit.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/Controlysis/Controlysis.uplugin",
 			"Type": "UFS"
 		},
@@ -4733,6 +4749,10 @@
 		},
 		{
 			"Path": "$(ProjectDir)/Plugins/DLC_GuestRival02/DLC_GuestRival02.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/DLC_PSPreorder01/DLC_PSPreorder01.uplugin",
 			"Type": "UFS"
 		},
 		{
@@ -29403,6 +29423,7 @@
 		"ActorSequence",
 		"AdvancedRenamer",
 		"AlembicImporter",
+		"Alpakit",
 		"AndroidDeviceProfileSelector",
 		"AndroidFileServer",
 		"AndroidMedia",
@@ -29468,6 +29489,7 @@
 		"D3D12VideoDecodersElectra",
 		"DLC_GuestRival01",
 		"DLC_GuestRival02",
+		"DLC_PSPreorder01",
 		"DLSS",
 		"DLSSMoviePipelineSupport",
 		"DataValidation",

@@ -75,6 +75,9 @@ public:
     void SetAccel(const float Value);
     
     UFUNCTION(BlueprintCallable)
+    void ResetSpatialFlag();
+    
+    UFUNCTION(BlueprintCallable)
     int32 MaxTuneEffects();
     
     UFUNCTION(BlueprintCallable)

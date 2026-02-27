@@ -37,6 +37,9 @@ public:
     EGkOPSAchievementClearStatus GetAchievementStatus(const FString& APIName) const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool EarnAchievementsAndProgress(const TMap<FString, float>& achievement_list);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void EarnAchievement(const FString& APIName);
     
 };

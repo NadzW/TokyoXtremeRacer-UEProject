@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "InputModifiers.h"
 #include "InputModifierOneMinusY.generated.h"
 

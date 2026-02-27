@@ -20,6 +20,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DiffMaxBaseCrusingSpeedKmh;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float InBattleTargetSpeedKmh;
+    
     FAutoDriveCrusingDefinitionParameter();
 };
 

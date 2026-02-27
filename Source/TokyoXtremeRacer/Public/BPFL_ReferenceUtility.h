@@ -37,6 +37,9 @@ public:
     static bool UpdateRecllectionConversationSituationInfoByPABattle(UPARAM(Ref) FSRecollectionConversationSituationInfoList& info_list, FName in_rival_key, const FSRivalSituationInfo& RivalSituation, const UDataTable* conversation_data_table);
     
     UFUNCTION(BlueprintCallable)
+    static bool UpdateRecllectionConversationSituationInfoByNotDeatRivalAll(UPARAM(Ref) FSRecollectionConversationSituationInfoList& info_list, const TMap<FName, FSRivalSituationInfo>& RivalSituations, const UDataTable* conversation_data_table);
+    
+    UFUNCTION(BlueprintCallable)
     static void SortRecollectionRivalInfoDataForConversationList(UPARAM(Ref) FSRecollectionRivalInfoData& data_value, bool is_top);
     
     UFUNCTION(BlueprintCallable)

@@ -19,6 +19,10 @@ bool UPointCloudComponent::IsPointIncludedIn(const FVector& Point, const float D
     return false;
 }
 
+double UPointCloudComponent::GetRoadRate(bool& bIsInRoad, const float RoadPointKey, const FVector& Location, const bool bIsClampRunnableRate) const {
+    return 0.0;
+}
+
 float UPointCloudComponent::GetRoadPointKeyFromLocation(const FVector Location, const int32 LineNumber) const {
     return 0.0f;
 }
@@ -79,11 +83,18 @@ FPointCloudAttributes UPointCloudComponent::GetAttribute(const int32 LineNumber,
     return FPointCloudAttributes{};
 }
 
+void UPointCloudComponent::ComputeRunnableRoadWidth(const float RoadPointKey, float& LeftWidth, float& RightWidth) const {
+}
+
 void UPointCloudComponent::ComputeRoadWidth(const float RoadPointKey, float& LeftWidth, float& RightWidth) const {
 }
 
 float UPointCloudComponent::ComputeLaneOneWidth(const float RoadPointKey) {
     return 0.0f;
+}
+
+double UPointCloudComponent::ComputeFullRoadX(double& RoadWidth, const float RoadPointKey, const FVector& Location) const {
+    return 0.0;
 }
 
 float UPointCloudComponent::ComputeCenterX(const float RoadPointKey, const FVector& Location) const {

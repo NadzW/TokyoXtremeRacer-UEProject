@@ -81,6 +81,9 @@ void URaceInfoGameInstanceSubsystem::SetIsTA(const bool in_is_battle) {
 void URaceInfoGameInstanceSubsystem::SetIsReplay(const bool is_replay) {
 }
 
+void URaceInfoGameInstanceSubsystem::SetIsBattleDriveMode(const bool in_is_battle) {
+}
+
 void URaceInfoGameInstanceSubsystem::SetIsBattle(const bool in_is_battle) {
 }
 
@@ -232,6 +235,10 @@ bool URaceInfoGameInstanceSubsystem::GetIsMeetTheBattleConditionRival(const FNam
     return false;
 }
 
+bool URaceInfoGameInstanceSubsystem::GetIsBattleDriveMode() {
+    return false;
+}
+
 bool URaceInfoGameInstanceSubsystem::GetIsBattle() {
     return false;
 }
@@ -325,10 +332,6 @@ bool URaceInfoGameInstanceSubsystem::CheckRivalAppearance(const FSRivalAppearanc
 }
 
 void URaceInfoGameInstanceSubsystem::CheckActionDailyInit() {
-}
-
-bool URaceInfoGameInstanceSubsystem::CanGetPerfectBonusFromRival(const FName in_rival_id) {
-    return false;
 }
 
 void URaceInfoGameInstanceSubsystem::AddTrafficJamInfo(const FSCourseTrafficJamInfo Info) {

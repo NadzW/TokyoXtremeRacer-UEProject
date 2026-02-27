@@ -17,6 +17,9 @@ public:
     int32 CurrentValue;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 MaxValue;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool isUnLock;
     
     FSAchievementsIdsForPlatform();

@@ -4,7 +4,7 @@ public class DLSSBlueprint : ModuleRules {
     public DLSSBlueprint(ReadOnlyTargetRules Target) : base(Target) {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         bLegacyPublicIncludePaths = false;
-        CppCompileWarningSettings.ShadowVariableWarningLevel = WarningLevel.Warning;
+        ShadowVariableWarningLevel = WarningLevel.Warning;
         
         PublicDependencyModuleNames.AddRange(new string[] {
             "Core",

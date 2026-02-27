@@ -115,6 +115,9 @@ void UControllerManager::SetTrueForceKinestheticDamping(const FControllerId& ID,
 void UControllerManager::SetTrueForceEnabled(const FControllerId& ID, bool Enabled) {
 }
 
+void UControllerManager::SetTriggerEffectOff(const FControllerId& ID, bool L2, bool R2) {
+}
+
 bool UControllerManager::SetOperatingRangeByControllerId(const FControllerId& ID, float RangeDegrees) {
     return false;
 }
@@ -132,6 +135,18 @@ bool UControllerManager::SetLedsByControllerId(const FControllerId& ID, int32 St
 }
 
 bool UControllerManager::SetForceModeByControllerId(const FControllerId& ID, EControllerForceMode Mode) {
+    return false;
+}
+
+bool UControllerManager::SetDisplayVelocity(const FControllerId& ID, float VelocityKmh) {
+    return false;
+}
+
+bool UControllerManager::SetDisplayGearSelected(const FControllerId& ID, int32 GearSelected) {
+    return false;
+}
+
+bool UControllerManager::SetDisplayEngineRpm(const FControllerId& ID, float CurrentRpm, float MaxRpm) {
     return false;
 }
 
@@ -189,6 +204,10 @@ FString UControllerManager::MakeControllerDescString(const FControllerDesc& Cont
 }
 
 bool UControllerManager::IsTrueForceCapable(const FControllerId& ID) {
+    return false;
+}
+
+bool UControllerManager::IsPS5Wheel(EGkControllerDeviceClass ControllerDeviceClass) {
     return false;
 }
 
@@ -264,6 +283,9 @@ TArray<FControllerId> UControllerManager::GetActiveControllerIds() {
     return TArray<FControllerId>();
 }
 
+void UControllerManager::FindPs5DualSenseController(FControllerId& Found, TEnumAsByte<EFindResultPins>& FindResult) {
+}
+
 void UControllerManager::FindControllerByHardwareId(int32 VendorId, int32 ProductId, FControllerDesc& Found, TEnumAsByte<EFindResultPins>& FindResult) {
 }
 
@@ -273,7 +295,14 @@ void UControllerManager::DumpPresentControllers() {
 void UControllerManager::ClearTrueForceAll() {
 }
 
+void UControllerManager::ClearTriggerEffect(bool L2, bool R2) {
+}
+
 void UControllerManager::ClearForceFeedbackEffects() {
+}
+
+bool UControllerManager::ClearDisplayParameters(const FControllerId& ID) {
+    return false;
 }
 
 void UControllerManager::ClearActiveControllerIds() {

@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "Blueprint/UserWidget.h"
 #include "LoadingScreenUserWidget.generated.h"
 

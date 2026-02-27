@@ -62,6 +62,9 @@ public:
     static bool GetBadNameHistoryData(const FBadNameAcquisitionHistory& in_history, const EBadNameDisplayType Type, const int32 ID, FBadNameHistoryData& out_history_data);
     
     UFUNCTION(BlueprintCallable)
+    static bool GetBadNameConditionDataFromDT(const int32& check_id, UDataTable* DataTable, FBadNameConditionData& out_data);
+    
+    UFUNCTION(BlueprintCallable)
     static int32 GetAcquisitionCountBadNameHistory(const FBadNameAcquisitionHistory& in_history);
     
 private:
@@ -82,7 +85,10 @@ public:
     static FBadNameState CombineBadName(const FBadNameState& base, const FBadNameState& Add);
     
     UFUNCTION(BlueprintCallable)
-    static FBadNameAcquisitionHistory CombineAcquisitionHistory(const FBadNameAcquisitionHistory& base_history, const FBadNameAcquisitionHistory& add_history);
+    static FBadNameAcquisitionHistory CombineAcquisitionHistory(const FBadNameAcquisitionHistory& base_history, const FBadNameAcquisitionHistory& add_history, bool& is_add);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool CheckUpdateBadNameText(UPARAM(Ref) FBadNameState& badname_state, UDataTable* CheckTable);
     
     UFUNCTION(BlueprintCallable)
     static bool CheckBadName(const FBadNameState& base, const FBadNameState& Add, FBadNameState& new_bad_name);

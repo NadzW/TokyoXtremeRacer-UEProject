@@ -5,6 +5,7 @@ UControllerLayoutDatabase::UControllerLayoutDatabase() {
     this->XBoxOne = NULL;
     this->PS4 = NULL;
     this->PS5 = NULL;
+    this->PS5Wheel = NULL;
     this->SteamDeck = NULL;
     this->GenericController = NULL;
 }

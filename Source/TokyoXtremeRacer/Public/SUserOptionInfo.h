@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "SOptionInputMappingInfo.h"
+#include "SOptionMusicSelectInfo.h"
 #include "SUserOptionGameSetting.h"
 #include "SUserOptionVehicleInfo.h"
 #include "SUserOptionInfo.generated.h"
@@ -17,6 +18,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSOptionInputMappingInfo OptionInputMappingInfo;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSOptionMusicSelectInfo OptionMusicSelectInfo;
     
     FSUserOptionInfo();
 };

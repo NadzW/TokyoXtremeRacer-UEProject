@@ -22,11 +22,17 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     void OutputDLCStatusMapForDLCAppInfo(TMap<FName, EDLCAvaliableStatus>& RetDLCStatusMap) const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsAvaliableDLC(const FName& PlatformAppID) const;
+    
     UFUNCTION(BlueprintCallable)
     static UAvaliableDLCInfo* ConstructAvaliableDLCInfoFromDLCAppInfo(const TMap<FName, EDLCAvaliableStatus> tDLCStatusMap);
     
     UFUNCTION(BlueprintCallable)
     static UAvaliableDLCInfo* ConstructAvaliableDLCInfo(const TArray<FSDLCInfo>& DLCList);
+    
+    UFUNCTION(BlueprintCallable)
+    static UAvaliableDLCInfo* ConstructAllAvaliableDLCInfo();
     
     UFUNCTION(BlueprintCallable)
     EDLCUseCheckResult CheckCurrentDLCInfoIsEnough(const UAvaliableDLCInfo* PrevDLCDataInfo);

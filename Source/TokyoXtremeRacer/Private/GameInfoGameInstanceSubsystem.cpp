@@ -13,7 +13,7 @@ UGameInfoGameInstanceSubsystem::UGameInfoGameInstanceSubsystem() {
 void UGameInfoGameInstanceSubsystem::SkillSetup(const UDataTable* in_root_datatableconst, const FName in_category, const bool in_exe_empty) {
 }
 
-void UGameInfoGameInstanceSubsystem::SetupAchievemet(UDataTable* data_table, const bool in_achievementinfo_reflect_to_userinfo, FSUserInfo& in_user_info, const TMap<EVehicleTuneKind, EVehicleTuneLevel> in_max_tune_levels, const UDataTable* rival_data_table) {
+void UGameInfoGameInstanceSubsystem::SetupAchievemet(UDataTable* data_table, const bool in_achievementinfo_reflect_to_userinfo, const TMap<EVehicleTuneKind, EVehicleTuneLevel> in_max_tune_levels, const UDataTable* rival_data_table) {
 }
 
 void UGameInfoGameInstanceSubsystem::SetForcedVibrationStop(const bool in_is_forced_stop) {

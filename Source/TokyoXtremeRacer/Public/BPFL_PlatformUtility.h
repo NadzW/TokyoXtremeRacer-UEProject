@@ -11,6 +11,9 @@ public:
     UBPFL_PlatformUtility();
 
     UFUNCTION(BlueprintCallable)
+    static void SetupPS5SaveGameInfoDelegate();
+    
+    UFUNCTION(BlueprintCallable)
     static FString GetPlatformTempDirectory();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

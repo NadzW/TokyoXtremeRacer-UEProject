@@ -42,7 +42,7 @@ bool UVehicleRaceInfo::SetCollisionAvoidedTimer() {
 void UVehicleRaceInfo::SetBase(const int32 max_sp, const double current_sp, const int32 sp_attack, const int32 sp_diffence) {
 }
 
-void UVehicleRaceInfo::ResetBeforeEveryBattle(const bool in_is_continuous_battle) {
+void UVehicleRaceInfo::ResetBeforeEveryBattle() {
 }
 
 int32 UVehicleRaceInfo::RefrectSkillParameter(const FSSkillTree in_skill) {
@@ -50,6 +50,10 @@ int32 UVehicleRaceInfo::RefrectSkillParameter(const FSSkillTree in_skill) {
 }
 
 bool UVehicleRaceInfo::IsCollisionsAvoided() {
+    return false;
+}
+
+bool UVehicleRaceInfo::HaveCollisionAvoidedSkill() const {
     return false;
 }
 
@@ -115,6 +119,10 @@ double UVehicleRaceInfo::GetAttackCoef(const double in_battle_time, bool& out_ex
 
 int32 UVehicleRaceInfo::GetATK(const bool in_is_pa_battle) {
     return 0;
+}
+
+bool UVehicleRaceInfo::FinishedCollisionAvoidedSkill() const {
+    return false;
 }
 
 void UVehicleRaceInfo::ClearEquipSkills() {

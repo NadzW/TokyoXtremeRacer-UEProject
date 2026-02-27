@@ -89,6 +89,9 @@ private:
 public:
     UAutoDriveConfigurationSubsystem();
 
+    UFUNCTION(BlueprintCallable)
+    void SetCrusingParameters(const TMap<EAutoDriveCrusingType, FAutoDriveCrusingDefinitionParameter> tCrusingParameters);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FSRivalDrivingParameter RivalDrivingParameter(const FName RivalID) const;
     

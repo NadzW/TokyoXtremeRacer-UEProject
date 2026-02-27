@@ -45,7 +45,7 @@ bool UBPFL_GameUtility::GetRivalSituationInfoNewFlag(const FSRivalSituationInfo&
     return false;
 }
 
-int32 UBPFL_GameUtility::GetRivalDriverLevel(const FSRivalInfo in_info) {
+int32 UBPFL_GameUtility::GetRivalDriverLevel(const FSRivalSkillInfo in_info) {
     return 0;
 }
 
@@ -102,7 +102,7 @@ void UBPFL_GameUtility::ComputeSplitRateByAYC(const double in_dt, const double i
 void UBPFL_GameUtility::ComputeSplitRateByATTESA_ETS(const double in_dt, const double in_a_split_rate, const double in_a_force, const double in_b_force, const double in_b_max_force, const bool in_is_b_slip, const double in_move_speed, const double in_old_rate_a, double& out_rate_a, double& out_rate_b) {
 }
 
-bool UBPFL_GameUtility::ComputeSpDamageFromSkillTechnique(const double in_battle_time, const ESkillTarget in_tec, const FSBattleBaseInfo in_attacker_base_info, const UVehicleRaceInfo* in_attacker_info, const FSBattleBaseInfo in_defender_base_info, const UVehicleRaceInfo* in_defender_info, double& out_damage_value, bool& out_exe_defense_skill, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus) {
+bool UBPFL_GameUtility::ComputeSpDamageFromSkillTechnique(const double in_battle_time, const double in_attack_coef, const double in_defense_coef, const ESkillTarget in_tec, const FSBattleBaseInfo in_attacker_base_info, const UVehicleRaceInfo* in_attacker_info, const FSBattleBaseInfo in_defender_base_info, const UVehicleRaceInfo* in_defender_info, double& out_damage_value, bool& out_exe_defense_skill, bool& out_exe_attack_time_bonus, bool& out_exe_defense_time_bonus) {
     return false;
 }
 

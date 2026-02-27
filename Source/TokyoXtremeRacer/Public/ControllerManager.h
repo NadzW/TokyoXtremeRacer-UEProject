@@ -8,6 +8,7 @@
 #include "ControllerModel.h"
 #include "EControllerForceMode.h"
 #include "EFindResultPins.h"
+#include "EGkControllerDeviceClass.h"
 #include "EInputControllerType.h"
 #include "EInputHatDirection.h"
 #include "ETrueForceOrForceFeedback.h"
@@ -132,6 +133,9 @@ public:
     static void SetTrueForceEnabled(const FControllerId& ID, bool Enabled);
     
     UFUNCTION(BlueprintCallable)
+    static void SetTriggerEffectOff(const FControllerId& ID, bool L2, bool R2);
+    
+    UFUNCTION(BlueprintCallable)
     static bool SetOperatingRangeByControllerId(const FControllerId& ID, float RangeDegrees);
     
     UFUNCTION(BlueprintCallable)
@@ -145,6 +149,15 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static bool SetForceModeByControllerId(const FControllerId& ID, EControllerForceMode Mode);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool SetDisplayVelocity(const FControllerId& ID, float VelocityKmh);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool SetDisplayGearSelected(const FControllerId& ID, int32 GearSelected);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool SetDisplayEngineRpm(const FControllerId& ID, float CurrentRpm, float MaxRpm);
     
     UFUNCTION(BlueprintCallable)
     static void SetControllerFfbEnabled(const FControllerId& ID, bool bEnabled);
@@ -199,6 +212,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static bool IsTrueForceCapable(const FControllerId& ID);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsPS5Wheel(EGkControllerDeviceClass ControllerDeviceClass);
     
     UFUNCTION(BlueprintCallable)
     static bool IsLogitechSDKDevice(const FControllerId& ID);
@@ -264,6 +280,9 @@ public:
     static TArray<FControllerId> GetActiveControllerIds();
     
     UFUNCTION(BlueprintCallable)
+    static void FindPs5DualSenseController(FControllerId& Found, TEnumAsByte<EFindResultPins>& FindResult);
+    
+    UFUNCTION(BlueprintCallable)
     static void FindControllerByHardwareId(int32 VendorId, int32 ProductId, FControllerDesc& Found, TEnumAsByte<EFindResultPins>& FindResult);
     
     UFUNCTION(BlueprintCallable)
@@ -273,7 +292,13 @@ public:
     static void ClearTrueForceAll();
     
     UFUNCTION(BlueprintCallable)
+    static void ClearTriggerEffect(bool L2, bool R2);
+    
+    UFUNCTION(BlueprintCallable)
     static void ClearForceFeedbackEffects();
+    
+    UFUNCTION(BlueprintCallable)
+    static bool ClearDisplayParameters(const FControllerId& ID);
     
     UFUNCTION(BlueprintCallable)
     static void ClearActiveControllerIds();
